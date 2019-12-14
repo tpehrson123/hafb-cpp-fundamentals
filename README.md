@@ -1,44 +1,18 @@
-## Welcome to CS1410
-[![Build Status](https://travis-ci.com/cs-1410-fall-2019/CS1410-Master.svg?token=BHvuFKF2ZxDYaprsdh97&branch=master)](https://travis-ci.com/cs-1410-fall-2019/CS1410-Master)
-![GitHub issues](https://img.shields.io/github/issues/cs-1410-fall-2019/cs1410-Master.svg?style=plastic)
+# CS1410 Module 3: Classes Part II
+In this module we continue our discussion on classes. 
 
+## Learning Objectives
+At the end of this module students will have
+- Implement a nested class
+- Utilize the friend specifier to access private and protected members
+- Use constructors, copy constructors, assignment operators, and destructors
+- Overload operators
+- Implement functors
+## Learning Activity XX for CS 1410 Module XX
+Your LA instructions go here
 
+## Try-It-Out Activity XX for CS 1410 Module XX
+Your TO instructions go here
 
-You can use the [editor on GitHub](https://github.com/hugo-valle/CS1410-master/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
-
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-
-Now C++ Sample code 
-```C++ {.line-numbers}
-int i;
-i++;
-```
-
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+## Challenge Activity XX for CS 1410 Module XX
+Your CA instructions go here
