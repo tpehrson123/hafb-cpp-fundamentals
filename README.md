@@ -1,18 +1,10 @@
-# CS1410 Module 3: Classes Part II
-In this module we continue our discussion on classes. 
+## Welcome to C++ Fundamentals
 
-## Learning Objectives
-At the end of this module students will have
-- Implement a nested class
-- Utilize the friend specifier to access private and protected members
-- Use constructors, copy constructors, assignment operators, and destructors
-- Overload operators
-- Implement functors
-## Learning Activity XX for CS 1410 Module XX
-Your LA instructions go here
+This course is divided into 6 different modules. 
 
-## Try-It-Out Activity XX for CS 1410 Module XX
-Your TO instructions go here
-
-## Challenge Activity XX for CS 1410 Module XX
-Your CA instructions go here
+- [Module 1](Module1/README.md): Introduction to C++ basics.
+- [Module 2](Module2/README.md): Classes Part I
+- [Module 3](Module3/README.md): Classes Part II.
+- [Module 4](Module4/README.md): Generic Programming with Templates
+- [Module 5](Module5/README.md): C++ Standard Library
+- [Module 6](Module6/README.md): Pointers and Dynamic Memory, Inheritance and Polymorphism
