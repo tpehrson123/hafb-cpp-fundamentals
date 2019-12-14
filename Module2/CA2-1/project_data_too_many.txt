@@ -1,0 +1,44 @@
+1925 863 35
+Complete data entry
+875 655 64
+Fix accessibility details
+351 281 72
+Write Static Code Checker
+3780 2154 57
+Design hand gesture recognition tool
+4290 3857 82
+Code Remote Lab Assistance
+1275 1350 97
+Implement Project Approval System
+2145 1822 74
+Refactor Online Course Registration
+1832 958 47
+Create Universal Database Viewer
+945 822 93
+Create Sun Rise Set Time Tracker
+3120 1834 35
+Develop Automatic Youtube Playlist Downloader
+4020 2160 48
+Design a Health services & Medical outcome monitoring system
+1320 1152 73
+Create An Android Messaging App
+2150 1843 85
+Design an AI Therapist
+3240 1244 28
+Develop Search Tool for Logos
+2180 1430 50
+Create Client Master
+980 870 84
+Make A Game of Anagrams
+3820 2187 46
+Develop a Chatbot
+3292 3398 92
+Create a Sign Language Translator
+5290 45 3
+Develop a Medical Tracking App
+2470 1244 50
+Schedule Green Rides
+3120 876 21
+Design Smart Elevator
+3420 1488 39
+Innovate Email

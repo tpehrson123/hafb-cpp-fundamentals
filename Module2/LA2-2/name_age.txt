@@ -1,0 +1,40 @@
+22
+Collins, Bill
+37
+Smith, Bart
+8
+Allen, Jim,
+15
+Griffin, Jim
+22
+Stamey, Marty
+91
+Rose, Geri
+37
+Taylor, Terri
+24
+Johnson, Jill
+31
+Allison, Jeff
+55
+Looney, Joe
+23
+Wolfe, Bill
+16
+James, Jean
+43
+Weaver, Jim
+51
+Pore, Bob
+37
+Rutherford, Greg
+12
+Javens, Rene
+3
+Harrison, Rose
+19
+Setzer, Cathy
+34
+Pike, Gordon
+74
+Holland, Beth

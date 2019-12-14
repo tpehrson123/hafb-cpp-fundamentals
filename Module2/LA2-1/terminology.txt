@@ -1,0 +1,16 @@
+
+
+class - defines a type
+
+object  (variable)
+
+method   (function)
+
+member - belongs to the class/object
+
+data
+data members  (member variables)
+
+functionality
+member methods  (member functions)
+

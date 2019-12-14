@@ -1,0 +1,12 @@
+H 17.25 42
+Collins, Bill
+C 395 4 585
+Griffin, Jim
+S 1298.2
+Wilson, Carol
+S -2140
+Allen, Jim
+H 12.45 37.5
+Smith, Bart
+C 22.5 47 835
+Griffin, Jim

@@ -1,0 +1,32 @@
+sudo: false
+language: cpp
+compiler:
+  - gcc
+os:
+  - linux
+
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+
+# List in here all the subdirectories you need to test
+# this format will create a matrix for all required tests.
+env: 
+  # - TEST_DIR=TO2-1
+  # - TEST_DIR=TO2-2
+  # - TEST_DIR=CA2-1
+
+#  
+script:
+  # cd into CA#
+  - cd $TEST_DIR
+  - mkdir build
+  - cd build
+  - cmake ..
+  - cmake --build .
+  # Run unit test file
+  - ./bin/ca_test -s -r compact
