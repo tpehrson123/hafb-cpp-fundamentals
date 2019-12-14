@@ -12,7 +12,7 @@
 using namespace std;
 
 TEST_CASE("Consant kMaxSize is defined and set to 32", "[read]") {
-  REQUIRE(kMaxSize == 32);
+  CHECK(kMaxSize == 32);
 }
 
 TEST_CASE(
@@ -30,7 +30,7 @@ TEST_CASE(
   message =
       ReadDataFromFile("../no_file.txt", hours, pay_type, pay, names, size);
 
-  REQUIRE(message == "Unable to open file");
+  CHECK(message == "Unable to open file");
 }
 
 TEST_CASE(
@@ -48,8 +48,8 @@ TEST_CASE(
   message = ReadDataFromFile("../payroll_data.txt", hours, pay_type, pay, names,
                              size);
 
-  REQUIRE(size == 20);
-  REQUIRE(message == "");
+  CHECK(size == 20);
+  CHECK(message == "");
 }
 
 TEST_CASE(
@@ -71,7 +71,7 @@ TEST_CASE(
                                         27, 49.8, 56, 12.75, 40, 18.2};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 'h', 'h', 's', 's', 'h', 'h',
@@ -82,8 +82,8 @@ TEST_CASE(
       2250.0, 2100.0, 1845.0, 24.5,  14.75,  28.4,  1895.0, 12.6, 1920.0, 31.2};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {
@@ -95,11 +95,11 @@ TEST_CASE(
       "Javens, Renee C.", "Harrison, Rose",  "Setzer, Cathy",
       "Pike, Gordon J.",  "Holland, Beth R."};
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 20);
-  REQUIRE(message == "");
+  CHECK(size == 20);
+  CHECK(message == "");
 }
 
 TEST_CASE(
@@ -122,7 +122,7 @@ TEST_CASE(
       40, 40,   52,   31.75, 51,   33,    40,    0,  62,   43};
 
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {
@@ -136,8 +136,8 @@ TEST_CASE(
       1215.0, 22.15, 25.0,   14.5,   27.35,  15.0,  2250.0, 2100.0};
 
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {
@@ -155,14 +155,14 @@ TEST_CASE(
   };
 
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
   INFO(
       "Possible security breach. Data has been written outside the bounds of "
       "the array!")
-  REQUIRE(size == 32);
-  REQUIRE(message == "");
+  CHECK(size == 32);
+  CHECK(message == "");
 }
 
 TEST_CASE(
@@ -183,24 +183,24 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {0, 31.75};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 'h'};
   array<double, kMaxSize> test_pay = {1215.0, 22.15};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Stamey, Marty", "Rose, Geri"};
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message == "Hours is out of range, set to 0 ");
+  CHECK(size == 2);
+  CHECK(message == "Hours is out of range, set to 0 ");
 }
 
 TEST_CASE(
@@ -221,24 +221,24 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {0, 31.75};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 'h'};
   array<double, kMaxSize> test_pay = {1215.0, 22.15};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Stamey, Marty", "Rose, Geri"};
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message == "Hours is out of range, set to 0 ");
+  CHECK(size == 2);
+  CHECK(message == "Hours is out of range, set to 0 ");
 }
 
 TEST_CASE(
@@ -259,24 +259,24 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {52, 31.75};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 'h'};
   array<double, kMaxSize> test_pay = {1215.0, 22.15};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Stamey, Marty", "Rose, Geri"};
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message == "Incorrect pay type, set to s ");
+  CHECK(size == 2);
+  CHECK(message == "Incorrect pay type, set to s ");
 }
 
 TEST_CASE(
@@ -297,24 +297,24 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {52, 31.75};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 'h'};
   array<double, kMaxSize> test_pay = {1215.0, 7.25};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Stamey, Marty", "Rose, Geri"};
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message == "Pay is less than minimum wage, set to 7.25 ");
+  CHECK(size == 2);
+  CHECK(message == "Pay is less than minimum wage, set to 7.25 ");
 }
 
 TEST_CASE(
@@ -335,24 +335,24 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {0, 31.75};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 's'};
   array<double, kMaxSize> test_pay = {1215.0, 22.15};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Stamey, Marty", "unknown"};
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message ==
+  CHECK(size == 2);
+  CHECK(message ==
           "Hours is out of range, set to 0 Incorrect pay type, set to s Name "
           "is not in last, first format ");
 }
@@ -373,8 +373,8 @@ TEST_CASE(
   string message = AddPayrollData(hours, pay_type, pay, names, 36, 'h', 23.5,
                                   "Wilson, Sarah", size);
 
-  REQUIRE(size == kMaxSize);
-  REQUIRE(message == "Arrays are full, no payroll data added");
+  CHECK(size == kMaxSize);
+  CHECK(message == "Arrays are full, no payroll data added");
 }
 
 TEST_CASE(
@@ -397,26 +397,26 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {36, 43};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 's'};
   array<double, kMaxSize> test_pay = {23.5, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Wilson, Sarah", "Jones, Kim"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 == "");
-  REQUIRE(message2 == "");
+  CHECK(size == 2);
+  CHECK(message1 == "");
+  CHECK(message2 == "");
 }
 
 TEST_CASE(
@@ -439,26 +439,26 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {0, 43};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 's'};
   array<double, kMaxSize> test_pay = {23.5, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Wilson, Sarah", "Jones, Kim"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 == "Hours is out of range, set to 0 ");
-  REQUIRE(message2 == "");
+  CHECK(size == 2);
+  CHECK(message1 == "Hours is out of range, set to 0 ");
+  CHECK(message2 == "");
 }
 
 TEST_CASE(
@@ -481,26 +481,26 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {35, 0};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 's'};
   array<double, kMaxSize> test_pay = {23.5, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Wilson, Sarah", "Jones, Kim"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 == "");
-  REQUIRE(message2 == "Hours is out of range, set to 0 ");
+  CHECK(size == 2);
+  CHECK(message1 == "");
+  CHECK(message2 == "Hours is out of range, set to 0 ");
 }
 
 TEST_CASE(
@@ -523,26 +523,26 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {35, 53};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 's'};
   array<double, kMaxSize> test_pay = {23.5, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Wilson, Sarah", "Jones, Kim"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 == "Incorrect pay type, set to s ");
-  REQUIRE(message2 == "");
+  CHECK(size == 2);
+  CHECK(message1 == "Incorrect pay type, set to s ");
+  CHECK(message2 == "");
 }
 
 TEST_CASE(
@@ -565,26 +565,26 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {32, 43};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 's'};
   array<double, kMaxSize> test_pay = {7.25, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Wilson, Sarah", "Jones, Kim"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 == "Pay is less than minimum wage, set to 7.25 ");
-  REQUIRE(message2 == "");
+  CHECK(size == 2);
+  CHECK(message1 == "Pay is less than minimum wage, set to 7.25 ");
+  CHECK(message2 == "");
 }
 
 TEST_CASE(
@@ -607,26 +607,26 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {35, 53};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 's'};
   array<double, kMaxSize> test_pay = {23.5, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"Wilson, Sarah", "unknown"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 == "");
-  REQUIRE(message2 == "Name is not in last, first format ");
+  CHECK(size == 2);
+  CHECK(message1 == "");
+  CHECK(message2 == "Name is not in last, first format ");
 }
 
 TEST_CASE(
@@ -651,28 +651,28 @@ TEST_CASE(
   array<double, kMaxSize> test_hours = {0, 53};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'s', 's'};
   array<double, kMaxSize> test_pay = {23.5, 2395};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {"unknown", "Jones, Kim"};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 
-  REQUIRE(size == 2);
-  REQUIRE(message1 ==
+  CHECK(size == 2);
+  CHECK(message1 ==
           "Hours is out of range, set to 0 Incorrect pay type, set to s Name "
           "is not in last, first format ");
-  REQUIRE(message2 == "");
+  CHECK(message2 == "");
 }
 
 TEST_CASE(
@@ -681,7 +681,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(32, 'h', 23.5);
 
-  REQUIRE(fabs(gross - 752) < .0001);
+  CHECK(fabs(gross - 752) < .0001);
 }
 
 TEST_CASE(
@@ -690,7 +690,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(42, 'h', 23.5);
 
-  REQUIRE(fabs(gross - 1010.5) < .0001);
+  CHECK(fabs(gross - 1010.5) < .0001);
 }
 
 TEST_CASE(
@@ -699,7 +699,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(0, 'h', 23.5);
 
-  REQUIRE(fabs(gross - 0) < .0001);
+  CHECK(fabs(gross - 0) < .0001);
 }
 
 TEST_CASE(
@@ -708,7 +708,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(63, 'h', 31.2);
 
-  REQUIRE(fabs(gross - 2324.4) < .0001);
+  CHECK(fabs(gross - 2324.4) < .0001);
 }
 
 TEST_CASE(
@@ -717,7 +717,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(48, 's', 2382);
 
-  REQUIRE(fabs(gross - 2382) < .0001);
+  CHECK(fabs(gross - 2382) < .0001);
 }
 
 TEST_CASE(
@@ -726,7 +726,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(26, 's', 1279);
 
-  REQUIRE(fabs(gross - 1279) < .0001);
+  CHECK(fabs(gross - 1279) < .0001);
 }
 
 TEST_CASE(
@@ -735,7 +735,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(0, 's', 1279);
 
-  REQUIRE(fabs(gross - 1279) < .0001);
+  CHECK(fabs(gross - 1279) < .0001);
 }
 
 TEST_CASE(
@@ -744,7 +744,7 @@ TEST_CASE(
     "[gross]") {
   double gross = ComputeGross(0, 's', 2150);
 
-  REQUIRE(fabs(gross - 2150) < .0001);
+  CHECK(fabs(gross - 2150) < .0001);
 }
 
 TEST_CASE(
@@ -784,7 +784,7 @@ TEST_CASE(
   // open file
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
 
   array<double, kMaxSize> hours;
@@ -807,12 +807,12 @@ TEST_CASE(
   in.close();
 
   for (int i = 0; i < test_index; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   for (int i = 0; i < test_index; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   double computed_gross;
@@ -823,11 +823,11 @@ TEST_CASE(
     computed_gross = ComputeGross(test_hours[i], test_pay_type[i], test_pay[i]);
     rounded_gross = static_cast<int>(computed_gross * 100 + .5) / 100.0;
 
-    REQUIRE(fabs(gross[i] - rounded_gross) < .0001);
+    CHECK(fabs(gross[i] - rounded_gross) < .0001);
   }
 
   for (int i = 0; i < test_index; i++) {
-    REQUIRE(names_out[i] == test_names[i]);
+    CHECK(names_out[i] == test_names[i]);
   }
 }
 
@@ -871,7 +871,7 @@ TEST_CASE("WritePayrollDataToFile writes data from arrays to file as expected.",
   // open file
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
 
   array<double, kMaxSize> hours;
@@ -892,15 +892,15 @@ TEST_CASE("WritePayrollDataToFile writes data from arrays to file as expected.",
   in.close();
 
   for (int i = 0; i < test_index; i++) {
-    REQUIRE(fabs(hours[i] - test_hours[i]) < .0001);
+    CHECK(fabs(hours[i] - test_hours[i]) < .0001);
   }
 
   for (int i = 0; i < test_index; i++) {
-    REQUIRE(pay_type[i] == test_pay_type[i]);
-    REQUIRE(fabs(pay[i] - test_pay[i]) < .0001);
+    CHECK(pay_type[i] == test_pay_type[i]);
+    CHECK(fabs(pay[i] - test_pay[i]) < .0001);
   }
 
   for (int i = 0; i < test_index; i++) {
-    REQUIRE(names[i] == test_names[i]);
+    CHECK(names[i] == test_names[i]);
   }
 }

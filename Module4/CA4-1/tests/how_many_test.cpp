@@ -18,7 +18,7 @@ TEST_CASE(
   array<int, kMaxSize> integers = {45, 63, 17, 29, 22, 99, 71, 54, 87,
                                    23, 51, 29, 3,  19, 29, 13, 5,  7};
 
-  REQUIRE(HowMany(29, integers, 18) == 3);
+  CHECK(HowMany(29, integers, 18) == 3);
 }
 
 TEST_CASE(
@@ -28,7 +28,7 @@ TEST_CASE(
   array<int, kMaxSize> integers = {29, 45, 63, 17, 29, 22, 99, 71, 54, 87,
                                    23, 51, 29, 3,  19, 29, 13, 5,  7,  29};
 
-  REQUIRE(HowMany(29, integers, 20) == 5);
+  CHECK(HowMany(29, integers, 20) == 5);
 }
 
 TEST_CASE(
@@ -38,7 +38,7 @@ TEST_CASE(
   array<int, kMaxSize> integers = {29, 45, 63, 17, 29, 22, 99, 71, 54, 87,
                                    23, 51, 29, 3,  19, 29, 13, 5,  7,  29};
 
-  REQUIRE(HowMany(39, integers, 20) == 0);
+  CHECK(HowMany(39, integers, 20) == 0);
 }
 
 //******************************strings******************************
@@ -56,7 +56,7 @@ TEST_CASE(
 
   int how_many = HowMany(color, colors, color_size);
 
-  REQUIRE(how_many == 8);
+  CHECK(how_many == 8);
 }
 
 TEST_CASE(
@@ -72,7 +72,7 @@ TEST_CASE(
 
   int how_many = HowMany(color, colors, color_size);
 
-  REQUIRE(how_many == 6);
+  CHECK(how_many == 6);
 }
 
 TEST_CASE(
@@ -88,7 +88,7 @@ TEST_CASE(
 
   int how_many = HowMany(color, colors, color_size);
 
-  REQUIRE(how_many == 0);
+  CHECK(how_many == 0);
 }
 
 //******************************Cartons******************************
@@ -98,11 +98,11 @@ TEST_CASE(
     "and false otherwise",
     "[is_equal]") {
   // test size
-  REQUIRE(Carton(22, 7, 19.3) == Carton(22, 7, 19.3));
-  REQUIRE(Carton(22, 7, 19.3) == Carton(19.3, 22, 7));
-  REQUIRE(!(Carton(22, 7, 19.3) == Carton(20, 20, 4)));
-  REQUIRE(!(Carton(22, 7, 19.3) == Carton(20, 19, 4)));
-  REQUIRE(Carton(8, 20, 9.5) == Carton(20, 19, 4));
+  CHECK(Carton(22, 7, 19.3) == Carton(22, 7, 19.3));
+  CHECK(Carton(22, 7, 19.3) == Carton(19.3, 22, 7));
+  CHECK(!(Carton(22, 7, 19.3) == Carton(20, 20, 4)));
+  CHECK(!(Carton(22, 7, 19.3) == Carton(20, 19, 4)));
+  CHECK(Carton(8, 20, 9.5) == Carton(20, 19, 4));
 }
 
 TEST_CASE(
@@ -121,7 +121,7 @@ TEST_CASE(
 
   int how_many = HowMany(carton, presents, present_size);
 
-  REQUIRE(how_many == 7);
+  CHECK(how_many == 7);
 }
 
 TEST_CASE(
@@ -139,7 +139,7 @@ TEST_CASE(
 
   int how_many = HowMany(carton, presents, present_size);
 
-  REQUIRE(how_many == 5);
+  CHECK(how_many == 5);
 }
 
 TEST_CASE(
@@ -157,5 +157,5 @@ TEST_CASE(
 
   int how_many = HowMany(carton, presents, present_size);
 
-  REQUIRE(how_many == 0);
+  CHECK(how_many == 0);
 }

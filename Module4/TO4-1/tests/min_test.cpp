@@ -17,8 +17,8 @@ TEST_CASE(
     "[int]") {
   int int1 = 473, int2 = 321;
   MyMin(int1, int2);
-  REQUIRE(MyMin(int1, int2) == 321);
-  REQUIRE(MyMin(int2, int1) == 321);
+  CHECK(MyMin(int1, int2) == 321);
+  CHECK(MyMin(int2, int1) == 321);
 }
 
 //******************************doubles******************************
@@ -29,8 +29,8 @@ TEST_CASE(
     "[double]") {
   double double1 = 123.82, double2 = 263.79;
   MyMin(double1, double2);
-  REQUIRE(fabs(MyMin(double1, double2) - 123.82) < .001);
-  REQUIRE(fabs(MyMin(double2, double1) - 123.82) < .001);
+  CHECK(fabs(MyMin(double1, double2) - 123.82) < .001);
+  CHECK(fabs(MyMin(double2, double1) - 123.82) < .001);
 }
 
 //******************************Cartons******************************
@@ -42,8 +42,8 @@ TEST_CASE(
     "[less_than]") {
   Carton carton1(5.6, 12.4, 3.7);
   Carton carton2(7.8, 13.2, 5.9);
-  REQUIRE(carton1 < carton2);
-  REQUIRE(!(carton2 < carton1));
+  CHECK(carton1 < carton2);
+  CHECK(!(carton2 < carton1));
 }
 
 TEST_CASE(
@@ -53,6 +53,6 @@ TEST_CASE(
     "[carton]") {
   Carton carton1(6.2, 12, 7.7);
   Carton carton2(7.3, 16.2, 9.8);
-  REQUIRE(fabs(MyMin(carton1, carton2).Volume() - 572.88) < .001);
-  REQUIRE(fabs(MyMin(carton1, carton2).Volume() - 572.88) < .001);
+  CHECK(fabs(MyMin(carton1, carton2).Volume() - 572.88) < .001);
+  CHECK(fabs(MyMin(carton1, carton2).Volume() - 572.88) < .001);
 }

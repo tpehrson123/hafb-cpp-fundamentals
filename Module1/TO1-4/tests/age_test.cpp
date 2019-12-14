@@ -16,7 +16,7 @@ TEST_CASE("Incrementing value by Value", "[TO1-4]")
   // Act
   ByValueAgeIn5Years(age);
   // Assert
-  REQUIRE(CurrentAge(age) ==5);
+  CHECK(CurrentAge(age) ==5);
 }
 
 
@@ -28,5 +28,5 @@ TEST_CASE("Incrementing value by Reference", "[TO1-4]")
   // Act
   ByReferenceAgeIn5Years(age);
   // Assert
-  REQUIRE(CurrentAge(age) == 10);
+  CHECK(CurrentAge(age) == 10);
 }

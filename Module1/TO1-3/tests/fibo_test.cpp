@@ -11,5 +11,5 @@
 TEST_CASE("Getting the 10th Fibo Number", "[TO1-3]") 
 {
   INFO("TO Activity 3 Points");
-  REQUIRE( GetTenthFibonacci() == 144);
+  CHECK( GetTenthFibonacci() == 144);
 }

@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/cs-1410-fall-2019/CS1410-Module5-Development.svg?token=BHvuFKF2ZxDYaprsdh97&branch=master)](https://travis-ci.com/cs-1410-fall-2019/CS1410-Module5-Development)
+[![Build Status](https://travis-ci.com/cs-1410-fall-2019/C++ Fundamentals-Module5-Development.svg?token=BHvuFKF2ZxDYaprsdh97&branch=master)](https://travis-ci.com/cs-1410-fall-2019/C++ Fundamentals-Module5-Development)
 
-## CS1410-Module 5 Overview
+## C++ Fundamentals-Module 5 Overview
 
 In Module 5, we will explore the C++ STL including Structures, Collections, Algorithms, Iterators and Lambdas. 
 

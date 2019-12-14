@@ -1,4 +1,4 @@
-## CS1410-Module 6 Overview
+## C++ Fundamentals-Module 6 Overview
 
 In Module 6, we will learn about pointers, dynamic memory allocation, inheritance, and polymorphism. 
 

@@ -1,4 +1,4 @@
-# CS1410 Module 3: Classes Part II
+# C++ Fundamentals Module 3: Classes Part II
 In this module we continue our discussion on classes. 
 
 ## Learning Objectives

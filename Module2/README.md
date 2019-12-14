@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.com/hugo-valle/cs1410-template.svg?branch=master)](https://travis-ci.com/hugo-valle/cs1410-template)
+[![Build Status](https://travis-ci.com/hugo-valle/C++ Fundamentals-template.svg?branch=master)](https://travis-ci.com/hugo-valle/C++ Fundamentals-template)
 
-# cs1410 Module2
+# C++ Fundamentals Module2
 This module, you will learn about the using and creating classes. We will 
 use the standard string class to store and manipulate strings. We will also 
 learn about using the standard 
@@ -20,5 +20,3 @@ learn how to write and use our own classes.
 - Apply access modifiers to encapsulate data
 - Use the static modifier on data members and member functions
 - Generate and handle exceptions
-
-

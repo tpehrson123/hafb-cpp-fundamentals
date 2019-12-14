@@ -17,7 +17,7 @@ TEST_CASE("Load Correct Number of records from csv file", "[part1]")
   // Act
   Load_Data(information, input); // Load Data
   // Assert
-  REQUIRE( information.size() == 100000);
+  CHECK( information.size() == 100000);
 }
 
 TEST_CASE("Load Correct Number of Male Records", "[part2]") 

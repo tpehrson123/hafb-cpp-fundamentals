@@ -12,7 +12,7 @@ TEST_CASE("Getting Lamborghini's horse power", "[TO1-5]")
   // Act
   hp = lamborghini::HorsePower();
   // Assert
-  REQUIRE(hp == 759);
+  CHECK(hp == 759);
 }
 
 TEST_CASE("Getting Porshe's horse power", "[TO1-5]") 
@@ -23,7 +23,7 @@ TEST_CASE("Getting Porshe's horse power", "[TO1-5]")
   // Act
   hp = porshe::HorsePower();
   // Assert
-  REQUIRE(hp == 700);
+  CHECK(hp == 700);
 }
 
 TEST_CASE("Getting a sedan's horse power", "[TO1-5]") 
@@ -34,5 +34,5 @@ TEST_CASE("Getting a sedan's horse power", "[TO1-5]")
   // Act
   hp = HorsePower();
   // Assert
-  REQUIRE(hp == 120);
+  CHECK(hp == 120);
 }

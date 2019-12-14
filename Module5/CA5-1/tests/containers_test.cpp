@@ -17,7 +17,7 @@ TEST_CASE("Load Correct Number of records from csv file", "[part1]")
   // Act
   Load_Data(cars, input); // Load Data
   // Assert
-  REQUIRE( cars.size() == 4000);
+  CHECK( cars.size() == 4000);
 }
 
 TEST_CASE("Test for Maximum and Minimum Value", "[part2]") 

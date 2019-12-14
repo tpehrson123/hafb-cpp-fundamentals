@@ -1,4 +1,4 @@
-# CS1410 Module 4: Generic Programming and Templates
+# C++ Fundamentals Module 4: Generic Programming and Templates
 In this module we continue our discussion on classes. 
 
 ## Learning Objectives

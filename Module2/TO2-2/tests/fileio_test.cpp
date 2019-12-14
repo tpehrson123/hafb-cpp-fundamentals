@@ -14,7 +14,7 @@ using namespace std;
 
 //****************************ReadDataFromFile****************************
 TEST_CASE("Consant kMaxSize is defined and set to 32", "[read]") {
-  REQUIRE(kMaxSize == 32);
+  CHECK(kMaxSize == 32);
 }
 
 TEST_CASE(
@@ -28,7 +28,7 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../no_file.txt", payroll_data, size);
 
-  REQUIRE(message == "Unable to open file.");
+  CHECK(message == "Unable to open file.");
 }
 
 TEST_CASE(
@@ -42,8 +42,8 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../payroll_data.txt", payroll_data, size);
 
-  REQUIRE(size == 20);
-  REQUIRE(message == "");
+  CHECK(size == 20);
+  CHECK(message == "");
 }
 
 TEST_CASE(
@@ -61,7 +61,7 @@ TEST_CASE(
                                         27, 49.8, 56, 12.75, 40, 18.2};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(payroll_data[i].hours() - test_hours[i]) < .0001);
+    CHECK(fabs(payroll_data[i].hours() - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {'h', 'h', 'h', 's', 's', 'h', 'h',
@@ -72,8 +72,8 @@ TEST_CASE(
       2250.0, 2100.0, 1845.0, 24.5,  14.75,  28.4,  1895.0, 12.6, 1920.0, 31.2};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(payroll_data[i].pay_type() == test_pay_type[i]);
-    REQUIRE(fabs(payroll_data[i].pay_rate() - test_pay[i]) < .0001);
+    CHECK(payroll_data[i].pay_type() == test_pay_type[i]);
+    CHECK(fabs(payroll_data[i].pay_rate() - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {
@@ -86,11 +86,11 @@ TEST_CASE(
       "Pike, Gordon J.",  "Holland, Beth R."};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(payroll_data[i].name_last_first() == test_names[i]);
+    CHECK(payroll_data[i].name_last_first() == test_names[i]);
   }
 
-  REQUIRE(size == 20);
-  REQUIRE(message == "");
+  CHECK(size == 20);
+  CHECK(message == "");
 }
 
 TEST_CASE(
@@ -107,8 +107,8 @@ TEST_CASE(
   INFO(
       "Possible security breach. Data has been written outside the bounds of "
       "the array!")
-  REQUIRE(size == 32);
-  REQUIRE(message == "");
+  CHECK(size == 32);
+  CHECK(message == "");
 
   array<double, kMaxSize> test_hours = {
       42, 37.5, 40,   40,    52,   31.75, 51,    33, 40,   0,  62,
@@ -116,7 +116,7 @@ TEST_CASE(
       40, 40,   52,   31.75, 51,   33,    40,    0,  62,   43};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(fabs(payroll_data[i].hours() - test_hours[i]) < .0001);
+    CHECK(fabs(payroll_data[i].hours() - test_hours[i]) < .0001);
   }
 
   array<char, kMaxSize> test_pay_type = {
@@ -130,8 +130,8 @@ TEST_CASE(
       1215.0, 22.15, 25.0,   14.5,   27.35,  15.0,  2250.0, 2100.0};
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(payroll_data[i].pay_type() == test_pay_type[i]);
-    REQUIRE(fabs(payroll_data[i].pay_rate() - test_pay[i]) < .0001);
+    CHECK(payroll_data[i].pay_type() == test_pay_type[i]);
+    CHECK(fabs(payroll_data[i].pay_rate() - test_pay[i]) < .0001);
   }
 
   array<string, kMaxSize> test_names = {
@@ -149,7 +149,7 @@ TEST_CASE(
   };
 
   for (int i = 0; i < size; i++) {
-    REQUIRE(payroll_data[i].name_last_first() == test_names[i]);
+    CHECK(payroll_data[i].name_last_first() == test_names[i]);
   }
 }
 
@@ -165,13 +165,13 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../payroll_error1.txt", payroll_data, size);
 
-  REQUIRE(fabs(payroll_data[0].hours() - 31.75) < .0001);
-  REQUIRE(payroll_data[0].pay_type() == 'h');
-  REQUIRE(fabs(payroll_data[0].pay_rate() - 22.15) < .0001);
-  REQUIRE(payroll_data[0].name_last_first() == "Rose, Geri");
+  CHECK(fabs(payroll_data[0].hours() - 31.75) < .0001);
+  CHECK(payroll_data[0].pay_type() == 'h');
+  CHECK(fabs(payroll_data[0].pay_rate() - 22.15) < .0001);
+  CHECK(payroll_data[0].name_last_first() == "Rose, Geri");
 
-  REQUIRE(size == 1);
-  REQUIRE(message.substr(0, 44) ==
+  CHECK(size == 1);
+  CHECK(message.substr(0, 44) ==
           "Unable to add payroll data for Stamey, Marty");
 }
 
@@ -187,13 +187,13 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../payroll_error2.txt", payroll_data, size);
 
-  REQUIRE(fabs(payroll_data[0].hours() - 31.75) < .0001);
-  REQUIRE(payroll_data[0].pay_type() == 'h');
-  REQUIRE(fabs(payroll_data[0].pay_rate() - 22.15) < .0001);
-  REQUIRE(payroll_data[0].name_last_first() == "Rose, Geri");
+  CHECK(fabs(payroll_data[0].hours() - 31.75) < .0001);
+  CHECK(payroll_data[0].pay_type() == 'h');
+  CHECK(fabs(payroll_data[0].pay_rate() - 22.15) < .0001);
+  CHECK(payroll_data[0].name_last_first() == "Rose, Geri");
 
-  REQUIRE(size == 1);
-  REQUIRE(message.substr(0, 44) ==
+  CHECK(size == 1);
+  CHECK(message.substr(0, 44) ==
           "Unable to add payroll data for Stamey, Marty");
 }
 
@@ -209,13 +209,13 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../payroll_error3.txt", payroll_data, size);
 
-  REQUIRE(fabs(payroll_data[0].hours() - 31.75) < .0001);
-  REQUIRE(payroll_data[0].pay_type() == 'h');
-  REQUIRE(fabs(payroll_data[0].pay_rate() - 22.15) < .0001);
-  REQUIRE(payroll_data[0].name_last_first() == "Rose, Geri");
+  CHECK(fabs(payroll_data[0].hours() - 31.75) < .0001);
+  CHECK(payroll_data[0].pay_type() == 'h');
+  CHECK(fabs(payroll_data[0].pay_rate() - 22.15) < .0001);
+  CHECK(payroll_data[0].name_last_first() == "Rose, Geri");
 
-  REQUIRE(size == 1);
-  REQUIRE(message.substr(0, 44) ==
+  CHECK(size == 1);
+  CHECK(message.substr(0, 44) ==
           "Unable to add payroll data for Stamey, Marty");
 }
 
@@ -231,13 +231,13 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../payroll_error4.txt", payroll_data, size);
 
-  REQUIRE(fabs(payroll_data[0].hours() - 52) < .0001);
-  REQUIRE(payroll_data[0].pay_type() == 's');
-  REQUIRE(fabs(payroll_data[0].pay_rate() - 1215) < .0001);
-  REQUIRE(payroll_data[0].name_last_first() == "Stamey, Marty");
+  CHECK(fabs(payroll_data[0].hours() - 52) < .0001);
+  CHECK(payroll_data[0].pay_type() == 's');
+  CHECK(fabs(payroll_data[0].pay_rate() - 1215) < .0001);
+  CHECK(payroll_data[0].name_last_first() == "Stamey, Marty");
 
-  REQUIRE(size == 1);
-  REQUIRE(message.substr(0, 41) == "Unable to add payroll data for Rose, Geri");
+  CHECK(size == 1);
+  CHECK(message.substr(0, 41) == "Unable to add payroll data for Rose, Geri");
 }
 
 TEST_CASE(
@@ -252,8 +252,8 @@ TEST_CASE(
   string message;
   message = ReadDataFromFile("../payroll_error5.txt", payroll_data, size);
 
-  REQUIRE(size == 0);
-  REQUIRE(message.substr(0, 44) ==
+  CHECK(size == 0);
+  CHECK(message.substr(0, 44) ==
           "Unable to add payroll data for Stamey, Marty");
 }
 
@@ -275,35 +275,35 @@ TEST_CASE("WriteDataToFile writes data from array to file as expected.",
   // open file
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
 
   // read data from file
   string line;
   getline(in, line);
-  REQUIRE(line == "29 s 1845");
+  CHECK(line == "29 s 1845");
   getline(in, line);
-  REQUIRE(line == "Weaver, Jim");
+  CHECK(line == "Weaver, Jim");
   getline(in, line);
-  REQUIRE(line == "40.5 h 24.5");
+  CHECK(line == "40.5 h 24.5");
   getline(in, line);
-  REQUIRE(line == "Pore, Bob E.");
+  CHECK(line == "Pore, Bob E.");
   getline(in, line);
-  REQUIRE(line == "27 h 14.75");
+  CHECK(line == "27 h 14.75");
   getline(in, line);
-  REQUIRE(line == "Rutherford, Greg");
+  CHECK(line == "Rutherford, Greg");
   getline(in, line);
-  REQUIRE(line == "49.8 h 28.4");
+  CHECK(line == "49.8 h 28.4");
   getline(in, line);
-  REQUIRE(line == "Javens, Renee C.");
+  CHECK(line == "Javens, Renee C.");
   getline(in, line);
-  REQUIRE(line == "56 s 1895");
+  CHECK(line == "56 s 1895");
   getline(in, line);
-  REQUIRE(line == "Harrison, Rose");
+  CHECK(line == "Harrison, Rose");
   getline(in, line);
-  REQUIRE(line == "12.75 h 12.6");
+  CHECK(line == "12.75 h 12.6");
   getline(in, line);
-  REQUIRE(line == "Setzer, Cathy");
+  CHECK(line == "Setzer, Cathy");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
 }

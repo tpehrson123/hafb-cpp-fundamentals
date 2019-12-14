@@ -15,7 +15,7 @@ TEST_CASE("When given 2 and 8, distance = 6", "[distance1]")
   // Act
   int result = video::Distance(num1, num2);
   // Assert
-  REQUIRE(result == 6);
+  CHECK(result == 6);
 }
 
 TEST_CASE("When given 21 and 4, distance = 17", "[distance1]") 
@@ -27,7 +27,7 @@ TEST_CASE("When given 21 and 4, distance = 17", "[distance1]")
   // Act
   int result = video::Distance(num1, num2);
   // Assert
-  REQUIRE(result == 17);
+  CHECK(result == 17);
 }
 
 TEST_CASE("When enemy is 5 m away, circumference = 31.4", "[circumference]") 
@@ -39,7 +39,7 @@ TEST_CASE("When enemy is 5 m away, circumference = 31.4", "[circumference]")
   float enemy_distance = video::Circumference(distance);
   // Assert
   // Approximation with 2 decimals. 
-  REQUIRE(enemy_distance == Approx(31.4).margin(2));
+  CHECK(enemy_distance == Approx(31.4).margin(2));
 }
 
 TEST_CASE("When enemy is 0.9 m away, circumference = 5.62", "[circumference]") 
@@ -51,7 +51,7 @@ TEST_CASE("When enemy is 0.9 m away, circumference = 5.62", "[circumference]")
   float enemy_distance = video::Circumference(distance);
   // Assert
   // Approximation with 2 decimals. 
-  REQUIRE(enemy_distance == Approx(5.62).margin(2));
+  CHECK(enemy_distance == Approx(5.62).margin(2));
 }
 
 TEST_CASE("When enemy is -2.8 m away, circumference = 0", "[circumference]") 
@@ -63,13 +63,13 @@ TEST_CASE("When enemy is -2.8 m away, circumference = 0", "[circumference]")
   float enemy_distance = video::Circumference(distance);
   // Assert
   // Approximation with 3 decimals. 
-  REQUIRE(enemy_distance == 0);
+  CHECK(enemy_distance == 0);
 }
 
 TEST_CASE("Testing your system for the Factor library", "[bi_array]") 
 {
   INFO("bi_array tag: 10 points");
-  REQUIRE( video::BiArray() == 298);
+  CHECK( video::BiArray() == 298);
 }
 
 
@@ -85,13 +85,13 @@ TEST_CASE("Selecting max of two elements and modify by reference -> does work", 
     int &element_r = video::GetMaxOf(list1, list2, i);
     int max_r =list1[i] > list2[i] ? list1[i]: list2[i];
     // Assert
-    REQUIRE(element_r == max_r);
+    CHECK(element_r == max_r);
     
     // Act
     ++element_r;
     max_r =list1[i] > list2[i] ? list1[i]: list2[i];
     // Assert
-    REQUIRE(element_r == max_r);
+    CHECK(element_r == max_r);
   }
 }
 
@@ -107,13 +107,13 @@ TEST_CASE("Selecting max of two elements and modify by value -> does not work", 
     int element_v = video::GetMaxOf(list1, list2, i);
     int max_v =list1[i] > list2[i] ? list1[i]: list2[i];
     // Assert
-    REQUIRE(element_v == max_v);
+    CHECK(element_v == max_v);
     
     // Act
     ++element_v;
     max_v =list1[i] > list2[i] ? list1[i]: list2[i];
     // Assert
-    REQUIRE(element_v != max_v);
+    CHECK(element_v != max_v);
   }
 }
 
@@ -126,7 +126,7 @@ TEST_CASE("When given 2.5 and 8.8, distance = 6.3", "[distance2]")
   // Act
   float result = video::Distance(num1, num2);
   // Assert
-  REQUIRE(result == Approx(6.3));
+  CHECK(result == Approx(6.3));
 }
 
 TEST_CASE("When given 12.9 and 2.3, distance = 10.6", "[distance2]") 
@@ -138,7 +138,7 @@ TEST_CASE("When given 12.9 and 2.3, distance = 10.6", "[distance2]")
   // Act
   float result = video::Distance(num1, num2);
   // Assert
-  REQUIRE(result == Approx(10.6));
+  CHECK(result == Approx(10.6));
 }
 
 TEST_CASE("When given points {1,2,3} and {4,5,6}, distance = 5.196f", "[distance_point]") 
@@ -151,7 +151,7 @@ TEST_CASE("When given points {1,2,3} and {4,5,6}, distance = 5.196f", "[distance
   float enemy_distance = video::Distance(point_a, point_b);
   // Assert
   // Approximation with 3 decimals. 
-  REQUIRE(enemy_distance == Approx(5.196).margin(3));
+  CHECK(enemy_distance == Approx(5.196).margin(3));
 }
 
 TEST_CASE("When given points {1,-2,-3} and {8,5,-6}, distance = 10.344f", "[distance_point]") 
@@ -164,7 +164,7 @@ TEST_CASE("When given points {1,-2,-3} and {8,5,-6}, distance = 10.344f", "[dist
   float enemy_distance = video::Distance(point_a, point_b);
   // Assert
   // Approximation with 3 decimals. 
-  REQUIRE(enemy_distance == Approx(10.344).margin(3));
+  CHECK(enemy_distance == Approx(10.344).margin(3));
 }
 
 TEST_CASE("When given one point {1,2,3} distance = 3.741f", "[distance_point]") 
@@ -176,7 +176,7 @@ TEST_CASE("When given one point {1,2,3} distance = 3.741f", "[distance_point]")
   float enemy_distance = video::Distance(point_a);
   // Assert
   // Approximation with 3 decimals. 
-  REQUIRE(enemy_distance == Approx(3.741).margin(3));
+  CHECK(enemy_distance == Approx(3.741).margin(3));
 }
 
 
@@ -192,7 +192,7 @@ TEST_CASE("When given 5 points total distance = 5.414", "[total]")
   float total_distance = video::TotalWalkingDistance(enemy_movement);
   // Assert
   // Approximation with 3 decimals. 
-  REQUIRE(total_distance == Approx(5.414).margin(3));
+  CHECK(total_distance == Approx(5.414).margin(3));
 }
 
 TEST_CASE("When given 10 points total distance = 61.583", "[total]") 
@@ -216,5 +216,5 @@ TEST_CASE("When given 10 points total distance = 61.583", "[total]")
   float total_distance = video::TotalWalkingDistance(enemy_movement);
   // Assert
   // Approximation with 3 decimals. 
-  REQUIRE(total_distance == Approx(61.583).margin(3));
+  CHECK(total_distance == Approx(61.583).margin(3));
 }

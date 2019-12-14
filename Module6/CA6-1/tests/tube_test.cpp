@@ -12,7 +12,7 @@
 TEST_CASE(
     "Static member variable is defined and set as expected: kPi = 3.14159",
     "[shipping_item],[static]") {
-  REQUIRE(Tube::kPi == 3.14159);
+  CHECK(Tube::kPi == 3.14159);
 }
 
 //**** Tube Getting Started: setters, getters, constructors *********
@@ -24,11 +24,11 @@ TEST_CASE(
   Tube tube;
   Address address = tube.address();
 
-  REQUIRE(address.name == "unknown");
-  REQUIRE(fabs(tube.weight() - 2) < .001);
-  REQUIRE(fabs(tube.length() - 12) < .001);
-  REQUIRE(tube.delivered() == false);
-  REQUIRE(fabs(tube.circumference() - 12) < .001);
+  CHECK(address.name == "unknown");
+  CHECK(fabs(tube.weight() - 2) < .001);
+  CHECK(fabs(tube.length() - 12) < .001);
+  CHECK(tube.delivered() == false);
+  CHECK(fabs(tube.circumference() - 12) < .001);
 }
 
 TEST_CASE(
@@ -38,16 +38,16 @@ TEST_CASE(
   Address address = {"Howdy", "17 West Center", "Wilson", "NC", "23127"};
   Tube tube(address, 4.3, 12.19, 8.2);
 
-  REQUIRE(tube.address().name == "Howdy");
-  REQUIRE(tube.address().street_address == "17 West Center");
-  REQUIRE(tube.address().city == "Wilson");
-  REQUIRE(tube.address().state == "NC");
-  REQUIRE(tube.address().zip == "23127");
+  CHECK(tube.address().name == "Howdy");
+  CHECK(tube.address().street_address == "17 West Center");
+  CHECK(tube.address().city == "Wilson");
+  CHECK(tube.address().state == "NC");
+  CHECK(tube.address().zip == "23127");
 
-  REQUIRE(fabs(tube.weight() - 4.3) < .001);
-  REQUIRE(fabs(tube.length() - 12.19) < .001);
-  REQUIRE(tube.delivered() == false);
-  REQUIRE(fabs(tube.circumference() - 8.2) < .001);
+  CHECK(fabs(tube.weight() - 4.3) < .001);
+  CHECK(fabs(tube.length() - 12.19) < .001);
+  CHECK(tube.delivered() == false);
+  CHECK(fabs(tube.circumference() - 8.2) < .001);
 }
 
 TEST_CASE(
@@ -63,7 +63,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -79,7 +79,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -95,7 +95,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -111,7 +111,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -127,7 +127,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -143,7 +143,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -159,7 +159,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 //******************** setters ********************************************
@@ -171,11 +171,11 @@ TEST_CASE(
   Tube tube;
   tube.set_address(address);
 
-  REQUIRE(address.name == "Howdy");
-  REQUIRE(address.street_address == "17 West Center");
-  REQUIRE(address.city == "Wilson");
-  REQUIRE(address.state == "NC");
-  REQUIRE(address.zip == "23127");
+  CHECK(address.name == "Howdy");
+  CHECK(address.street_address == "17 West Center");
+  CHECK(address.city == "Wilson");
+  CHECK(address.state == "NC");
+  CHECK(address.zip == "23127");
 }
 
 TEST_CASE(
@@ -185,7 +185,7 @@ TEST_CASE(
   Tube tube;
   tube.set_weight(12.93);
 
-  REQUIRE(fabs(tube.weight() - 12.93) < .001);
+  CHECK(fabs(tube.weight() - 12.93) < .001);
 }
 
 TEST_CASE(
@@ -194,7 +194,7 @@ TEST_CASE(
     "[shipping_item],[tube],[start]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_weight(-.1), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_weight(-.1), std::out_of_range);
 }
 
 TEST_CASE(
@@ -204,7 +204,7 @@ TEST_CASE(
   Tube tube;
   tube.set_delivered(true);
 
-  REQUIRE(tube.delivered() == true);
+  CHECK(tube.delivered() == true);
 }
 
 TEST_CASE(
@@ -214,7 +214,7 @@ TEST_CASE(
   Tube tube;
   tube.set_delivered(false);
 
-  REQUIRE(tube.delivered() == false);
+  CHECK(tube.delivered() == false);
 }
 
 TEST_CASE(
@@ -223,7 +223,7 @@ TEST_CASE(
   Tube tube;
   tube.set_length(11.3);
 
-  REQUIRE(fabs(tube.length() - 11.3) < .001);
+  CHECK(fabs(tube.length() - 11.3) < .001);
 }
 
 TEST_CASE(
@@ -232,7 +232,7 @@ TEST_CASE(
     "[tube],[setters]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_length(.006), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_length(.006), std::out_of_range);
 }
 
 TEST_CASE(
@@ -241,7 +241,7 @@ TEST_CASE(
     "[tube],[setters]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_length(-2), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_length(-2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -250,7 +250,7 @@ TEST_CASE(
     "[tube],[setters]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_length(108.2), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_length(108.2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -260,7 +260,7 @@ TEST_CASE(
   Tube tube;
   tube.set_circumference(9.3);
 
-  REQUIRE(fabs(tube.circumference() - 9.3) < .001);
+  CHECK(fabs(tube.circumference() - 9.3) < .001);
 }
 
 TEST_CASE(
@@ -269,7 +269,7 @@ TEST_CASE(
     "[tube],[setters]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_circumference(.006), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_circumference(.006), std::out_of_range);
 }
 
 TEST_CASE(
@@ -279,7 +279,7 @@ TEST_CASE(
     "[tube],[setters]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_circumference(-2), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_circumference(-2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -288,7 +288,7 @@ TEST_CASE(
     "[tube],[setters]") {
   Tube tube;
 
-  REQUIRE_THROWS_AS(tube.set_circumference(102.2), std::out_of_range);
+  CHECK_THROWS_AS(tube.set_circumference(102.2), std::out_of_range);
 }
 
 //******************* Volume *****************************
@@ -297,7 +297,7 @@ TEST_CASE("Volume method returns 137.51 when default constructor is used.",
           "[tube],[volume]") {
   Tube tube;
 
-  REQUIRE(fabs(tube.Volume() - 137.51) < .001);
+  CHECK(fabs(tube.Volume() - 137.51) < .001);
 }
 
 TEST_CASE("Volume method returns 73.84 when values are  2.4, 13.8, 8.2.",
@@ -305,18 +305,18 @@ TEST_CASE("Volume method returns 73.84 when values are  2.4, 13.8, 8.2.",
   Address address = {"Howdy", "17 West Center", "Wilson", "NC", "23127"};
   Tube tube(address, 2.4, 13.8, 8.2);
 
-  REQUIRE(tube.address().name == "Howdy");
-  REQUIRE(tube.address().street_address == "17 West Center");
-  REQUIRE(tube.address().city == "Wilson");
-  REQUIRE(tube.address().state == "NC");
-  REQUIRE(tube.address().zip == "23127");
+  CHECK(tube.address().name == "Howdy");
+  CHECK(tube.address().street_address == "17 West Center");
+  CHECK(tube.address().city == "Wilson");
+  CHECK(tube.address().state == "NC");
+  CHECK(tube.address().zip == "23127");
 
-  REQUIRE(fabs(tube.weight() - 2.4) < .001);
-  REQUIRE(fabs(tube.length() - 13.8) < .001);
-  REQUIRE(tube.delivered() == false);
-  REQUIRE(fabs(tube.circumference() - 8.2) < .001);
+  CHECK(fabs(tube.weight() - 2.4) < .001);
+  CHECK(fabs(tube.length() - 13.8) < .001);
+  CHECK(tube.delivered() == false);
+  CHECK(fabs(tube.circumference() - 8.2) < .001);
 
-  REQUIRE(fabs(tube.Volume() - 73.84) < .001);
+  CHECK(fabs(tube.Volume() - 73.84) < .001);
 }
 
 //******************* Girth *****************************
@@ -325,7 +325,7 @@ TEST_CASE("Girth method returns 12 when default constructor is used.",
           "[tube],[volume]") {
   Tube tube;
 
-  REQUIRE(fabs(tube.Girth() - 12) < .001);
+  CHECK(fabs(tube.Girth() - 12) < .001);
 }
 
 TEST_CASE("Girth method returns 8.2 when values are 2.4, 13.8, 8.2",
@@ -333,18 +333,18 @@ TEST_CASE("Girth method returns 8.2 when values are 2.4, 13.8, 8.2",
   Address address = {"Howdy", "17 West Center", "Wilson", "NC", "23127"};
   Tube tube(address, 2.4, 13.8, 8.2);
 
-  REQUIRE(tube.address().name == "Howdy");
-  REQUIRE(tube.address().street_address == "17 West Center");
-  REQUIRE(tube.address().city == "Wilson");
-  REQUIRE(tube.address().state == "NC");
-  REQUIRE(tube.address().zip == "23127");
+  CHECK(tube.address().name == "Howdy");
+  CHECK(tube.address().street_address == "17 West Center");
+  CHECK(tube.address().city == "Wilson");
+  CHECK(tube.address().state == "NC");
+  CHECK(tube.address().zip == "23127");
 
-  REQUIRE(fabs(tube.weight() - 2.4) < .001);
-  REQUIRE(fabs(tube.length() - 13.8) < .001);
-  REQUIRE(tube.delivered() == false);
-  REQUIRE(fabs(tube.circumference() - 8.2) < .001);
+  CHECK(fabs(tube.weight() - 2.4) < .001);
+  CHECK(fabs(tube.length() - 13.8) < .001);
+  CHECK(tube.delivered() == false);
+  CHECK(fabs(tube.circumference() - 8.2) < .001);
 
-  REQUIRE(fabs(tube.Girth() - 8.2) < .001);
+  CHECK(fabs(tube.Girth() - 8.2) < .001);
 }
 
 //**************** Display *********************************
@@ -363,7 +363,7 @@ TEST_CASE(
 
   std::getline(in, line);
 
-  REQUIRE(line == "Tube: 2.0 lbs. 12.0 x 12.0");
+  CHECK(line == "Tube: 2.0 lbs. 12.0 x 12.0");
 }
 
 TEST_CASE(
@@ -382,5 +382,5 @@ TEST_CASE(
 
   std::getline(in, line);
 
-  REQUIRE(line == "Tube: 11.4 lbs. 31.2 x 8.6");
+  CHECK(line == "Tube: 11.4 lbs. 31.2 x 8.6");
 }

@@ -16,12 +16,12 @@ TEST_CASE(
   Flat flat;
   Address address = flat.address();
 
-  REQUIRE(address.name == "unknown");
-  REQUIRE(fabs(flat.weight() - 2) < .001);
-  REQUIRE(fabs(flat.length() - 12) < .001);
-  REQUIRE(flat.delivered() == false);
-  REQUIRE(fabs(flat.height() - 8) < .001);
-  REQUIRE(fabs(flat.thickness() - .4) < .001);
+  CHECK(address.name == "unknown");
+  CHECK(fabs(flat.weight() - 2) < .001);
+  CHECK(fabs(flat.length() - 12) < .001);
+  CHECK(flat.delivered() == false);
+  CHECK(fabs(flat.height() - 8) < .001);
+  CHECK(fabs(flat.thickness() - .4) < .001);
 }
 
 TEST_CASE(
@@ -31,24 +31,24 @@ TEST_CASE(
   Address address = {"Howdy", "17 West Center", "Wilson", "NC", "23127"};
   Flat flat(address, 4.3, 12.19, 8.2, .38);
 
-  REQUIRE(flat.address().name == "Howdy");
-  REQUIRE(flat.address().street_address == "17 West Center");
-  REQUIRE(flat.address().city == "Wilson");
-  REQUIRE(flat.address().state == "NC");
-  REQUIRE(flat.address().zip == "23127");
+  CHECK(flat.address().name == "Howdy");
+  CHECK(flat.address().street_address == "17 West Center");
+  CHECK(flat.address().city == "Wilson");
+  CHECK(flat.address().state == "NC");
+  CHECK(flat.address().zip == "23127");
 
-  REQUIRE(fabs(flat.weight() - 4.3) < .001);
-  REQUIRE(fabs(flat.length() - 12.19) < .001);
+  CHECK(fabs(flat.weight() - 4.3) < .001);
+  CHECK(fabs(flat.length() - 12.19) < .001);
 
   // if (flat.delivered()) {
-  //   REQUIRE("true" == "true");
+  //   CHECK("true" == "true");
   // } else {
-  //   REQUIRE("false" == "true");
+  //   CHECK("false" == "true");
   // }
 
-  REQUIRE(flat.delivered() == false);
-  REQUIRE(fabs(flat.height() - 8.2) < .001);
-  REQUIRE(fabs(flat.thickness() - .38) < .001);
+  CHECK(flat.delivered() == false);
+  CHECK(fabs(flat.height() - 8.2) < .001);
+  CHECK(fabs(flat.thickness() - .38) < .001);
 }
 
 TEST_CASE(
@@ -64,7 +64,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -80,7 +80,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -96,7 +96,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -112,7 +112,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -128,7 +128,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -144,7 +144,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -160,7 +160,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -176,7 +176,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -187,11 +187,11 @@ TEST_CASE(
   Flat flat;
   flat.set_address(address);
 
-  REQUIRE(address.name == "Howdy");
-  REQUIRE(address.street_address == "17 West Center");
-  REQUIRE(address.city == "Wilson");
-  REQUIRE(address.state == "NC");
-  REQUIRE(address.zip == "23127");
+  CHECK(address.name == "Howdy");
+  CHECK(address.street_address == "17 West Center");
+  CHECK(address.city == "Wilson");
+  CHECK(address.state == "NC");
+  CHECK(address.zip == "23127");
 }
 
 TEST_CASE(
@@ -201,7 +201,7 @@ TEST_CASE(
   Flat flat;
   flat.set_weight(12.93);
 
-  REQUIRE(fabs(flat.weight() - 12.93) < .001);
+  CHECK(fabs(flat.weight() - 12.93) < .001);
 }
 
 TEST_CASE(
@@ -210,7 +210,7 @@ TEST_CASE(
     "[shipping_item],[flat],[start]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_weight(-.1), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_weight(-.1), std::out_of_range);
 }
 
 TEST_CASE(
@@ -220,7 +220,7 @@ TEST_CASE(
   Flat flat;
   flat.set_delivered(true);
 
-  REQUIRE(flat.delivered() == true);
+  CHECK(flat.delivered() == true);
 }
 
 TEST_CASE(
@@ -230,7 +230,7 @@ TEST_CASE(
   Flat flat;
   flat.set_delivered(false);
 
-  REQUIRE(flat.delivered() == false);
+  CHECK(flat.delivered() == false);
 }
 
 //******************** setters ********************************************
@@ -240,7 +240,7 @@ TEST_CASE(
   Flat flat;
   flat.set_length(11.3);
 
-  REQUIRE(fabs(flat.length() - 11.3) < .001);
+  CHECK(fabs(flat.length() - 11.3) < .001);
 }
 
 TEST_CASE(
@@ -248,7 +248,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_length(.006), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_length(.006), std::out_of_range);
 }
 
 TEST_CASE(
@@ -257,7 +257,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_length(-2), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_length(-2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -265,7 +265,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_length(15.2), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_length(15.2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -274,7 +274,7 @@ TEST_CASE(
   Flat flat;
   flat.set_height(9.3);
 
-  REQUIRE(fabs(flat.height() - 9.3) < .001);
+  CHECK(fabs(flat.height() - 9.3) < .001);
 }
 
 TEST_CASE(
@@ -282,7 +282,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_height(.006), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_height(.006), std::out_of_range);
 }
 
 TEST_CASE(
@@ -291,7 +291,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_height(-2), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_height(-2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -299,7 +299,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_height(12.2), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_height(12.2), std::out_of_range);
 }
 
 TEST_CASE("set_thickness method sets thickness to value sent.",
@@ -307,7 +307,7 @@ TEST_CASE("set_thickness method sets thickness to value sent.",
   Flat flat;
   flat.set_thickness(.3);
 
-  REQUIRE(fabs(flat.thickness() - .3) < .001);
+  CHECK(fabs(flat.thickness() - .3) < .001);
 }
 
 TEST_CASE(
@@ -316,14 +316,14 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_thickness(0.006), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_thickness(0.006), std::out_of_range);
 }
 
 TEST_CASE("set_thickness method throws exception when height sent is -2.",
           "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_thickness(-2), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_thickness(-2), std::out_of_range);
 }
 
 TEST_CASE(
@@ -332,7 +332,7 @@ TEST_CASE(
     "[flat],[setters]") {
   Flat flat;
 
-  REQUIRE_THROWS_AS(flat.set_thickness(.78), std::out_of_range);
+  CHECK_THROWS_AS(flat.set_thickness(.78), std::out_of_range);
 }
 
 //******************* Volume *****************************
@@ -341,7 +341,7 @@ TEST_CASE("Volume method returns 38.4 when default constructor is used.",
           "[flat],[volume]") {
   Flat flat;
 
-  REQUIRE(fabs(flat.Volume() - 38.4) < .001);
+  CHECK(fabs(flat.Volume() - 38.4) < .001);
 }
 
 TEST_CASE("Volume method returns 71.2908 when values are  2.4, 13.8, 8.2, .63.",
@@ -349,19 +349,19 @@ TEST_CASE("Volume method returns 71.2908 when values are  2.4, 13.8, 8.2, .63.",
   Address address = {"Howdy", "17 West Center", "Wilson", "NC", "23127"};
   Flat flat(address, 2.4, 13.8, 8.2, .63);
 
-  REQUIRE(flat.address().name == "Howdy");
-  REQUIRE(flat.address().street_address == "17 West Center");
-  REQUIRE(flat.address().city == "Wilson");
-  REQUIRE(flat.address().state == "NC");
-  REQUIRE(flat.address().zip == "23127");
+  CHECK(flat.address().name == "Howdy");
+  CHECK(flat.address().street_address == "17 West Center");
+  CHECK(flat.address().city == "Wilson");
+  CHECK(flat.address().state == "NC");
+  CHECK(flat.address().zip == "23127");
 
-  REQUIRE(fabs(flat.weight() - 2.4) < .001);
-  REQUIRE(fabs(flat.length() - 13.8) < .001);
-  REQUIRE(flat.delivered() == false);
-  REQUIRE(fabs(flat.height() - 8.2) < .001);
-  REQUIRE(fabs(flat.thickness() - .63) < .001);
+  CHECK(fabs(flat.weight() - 2.4) < .001);
+  CHECK(fabs(flat.length() - 13.8) < .001);
+  CHECK(flat.delivered() == false);
+  CHECK(fabs(flat.height() - 8.2) < .001);
+  CHECK(fabs(flat.thickness() - .63) < .001);
 
-  REQUIRE(fabs(flat.Volume() - 71.2908) < .001);
+  CHECK(fabs(flat.Volume() - 71.2908) < .001);
 }
 
 //**************** Display *********************************
@@ -379,7 +379,7 @@ TEST_CASE("Display writes 'Flat: 2.0 lbs. 12.0 x 8.0 x 0.4' for default Flat.",
 
   std::getline(in, line);
 
-  REQUIRE(line == "Flat: 2.0 lbs. 12.0 x 8.0 x 0.4");
+  CHECK(line == "Flat: 2.0 lbs. 12.0 x 8.0 x 0.4");
 }
 
 TEST_CASE(
@@ -398,5 +398,5 @@ TEST_CASE(
 
   std::getline(in, line);
 
-  REQUIRE(line == "Flat: 4.2 lbs. 13.0 x 8.6 x 0.5");
+  CHECK(line == "Flat: 4.2 lbs. 13.0 x 8.6 x 0.5");
 }

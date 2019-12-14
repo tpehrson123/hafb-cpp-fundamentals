@@ -4,7 +4,7 @@
 ** Made by hvalle
 **
 ** Started on  Tue Aug 20 1:53:42 PM 2019 hvalle
-** Last update Tue Aug 20 1:53:42 PM 2019 hvalle
+** Last update Sun Dec 14 4:17:45 PM 2019 
  
 TEST_CASE("Check Sterling << operator","[part4]")
     // Arrange
@@ -16,7 +16,7 @@ TEST_CASE("Check Sterling << operator","[part4]")
 
     std::string test = "pounds_: 45 shills_: 13 pence_: 5";
     // Assert
-    REQUIRE(s_out == test);
+    CHECK(s_out == test);
 */
 
 #include "cout_redirect.h"

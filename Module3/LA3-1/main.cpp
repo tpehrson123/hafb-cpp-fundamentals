@@ -3,7 +3,7 @@
 // Main Function
 int main()
 {
-  std::cout << "Hello CS1410" << std::endl;
+  std::cout << "Hello C++ Fundamentals" << std::endl;
 
   return 0;
 }

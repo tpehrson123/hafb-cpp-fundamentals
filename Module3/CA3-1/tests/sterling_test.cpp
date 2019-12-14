@@ -16,7 +16,7 @@ TEST_CASE("Does the Sterling exists","[part1]")
     Sterling *s = new Sterling;
     // Act
     // Assert
-    REQUIRE(s != NULL);
+    CHECK(s != NULL);
 }
 
 TEST_CASE("Check Default Sterling Constructor","[part1]")
@@ -25,9 +25,9 @@ TEST_CASE("Check Default Sterling Constructor","[part1]")
     Sterling s;
     // Act
     // Assert
-    REQUIRE(s.pounds() == 0);
-    REQUIRE(s.shills() == 0);
-    REQUIRE(s.pence() == 0);
+    CHECK(s.pounds() == 0);
+    CHECK(s.shills() == 0);
+    CHECK(s.pence() == 0);
 }
 
 TEST_CASE("Check Sterling Constructor with three inputs","[part1]")
@@ -68,7 +68,7 @@ TEST_CASE("Check Sterling Constructor with string old notation gets old_notation
     Sterling s("45.19.2");
     // Act
     // Assert
-    REQUIRE(s.old_system() == "45.19.2");
+    CHECK(s.old_system() == "45.19.2");
 }
 
 TEST_CASE("Check Sterling Constructor with string old notation use three getters 1","[part2]")
@@ -115,7 +115,7 @@ TEST_CASE("Check Sterling << operator","[part4]")
 
     std::string test = "pounds_: 45 shills_: 13 pence_: 5";
     // Assert
-    REQUIRE(s_out == test);
+    CHECK(s_out == test);
 }
 
 
@@ -162,7 +162,7 @@ TEST_CASE("Check == operator True","[part6]")
     Sterling s2(11.23);
     // Act
     // Assert
-    REQUIRE(s1 == s2);
+    CHECK(s1 == s2);
 }
 
 TEST_CASE("Check == operator False","[part6]")
@@ -172,7 +172,7 @@ TEST_CASE("Check == operator False","[part6]")
     Sterling s2(18.23);
     // Act
     // Assert
-    REQUIRE_FALSE(s1 == s2);
+    CHECK_FALSE(s1 == s2);
 }
 
 TEST_CASE("Check != operator True","[part6]")
@@ -182,7 +182,7 @@ TEST_CASE("Check != operator True","[part6]")
     Sterling s2(21.23);
     // Act
     // Assert
-    REQUIRE(s1 != s2);
+    CHECK(s1 != s2);
 }
 
 TEST_CASE("Check != operator False","[part6]")
@@ -192,7 +192,7 @@ TEST_CASE("Check != operator False","[part6]")
     Sterling s2(11.23);
     // Act
     // Assert
-    REQUIRE_FALSE(s1 != s2);
+    CHECK_FALSE(s1 != s2);
 }
 
 TEST_CASE("Check decimal pound","[part7]")
@@ -201,7 +201,7 @@ TEST_CASE("Check decimal pound","[part7]")
     Sterling s1(11.23);
     // Act
     // Assert
-    REQUIRE(s1.decimal_pound() == Approx(11.23).epsilon(0.01));
+    CHECK(s1.decimal_pound() == Approx(11.23).epsilon(0.01));
 }
 
 
@@ -213,8 +213,8 @@ TEST_CASE("Check + operator","[part8]")
     // Act
     Sterling s3 = s1 + s2;
     // Assert
-    // REQUIRE(s3.decimal_pound() == Approx(18.05).epsilon(0.01));
-    REQUIRE(s3.decimal_pound() == Approx(19.11).epsilon(0.01));
+    // CHECK(s3.decimal_pound() == Approx(18.05).epsilon(0.01));
+    CHECK(s3.decimal_pound() == Approx(19.11).epsilon(0.01));
 }
 
 TEST_CASE("Check - operator","[part8]")
@@ -225,5 +225,5 @@ TEST_CASE("Check - operator","[part8]")
     // Act
     Sterling s3 = s1 - s2;
     // Assert
-    REQUIRE(s3.decimal_pound() == Approx(3.35).epsilon(0.01));
+    CHECK(s3.decimal_pound() == Approx(3.35).epsilon(0.01));
 }

@@ -12,11 +12,11 @@ TEST_CASE(
     "'it is', and last name to 'unknown'",
     "[start]") {
   CommissionPayroll commission;
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 0);
-  REQUIRE(fabs(commission.base_pay() - 0) < .0001);
-  REQUIRE(commission.first_name() == "it is");
-  REQUIRE(commission.last_name() == "unknown");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 0);
+  CHECK(fabs(commission.base_pay() - 0) < .0001);
+  CHECK(commission.first_name() == "it is");
+  CHECK(commission.last_name() == "unknown");
 }
 
 //***************************Other constructor*************************
@@ -25,18 +25,18 @@ TEST_CASE(
     "'250, 6, 520, 'Peters, Walter' ",
     "[start]") {
   CommissionPayroll commission(250, 6, 520, "Peters, Walter");
-  REQUIRE(fabs(commission.pay_rate() - 250) < .0001);
-  REQUIRE(commission.how_many() == 6);
-  REQUIRE(fabs(commission.base_pay() - 520) < .0001);
-  REQUIRE(commission.first_name() == "Walter");
-  REQUIRE(commission.last_name() == "Peters");
+  CHECK(fabs(commission.pay_rate() - 250) < .0001);
+  CHECK(commission.how_many() == 6);
+  CHECK(fabs(commission.base_pay() - 520) < .0001);
+  CHECK(commission.first_name() == "Walter");
+  CHECK(commission.last_name() == "Peters");
 }
 
 TEST_CASE(
     "Other constructor throws out of range exception when called with pay rate "
     "less than 0 for CommissionPayroll",
     "[start]") {
-  REQUIRE_THROWS_AS(CommissionPayroll(-1, 6, 520, "Peters, Walter"),
+  CHECK_THROWS_AS(CommissionPayroll(-1, 6, 520, "Peters, Walter"),
                     std::out_of_range);
 }
 
@@ -44,7 +44,7 @@ TEST_CASE(
     "Other constructor throws out of range exception when called with how many "
     "less than 0",
     "[start]") {
-  REQUIRE_THROWS_AS(CommissionPayroll(250, -6, 520, "Peters, Walter"),
+  CHECK_THROWS_AS(CommissionPayroll(250, -6, 520, "Peters, Walter"),
                     std::out_of_range);
 }
 
@@ -52,7 +52,7 @@ TEST_CASE(
     "Other constructor throws out of range exception when called with base pay "
     "less than 0",
     "[start]") {
-  REQUIRE_THROWS_AS(CommissionPayroll(250, 6, -1, "Peters, Walter"),
+  CHECK_THROWS_AS(CommissionPayroll(250, 6, -1, "Peters, Walter"),
                     std::out_of_range);
 }
 
@@ -60,11 +60,11 @@ TEST_CASE(
 TEST_CASE("Getters return expected values for the CommissionPayroll",
           "[start]") {
   CommissionPayroll commission(250, 6, 520, "Peters, Walter");
-  REQUIRE(fabs(commission.pay_rate() - 250) < .0001);
-  REQUIRE(commission.how_many() == 6);
-  REQUIRE(fabs(commission.base_pay() - 520) < .0001);
-  REQUIRE(commission.first_name() == "Walter");
-  REQUIRE(commission.last_name() == "Peters");
+  CHECK(fabs(commission.pay_rate() - 250) < .0001);
+  CHECK(commission.how_many() == 6);
+  CHECK(fabs(commission.base_pay() - 520) < .0001);
+  CHECK(commission.first_name() == "Walter");
+  CHECK(commission.last_name() == "Peters");
 }
 
 //***************************set pay rate*************************
@@ -72,27 +72,27 @@ TEST_CASE("Getters return expected values for the CommissionPayroll",
 TEST_CASE("Pay rate setter sets pay rate to 750", "[start]") {
   CommissionPayroll commission(1450.0, 1, 324.6, "Walters, Kerry");
   commission.set_pay_rate(750);
-  REQUIRE(fabs(commission.pay_rate() - 750) < .0001);
-  REQUIRE(commission.how_many() == 1);
-  REQUIRE(fabs(commission.base_pay() - 324.6) < .0001);
-  REQUIRE(commission.first_name() == "Kerry");
-  REQUIRE(commission.last_name() == "Walters");
+  CHECK(fabs(commission.pay_rate() - 750) < .0001);
+  CHECK(commission.how_many() == 1);
+  CHECK(fabs(commission.base_pay() - 324.6) < .0001);
+  CHECK(commission.first_name() == "Kerry");
+  CHECK(commission.last_name() == "Walters");
 }
 
 TEST_CASE("Pay rate setter sets pay rate to 12.5", "[start]") {
   CommissionPayroll commission(1450, 42, 0, "Walters, Kerry");
   commission.set_pay_rate(12.5);
-  REQUIRE(fabs(commission.pay_rate() - 12.5) < .0001);
-  REQUIRE(commission.how_many() == 42);
-  REQUIRE(fabs(commission.base_pay() - 0) < .0001);
-  REQUIRE(commission.first_name() == "Kerry");
-  REQUIRE(commission.last_name() == "Walters");
+  CHECK(fabs(commission.pay_rate() - 12.5) < .0001);
+  CHECK(commission.how_many() == 42);
+  CHECK(fabs(commission.base_pay() - 0) < .0001);
+  CHECK(commission.first_name() == "Kerry");
+  CHECK(commission.last_name() == "Walters");
 }
 
 TEST_CASE("Pay rate setter throws out of bounds exception when set to -1",
           "[start]") {
   CommissionPayroll commission;
-  REQUIRE_THROWS_AS(commission.set_pay_rate(-1), std::out_of_range);
+  CHECK_THROWS_AS(commission.set_pay_rate(-1), std::out_of_range);
 }
 
 //***************************set how many*************************
@@ -100,27 +100,27 @@ TEST_CASE("Pay rate setter throws out of bounds exception when set to -1",
 TEST_CASE("How many setter sets how many to 12 when sent 12", "[start]") {
   CommissionPayroll commission;
   commission.set_how_many(12);
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 12);
-  REQUIRE(fabs(commission.base_pay() - 0) < .0001);
-  REQUIRE(commission.first_name() == "it is");
-  REQUIRE(commission.last_name() == "unknown");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 12);
+  CHECK(fabs(commission.base_pay() - 0) < .0001);
+  CHECK(commission.first_name() == "it is");
+  CHECK(commission.last_name() == "unknown");
 }
 
 TEST_CASE("How many setter sets how many to 351 when sent 351", "[start]") {
   CommissionPayroll commission;
   commission.set_how_many(351);
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 351);
-  REQUIRE(fabs(commission.base_pay() - 0) < .0001);
-  REQUIRE(commission.first_name() == "it is");
-  REQUIRE(commission.last_name() == "unknown");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 351);
+  CHECK(fabs(commission.base_pay() - 0) < .0001);
+  CHECK(commission.first_name() == "it is");
+  CHECK(commission.last_name() == "unknown");
 }
 
 TEST_CASE("How many setter throws out of bounds exception when set to -1",
           "[start]") {
   CommissionPayroll commission;
-  REQUIRE_THROWS_AS(commission.set_how_many(-1), std::out_of_range);
+  CHECK_THROWS_AS(commission.set_how_many(-1), std::out_of_range);
 }
 
 //***************************set base pay*************************
@@ -128,27 +128,27 @@ TEST_CASE("How many setter throws out of bounds exception when set to -1",
 TEST_CASE("Base pay setter sets base pay to 65 when sent 65", "[start]") {
   CommissionPayroll commission;
   commission.set_base_pay(65);
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 0);
-  REQUIRE(fabs(commission.base_pay() - 65) < .0001);
-  REQUIRE(commission.first_name() == "it is");
-  REQUIRE(commission.last_name() == "unknown");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 0);
+  CHECK(fabs(commission.base_pay() - 65) < .0001);
+  CHECK(commission.first_name() == "it is");
+  CHECK(commission.last_name() == "unknown");
 }
 
 TEST_CASE("Base pay setter sets base pay to 1250 when sent 1250", "[start]") {
   CommissionPayroll commission;
   commission.set_base_pay(1250);
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 0);
-  REQUIRE(fabs(commission.base_pay() - 1250) < .0001);
-  REQUIRE(commission.first_name() == "it is");
-  REQUIRE(commission.last_name() == "unknown");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 0);
+  CHECK(fabs(commission.base_pay() - 1250) < .0001);
+  CHECK(commission.first_name() == "it is");
+  CHECK(commission.last_name() == "unknown");
 }
 
 TEST_CASE("Base pay setter throws out of bounds exception when set to -1",
           "[start]") {
   CommissionPayroll commission;
-  REQUIRE_THROWS_AS(commission.set_base_pay(-1), std::out_of_range);
+  CHECK_THROWS_AS(commission.set_base_pay(-1), std::out_of_range);
 }
 
 //***************************set name*************************
@@ -157,22 +157,22 @@ TEST_CASE("Name setter sets name to Kim Walter when sent Kim Walter",
           "[start]") {
   CommissionPayroll commission;
   commission.set_name("Kim Walter");
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 0);
-  REQUIRE(fabs(commission.base_pay() - 0) < .0001);
-  REQUIRE(commission.first_name() == "Kim");
-  REQUIRE(commission.last_name() == "Walter");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 0);
+  CHECK(fabs(commission.base_pay() - 0) < .0001);
+  CHECK(commission.first_name() == "Kim");
+  CHECK(commission.last_name() == "Walter");
 }
 
 TEST_CASE("Name setter sets name to Kim Walter when sent Walter, Kim ",
           "[start]") {
   CommissionPayroll commission;
   commission.set_name("Walter, Kim");
-  REQUIRE(fabs(commission.pay_rate() - 0) < .0001);
-  REQUIRE(commission.how_many() == 0);
-  REQUIRE(fabs(commission.base_pay() - 0) < .0001);
-  REQUIRE(commission.first_name() == "Kim");
-  REQUIRE(commission.last_name() == "Walter");
+  CHECK(fabs(commission.pay_rate() - 0) < .0001);
+  CHECK(commission.how_many() == 0);
+  CHECK(fabs(commission.base_pay() - 0) < .0001);
+  CHECK(commission.first_name() == "Kim");
+  CHECK(commission.last_name() == "Walter");
 }
 
 //***************************ComputeCommission*************************
@@ -184,7 +184,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(752, 3, 1250, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeCommission() - 2256) < .0001);
+  CHECK(fabs(commission.ComputeCommission() - 2256) < .0001);
 }
 
 TEST_CASE(
@@ -194,7 +194,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(7.35, 35, 850, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeCommission() - 257.25) < .0001);
+  CHECK(fabs(commission.ComputeCommission() - 257.25) < .0001);
 }
 
 TEST_CASE(
@@ -202,7 +202,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(752, 0, 0, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeCommission() - 0) < .0001);
+  CHECK(fabs(commission.ComputeCommission() - 0) < .0001);
 }
 
 TEST_CASE(
@@ -211,7 +211,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(0, 1200, 0, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeCommission() - 0) < .0001);
+  CHECK(fabs(commission.ComputeCommission() - 0) < .0001);
 }
 
 TEST_CASE(
@@ -220,7 +220,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(0, 1200, 0, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeCommission() - 0) < .0001);
+  CHECK(fabs(commission.ComputeCommission() - 0) < .0001);
 }
 
 //***************************ComputeGross*************************
@@ -231,7 +231,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(752, 3, 1250, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeGross() - 3506) < .0001);
+  CHECK(fabs(commission.ComputeGross() - 3506) < .0001);
 }
 
 TEST_CASE(
@@ -240,7 +240,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(7.35, 35, 850, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeGross() - 1107.25) < .0001);
+  CHECK(fabs(commission.ComputeGross() - 1107.25) < .0001);
 }
 
 TEST_CASE(
@@ -249,7 +249,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(752, 0, 1250, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeGross() - 1250) < .0001);
+  CHECK(fabs(commission.ComputeGross() - 1250) < .0001);
 }
 
 TEST_CASE(
@@ -257,7 +257,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(752, 0, 0, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeGross() - 0) < .0001);
+  CHECK(fabs(commission.ComputeGross() - 0) < .0001);
 }
 
 TEST_CASE(
@@ -265,7 +265,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(0, 1200, 0, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeGross() - 0) < .0001);
+  CHECK(fabs(commission.ComputeGross() - 0) < .0001);
 }
 
 TEST_CASE(
@@ -273,7 +273,7 @@ TEST_CASE(
     "[gross]") {
   CommissionPayroll commission(0, 1200, 850, "Kim Johnson");
 
-  REQUIRE(fabs(commission.ComputeGross() - 850) < .0001);
+  CHECK(fabs(commission.ComputeGross() - 850) < .0001);
 }
 //***************************WriteData*************************
 
@@ -287,17 +287,17 @@ TEST_CASE(
   out.close();
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
   getline(in, line);
-  REQUIRE(line == "C 14.92 61 455.8");
+  CHECK(line == "C 14.92 61 455.8");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -314,21 +314,21 @@ TEST_CASE(
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
   getline(in, line);
-  REQUIRE(line == "C 63 28 975.6");
+  CHECK(line == "C 63 28 975.6");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "C 14.92 61 455.8");
+  CHECK(line == "C 14.92 61 455.8");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -346,26 +346,26 @@ TEST_CASE(
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: commission");
+  CHECK(line == "Pay Type: commission");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $12.20");
+  CHECK(line == "Pay Rate: $12.20");
   getline(in, line);
-  REQUIRE(line == "How Many: 180");
+  CHECK(line == "How Many: 180");
   getline(in, line);
-  REQUIRE(line == "Commission: $2196.00");
+  CHECK(line == "Commission: $2196.00");
   getline(in, line);
-  REQUIRE(line == "Base Pay: $1175.30");
+  CHECK(line == "Base Pay: $1175.30");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $3371.30");
+  CHECK(line == "Gross Pay: $3371.30");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -381,26 +381,26 @@ TEST_CASE(
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "Kim Johnson");
+  CHECK(line == "Kim Johnson");
   getline(in, line);
-  REQUIRE(line == "Pay Type: commission");
+  CHECK(line == "Pay Type: commission");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $63.00");
+  CHECK(line == "Pay Rate: $63.00");
   getline(in, line);
-  REQUIRE(line == "How Many: 28");
+  CHECK(line == "How Many: 28");
   getline(in, line);
-  REQUIRE(line == "Commission: $1764.00");
+  CHECK(line == "Commission: $1764.00");
   getline(in, line);
-  REQUIRE(line == "Base Pay: $975.60");
+  CHECK(line == "Base Pay: $975.60");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $2739.60");
+  CHECK(line == "Gross Pay: $2739.60");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -419,39 +419,39 @@ TEST_CASE(
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "Kim Johnson");
+  CHECK(line == "Kim Johnson");
   getline(in, line);
-  REQUIRE(line == "Pay Type: commission");
+  CHECK(line == "Pay Type: commission");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $63.00");
+  CHECK(line == "Pay Rate: $63.00");
   getline(in, line);
-  REQUIRE(line == "How Many: 28");
+  CHECK(line == "How Many: 28");
   getline(in, line);
-  REQUIRE(line == "Commission: $1764.00");
+  CHECK(line == "Commission: $1764.00");
   getline(in, line);
-  REQUIRE(line == "Base Pay: $975.60");
+  CHECK(line == "Base Pay: $975.60");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $2739.60");
+  CHECK(line == "Gross Pay: $2739.60");
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: commission");
+  CHECK(line == "Pay Type: commission");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $14.92");
+  CHECK(line == "Pay Rate: $14.92");
   getline(in, line);
-  REQUIRE(line == "How Many: 61");
+  CHECK(line == "How Many: 61");
   getline(in, line);
-  REQUIRE(line == "Commission: $910.12");
+  CHECK(line == "Commission: $910.12");
   getline(in, line);
-  REQUIRE(line == "Base Pay: $455.80");
+  CHECK(line == "Base Pay: $455.80");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1365.92");
+  CHECK(line == "Gross Pay: $1365.92");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }

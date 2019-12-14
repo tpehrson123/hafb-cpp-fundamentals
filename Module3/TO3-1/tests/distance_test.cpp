@@ -11,7 +11,7 @@ TEST_CASE("Does the Distance exists","[start]")
     Distance *g = new Distance;
     // Act
     // Assert
-    REQUIRE(g != NULL);
+    CHECK(g != NULL);
 }
 
 TEST_CASE("Create distance object with default constructor","[start]")
@@ -20,8 +20,8 @@ TEST_CASE("Create distance object with default constructor","[start]")
     Distance d1;
     // Act
     // Assert
-    REQUIRE(d1.feet() == 0);
-    REQUIRE(d1.inches() == 0);
+    CHECK(d1.feet() == 0);
+    CHECK(d1.inches() == 0);
 }
 
 TEST_CASE("Create distance object with second constructor","[start]")
@@ -30,8 +30,8 @@ TEST_CASE("Create distance object with second constructor","[start]")
     Distance d1(12, 6.6);
     // Act
     // Assert
-    REQUIRE(d1.feet() == 12);
-    REQUIRE(d1.inches() == Approx(6.6).epsilon(0.01));
+    CHECK(d1.feet() == 12);
+    CHECK(d1.inches() == Approx(6.6).epsilon(0.01));
 }
 
 // TEST_CASE("Test output Operator", "[cout]")
@@ -45,7 +45,7 @@ TEST_CASE("Create distance object with second constructor","[start]")
   
 //   std::string test_string = "feet_: 12 inches_: 6.6";
 //   // Assert
-//   REQUIRE(s_out == test_string); // compare two strings
+//   CHECK(s_out == test_string); // compare two strings
 // }
 
 TEST_CASE("Test - Operator", "[sub]")
@@ -59,8 +59,8 @@ TEST_CASE("Test - Operator", "[sub]")
   d3 = d1 - d2;
   
   // Assert
-  REQUIRE(d3.feet() ==  3); // compare two strings
-  REQUIRE(d3.inches() == Approx(9.4).epsilon(0.01));
+  CHECK(d3.feet() ==  3); // compare two strings
+  CHECK(d3.inches() == Approx(9.4).epsilon(0.01));
 }
 
 TEST_CASE("Test update_distance", "[update]")
@@ -71,6 +71,6 @@ TEST_CASE("Test update_distance", "[update]")
   d1.update_distance(9, 3.3);
   
   // Assert
-  REQUIRE(d1.feet() ==  9); // compare two strings
-  REQUIRE(d1.inches() == Approx(3.3).epsilon(0.01));
+  CHECK(d1.feet() ==  9); // compare two strings
+  CHECK(d1.inches() == Approx(3.3).epsilon(0.01));
 }

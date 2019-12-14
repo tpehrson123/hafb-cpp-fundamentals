@@ -13,76 +13,76 @@ TEST_CASE(
 
   std::ifstream in("../tests/test_out.txt");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "Jean Will James");
+  CHECK(line == "Jean Will James");
   getline(in, line);
-  REQUIRE(line == "Pay Type: commission");
+  CHECK(line == "Pay Type: commission");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $120.00");
+  CHECK(line == "Pay Rate: $120.00");
   getline(in, line);
-  REQUIRE(line == "How Many: 16");
+  CHECK(line == "How Many: 16");
   getline(in, line);
-  REQUIRE(line == "Commission: $1920.00");
+  CHECK(line == "Commission: $1920.00");
   getline(in, line);
-  REQUIRE(line == "Base Pay: $900.00");
+  CHECK(line == "Base Pay: $900.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $2820.00");
+  CHECK(line == "Gross Pay: $2820.00");
   getline(in, line);
-  REQUIRE(line == "Renee C. Javens");
+  CHECK(line == "Renee C. Javens");
   getline(in, line);
-  REQUIRE(line == "Pay Type: hourly");
+  CHECK(line == "Pay Type: hourly");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $28.40");
+  CHECK(line == "Pay Rate: $28.40");
   getline(in, line);
-  REQUIRE(line == "Hours Worked: 49.80");
+  CHECK(line == "Hours Worked: 49.80");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1553.48");
+  CHECK(line == "Gross Pay: $1553.48");
   getline(in, line);
-  REQUIRE(line == "Rose Harrison");
+  CHECK(line == "Rose Harrison");
   getline(in, line);
-  REQUIRE(line == "Pay Type: salary");
+  CHECK(line == "Pay Type: salary");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $1895.00");
+  CHECK(line == "Pay Rate: $1895.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1895.00");
+  CHECK(line == "Gross Pay: $1895.00");
   getline(in, line);
-  REQUIRE(line == "Cathy Setzer");
+  CHECK(line == "Cathy Setzer");
   getline(in, line);
-  REQUIRE(line == "Pay Type: hourly");
+  CHECK(line == "Pay Type: hourly");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $12.60");
+  CHECK(line == "Pay Rate: $12.60");
   getline(in, line);
-  REQUIRE(line == "Hours Worked: 12.75");
+  CHECK(line == "Hours Worked: 12.75");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $160.65");
+  CHECK(line == "Gross Pay: $160.65");
   getline(in, line);
-  REQUIRE(line == "Gordon J. Pike");
+  CHECK(line == "Gordon J. Pike");
   getline(in, line);
-  REQUIRE(line == "Pay Type: salary");
+  CHECK(line == "Pay Type: salary");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $1920.00");
+  CHECK(line == "Pay Rate: $1920.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1920.00");
+  CHECK(line == "Gross Pay: $1920.00");
   getline(in, line);
-  REQUIRE(line == "Beth R. Holland");
+  CHECK(line == "Beth R. Holland");
   getline(in, line);
-  REQUIRE(line == "Pay Type: commission");
+  CHECK(line == "Pay Type: commission");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $18.20");
+  CHECK(line == "Pay Rate: $18.20");
   getline(in, line);
-  REQUIRE(line == "How Many: 96");
+  CHECK(line == "How Many: 96");
   getline(in, line);
-  REQUIRE(line == "Commission: $1747.20");
+  CHECK(line == "Commission: $1747.20");
   getline(in, line);
-  REQUIRE(line == "Base Pay: $312.00");
+  CHECK(line == "Base Pay: $312.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $2059.20");
+  CHECK(line == "Gross Pay: $2059.20");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -90,7 +90,7 @@ TEST_CASE(
     "ProcessPayroll function throws out of range exception when there is an "
     "invalid payroll type",
     "[start]") {
-  REQUIRE_THROWS_AS(
+  CHECK_THROWS_AS(
       ProcessPayroll("../payroll_error1.txt", "../tests/test_out.txt"),
       std::out_of_range);
 }
@@ -99,7 +99,7 @@ TEST_CASE(
     "ProcessPayroll function throws out of range exception when a new "
     "HourlyPayroll object is created with a pay rate below minimum wage.",
     "[start]") {
-  REQUIRE_THROWS_AS(
+  CHECK_THROWS_AS(
       ProcessPayroll("../payroll_error2.txt", "../tests/test_out.txt"),
       std::out_of_range);
 }
@@ -108,7 +108,7 @@ TEST_CASE(
     "ProcessPayroll function throws out of range exception when a new "
     "SalaryPayroll object is created with a negative pay rate.",
     "[start]") {
-  REQUIRE_THROWS_AS(
+  CHECK_THROWS_AS(
       ProcessPayroll("../payroll_error2.txt", "../tests/test_out.txt"),
       std::out_of_range);
 }

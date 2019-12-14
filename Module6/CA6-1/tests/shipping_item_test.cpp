@@ -19,11 +19,11 @@ TEST_CASE("Address struct works when adding individual values.",
   address.state = "UT";
   address.zip = "84408";
 
-  REQUIRE(address.name == "Myra Butler");
-  REQUIRE(address.street_address == "192 South Water Way");
-  REQUIRE(address.city == "Ogden");
-  REQUIRE(address.state == "UT");
-  REQUIRE(address.zip == "84408");
+  CHECK(address.name == "Myra Butler");
+  CHECK(address.street_address == "192 South Water Way");
+  CHECK(address.city == "Ogden");
+  CHECK(address.state == "UT");
+  CHECK(address.zip == "84408");
 }
 
 TEST_CASE("Address struct works when initializing values.",
@@ -31,11 +31,11 @@ TEST_CASE("Address struct works when initializing values.",
   Address address = {"Myra Butler", "192 South Water Way", "Ogden", "UT",
                      "84408"};
 
-  REQUIRE(address.name == "Myra Butler");
-  REQUIRE(address.street_address == "192 South Water Way");
-  REQUIRE(address.city == "Ogden");
-  REQUIRE(address.state == "UT");
-  REQUIRE(address.zip == "84408");
+  CHECK(address.name == "Myra Butler");
+  CHECK(address.street_address == "192 South Water Way");
+  CHECK(address.city == "Ogden");
+  CHECK(address.state == "UT");
+  CHECK(address.zip == "84408");
 }
 
 //************* static member variables ****************************
@@ -44,9 +44,9 @@ TEST_CASE(
     "Static member variables are defined and set as expected: kMaxWeight = 70, "
     "kMaxSize = 108, kMinSize = .007.",
     "[shipping_item],[static]") {
-  REQUIRE(ShippingItem::kMaxWeight == 70);
-  REQUIRE(ShippingItem::kMaxSize == 108);
-  REQUIRE(ShippingItem::kMinSize == .007);
+  CHECK(ShippingItem::kMaxWeight == 70);
+  CHECK(ShippingItem::kMaxSize == 108);
+  CHECK(ShippingItem::kMinSize == .007);
 }
 
 //**** ShippingItem Getting Started: setters, getters, constructors *********
@@ -58,10 +58,10 @@ TEST_CASE(
   Carton carton;
   Address address = carton.address();
 
-  REQUIRE(address.name == "unknown");
-  REQUIRE(fabs(carton.weight() - 2) < .001);
-  REQUIRE(fabs(carton.length() - 12) < .001);
-  REQUIRE(carton.delivered() == false);
+  CHECK(address.name == "unknown");
+  CHECK(fabs(carton.weight() - 2) < .001);
+  CHECK(fabs(carton.length() - 12) < .001);
+  CHECK(carton.delivered() == false);
 }
 
 TEST_CASE(
@@ -72,17 +72,17 @@ TEST_CASE(
   Carton carton(22.19, 38.2, 15.1);
   Address address = carton.address();
 
-  REQUIRE(address.name == "unknown");
-  REQUIRE(fabs(carton.weight() - 2) < .001);
-  REQUIRE(carton.delivered() == false);
+  CHECK(address.name == "unknown");
+  CHECK(fabs(carton.weight() - 2) < .001);
+  CHECK(carton.delivered() == false);
 
-  REQUIRE(fabs(carton.length() - 38.2) < .001);
+  CHECK(fabs(carton.length() - 38.2) < .001);
   if (carton.width() < carton.height()) {
-    REQUIRE(fabs(carton.width() - 15.1) < .001);
-    REQUIRE(fabs(carton.height() - 22.19) < .001);
+    CHECK(fabs(carton.width() - 15.1) < .001);
+    CHECK(fabs(carton.height() - 22.19) < .001);
   } else {
-    REQUIRE(fabs(carton.width() - 22.19) < .001);
-    REQUIRE(fabs(carton.height() - 15.1) < .001);
+    CHECK(fabs(carton.width() - 22.19) < .001);
+    CHECK(fabs(carton.height() - 15.1) < .001);
   }
 }
 
@@ -93,17 +93,17 @@ TEST_CASE(
   Carton carton(22.19, 38.2, 15.1);
   Address address = carton.address();
 
-  REQUIRE(address.name == "unknown");
-  REQUIRE(fabs(carton.weight() - 2) < .001);
-  REQUIRE(carton.delivered() == false);
+  CHECK(address.name == "unknown");
+  CHECK(fabs(carton.weight() - 2) < .001);
+  CHECK(carton.delivered() == false);
 
-  REQUIRE(fabs(carton.length() - 38.2) < .001);
+  CHECK(fabs(carton.length() - 38.2) < .001);
   if (carton.width() < carton.height()) {
-    REQUIRE(fabs(carton.width() - 15.1) < .001);
-    REQUIRE(fabs(carton.height() - 22.19) < .001);
+    CHECK(fabs(carton.width() - 15.1) < .001);
+    CHECK(fabs(carton.height() - 22.19) < .001);
   } else {
-    REQUIRE(fabs(carton.width() - 22.19) < .001);
-    REQUIRE(fabs(carton.height() - 15.1) < .001);
+    CHECK(fabs(carton.width() - 22.19) < .001);
+    CHECK(fabs(carton.height() - 15.1) < .001);
   }
 }
 
@@ -120,7 +120,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -136,7 +136,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -152,7 +152,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -168,7 +168,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -184,7 +184,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -200,7 +200,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE(
@@ -216,7 +216,7 @@ TEST_CASE(
     exception_thrown = "Exception thrown";
   }
 
-  REQUIRE(exception_thrown == "Exception thrown");
+  CHECK(exception_thrown == "Exception thrown");
 }
 
 TEST_CASE("Address setter sets address to values in parameter Address",
@@ -225,11 +225,11 @@ TEST_CASE("Address setter sets address to values in parameter Address",
   Carton carton;
   carton.set_address(address);
 
-  REQUIRE(address.name == "Howdy");
-  REQUIRE(address.street_address == "17 West Center");
-  REQUIRE(address.city == "Wilson");
-  REQUIRE(address.state == "NC");
-  REQUIRE(address.zip == "23127");
+  CHECK(address.name == "Howdy");
+  CHECK(address.street_address == "17 West Center");
+  CHECK(address.city == "Wilson");
+  CHECK(address.state == "NC");
+  CHECK(address.zip == "23127");
 }
 
 TEST_CASE("Weight setter sets weight to value in parameter",
@@ -237,14 +237,14 @@ TEST_CASE("Weight setter sets weight to value in parameter",
   Carton carton;
   carton.set_weight(12.93);
 
-  REQUIRE(fabs(carton.weight() - 12.93) < .001);
+  CHECK(fabs(carton.weight() - 12.93) < .001);
 }
 
 TEST_CASE("Weight setter throws exception when weight value is less than 0",
           "[shipping_item],[carton],[start]") {
   Carton carton;
 
-  REQUIRE_THROWS_AS(carton.set_weight(-.1), std::out_of_range);
+  CHECK_THROWS_AS(carton.set_weight(-.1), std::out_of_range);
 }
 
 TEST_CASE("Delivered setter sets delivered to true when parameter is true",
@@ -252,7 +252,7 @@ TEST_CASE("Delivered setter sets delivered to true when parameter is true",
   Carton carton;
   carton.set_delivered(true);
 
-  REQUIRE(carton.delivered() == true);
+  CHECK(carton.delivered() == true);
 }
 
 TEST_CASE("Delivered setter sets delivered to false when parameter is false",
@@ -260,7 +260,7 @@ TEST_CASE("Delivered setter sets delivered to false when parameter is false",
   Carton carton;
   carton.set_delivered(false);
 
-  REQUIRE(carton.delivered() == false);
+  CHECK(carton.delivered() == false);
 }
 
 //****************  MarkDelivered *********************************
@@ -272,7 +272,7 @@ TEST_CASE(
   carton.set_delivered(true);
   carton.MarkDelivered();
 
-  REQUIRE(carton.delivered() == true);
+  CHECK(carton.delivered() == true);
 }
 
 TEST_CASE(
@@ -283,7 +283,7 @@ TEST_CASE(
   carton.set_delivered(false);
   carton.MarkDelivered();
 
-  REQUIRE(carton.delivered() == true);
+  CHECK(carton.delivered() == true);
 }
 
 //**************** Display *********************************
@@ -302,7 +302,7 @@ TEST_CASE(
 
   std::getline(in, line);
 
-  REQUIRE(line == "Carton: 2.0 lbs. 12.0 x 12.0 x 12.0");
+  CHECK(line == "Carton: 2.0 lbs. 12.0 x 12.0 x 12.0");
 }
 
 TEST_CASE(
@@ -321,7 +321,7 @@ TEST_CASE(
 
   std::getline(in, line);
 
-  REQUIRE(line == "Carton: 41.4 lbs. 31.2 x 8.6 x 8.6");
+  CHECK(line == "Carton: 41.4 lbs. 31.2 x 8.6 x 8.6");
 }
 
 //***************** setters are updated to kMinSize ****************
@@ -330,14 +330,14 @@ TEST_CASE("set_length method sets length to value sent now.",
   Carton carton;
   carton.set_length(31.3);
 
-  REQUIRE(fabs(carton.length() - 31.3) < .001);
+  CHECK(fabs(carton.length() - 31.3) < .001);
 }
 
 TEST_CASE("set_length method throws exception when length sent is 0.006.",
           "[carton],[setters]") {
   Carton carton;
 
-  REQUIRE_THROWS_AS(carton.set_length(0.006), std::out_of_range);
+  CHECK_THROWS_AS(carton.set_length(0.006), std::out_of_range);
 }
 
 TEST_CASE("set_width method sets width to value sent now.",
@@ -345,14 +345,14 @@ TEST_CASE("set_width method sets width to value sent now.",
   Carton carton;
   carton.set_width(11.3);
 
-  REQUIRE(fabs(carton.width() - 11.3) < .001);
+  CHECK(fabs(carton.width() - 11.3) < .001);
 }
 
 TEST_CASE("set_width method throws exception when width sent is 0.006.",
           "[carton],[setters]") {
   Carton carton;
 
-  REQUIRE_THROWS_AS(carton.set_width(0.006), std::out_of_range);
+  CHECK_THROWS_AS(carton.set_width(0.006), std::out_of_range);
 }
 
 TEST_CASE("set_height method sets height to value sent now.",
@@ -360,33 +360,33 @@ TEST_CASE("set_height method sets height to value sent now.",
   Carton carton;
   carton.set_height(11.3);
 
-  REQUIRE(fabs(carton.height() - 11.3) < .001);
+  CHECK(fabs(carton.height() - 11.3) < .001);
 }
 
 TEST_CASE("set_height method throws exception when height sent is 0.006.",
           "[carton],[setters]") {
   Carton carton;
 
-  REQUIRE_THROWS_AS(carton.set_height(0.006), std::out_of_range);
+  CHECK_THROWS_AS(carton.set_height(0.006), std::out_of_range);
 }
 
 TEST_CASE("Set measurements throws exception when first value is 0.006",
           "[carton],[start]") {
   Carton carton;
-  REQUIRE_THROWS_AS(carton.set_measurements(0.006, 13.91, 22.3),
+  CHECK_THROWS_AS(carton.set_measurements(0.006, 13.91, 22.3),
                     std::out_of_range);
 }
 
 TEST_CASE("Set measurements throws exception when second value is 0.006",
           "[carton],[start]") {
   Carton carton;
-  REQUIRE_THROWS_AS(carton.set_measurements(13.91, 0.006, 22.3),
+  CHECK_THROWS_AS(carton.set_measurements(13.91, 0.006, 22.3),
                     std::out_of_range);
 }
 
 TEST_CASE("Set measurements throws exception when third value is 0.006",
           "[carton],[start]") {
   Carton carton;
-  REQUIRE_THROWS_AS(carton.set_measurements(13.91, 22.3, 0.006),
+  CHECK_THROWS_AS(carton.set_measurements(13.91, 22.3, 0.006),
                     std::out_of_range);
 }

@@ -10,27 +10,27 @@ using namespace std;
 
 //***************************kRegularHours*************************
 TEST_CASE("Consant kRegularHours is defined and set to 40", "[start]") {
-  REQUIRE(HourlyPayroll::kRegularHours == 40);
+  CHECK(HourlyPayroll::kRegularHours == 40);
 }
 
 //***************************kOvertimeRate*************************
 TEST_CASE("Consant kOvertimeRate is defined and set to 1.5", "[start]") {
-  REQUIRE(HourlyPayroll::kOvertimeRate == 1.5);
+  CHECK(HourlyPayroll::kOvertimeRate == 1.5);
 }
 
 //***************************kRegularHours*************************
 TEST_CASE("Consant kMinHours is defined and set to 0", "[start]") {
-  REQUIRE(HourlyPayroll::kMinHours == 0);
+  CHECK(HourlyPayroll::kMinHours == 0);
 }
 
 //***************************kOvertimeRate*************************
 TEST_CASE("Consant kMaxHours is defined and set to 168", "[start]") {
-  REQUIRE(HourlyPayroll::kMaxHours == 168);
+  CHECK(HourlyPayroll::kMaxHours == 168);
 }
 
 //***************************kOvertimeRate*************************
 TEST_CASE("Consant kMinWage is defined and set to 7.25", "[start]") {
-  REQUIRE(HourlyPayroll::kMinWage == 7.25);
+  CHECK(HourlyPayroll::kMinWage == 7.25);
 }
 
 //***************************Default Constructor*************************
@@ -39,10 +39,10 @@ TEST_CASE(
     "'it is', last name to 'unknown', and hours worked to 0",
     "[start]") {
   HourlyPayroll hourly;
-  REQUIRE(fabs(hourly.hours() - 0) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "it is");
-  REQUIRE(hourly.last_name() == "unknown");
+  CHECK(fabs(hourly.hours() - 0) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "it is");
+  CHECK(hourly.last_name() == "unknown");
 }
 
 //***************************Other constructor*************************
@@ -51,24 +51,24 @@ TEST_CASE(
     "'12.54, 34, 'Peters, Walter' ",
     "[start]") {
   HourlyPayroll hourly(12.54, 34, "Peters, Walter");
-  REQUIRE(fabs(hourly.hours() - 34) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - 12.54) < .0001);
-  REQUIRE(hourly.first_name() == "Walter");
-  REQUIRE(hourly.last_name() == "Peters");
+  CHECK(fabs(hourly.hours() - 34) < .0001);
+  CHECK(fabs(hourly.pay_rate() - 12.54) < .0001);
+  CHECK(hourly.first_name() == "Walter");
+  CHECK(hourly.last_name() == "Peters");
 }
 
 TEST_CASE(
     "Other constructor throws out of range exception when called with negative "
     "hours",
     "[start]") {
-  REQUIRE_THROWS_AS(HourlyPayroll(12.54, -34, "Peters, Walter"), out_of_range);
+  CHECK_THROWS_AS(HourlyPayroll(12.54, -34, "Peters, Walter"), out_of_range);
 }
 
 TEST_CASE(
     "Other constructor throws out of range exception when called with hours "
     "greater than 168",
     "[start]") {
-  REQUIRE_THROWS_AS(HourlyPayroll(12.54, 169, "Peters, Walter"), out_of_range);
+  CHECK_THROWS_AS(HourlyPayroll(12.54, 169, "Peters, Walter"), out_of_range);
 }
 
 TEST_CASE(
@@ -76,63 +76,63 @@ TEST_CASE(
     "less than 7.25",
     "[start]") {
   double low_wage = HourlyPayroll::kMinWage - .02;
-  REQUIRE_THROWS_AS(HourlyPayroll(low_wage, 34, "Peters, Walter"),
+  CHECK_THROWS_AS(HourlyPayroll(low_wage, 34, "Peters, Walter"),
                     out_of_range);
 }
 
 //***************************getters*************************
 TEST_CASE("Getters return expected values", "[start]") {
   HourlyPayroll hourly(25.71, 47, "Johnson, Terry");
-  REQUIRE(fabs(hourly.hours() - 47) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - 25.71) < .0001);
-  REQUIRE(hourly.first_name() == "Terry");
-  REQUIRE(hourly.last_name() == "Johnson");
-  REQUIRE(hourly.name() == "Terry Johnson");
-  REQUIRE(hourly.name_last_first() == "Johnson, Terry");
+  CHECK(fabs(hourly.hours() - 47) < .0001);
+  CHECK(fabs(hourly.pay_rate() - 25.71) < .0001);
+  CHECK(hourly.first_name() == "Terry");
+  CHECK(hourly.last_name() == "Johnson");
+  CHECK(hourly.name() == "Terry Johnson");
+  CHECK(hourly.name_last_first() == "Johnson, Terry");
 }
 
 //***************************set hours*************************
 TEST_CASE("Hours setter sets hours to 0", "[start]") {
   HourlyPayroll hourly;
   hourly.set_hours(0);
-  REQUIRE(fabs(hourly.hours() - 0) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "it is");
-  REQUIRE(hourly.last_name() == "unknown");
+  CHECK(fabs(hourly.hours() - 0) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "it is");
+  CHECK(hourly.last_name() == "unknown");
 }
 
 TEST_CASE("Hours setter sets hours to 168", "[start]") {
   HourlyPayroll hourly;
   hourly.set_hours(168);
-  REQUIRE(fabs(hourly.hours() - 168) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "it is");
-  REQUIRE(hourly.last_name() == "unknown");
+  CHECK(fabs(hourly.hours() - 168) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "it is");
+  CHECK(hourly.last_name() == "unknown");
 }
 
 TEST_CASE("Hours setter sets hours to 54", "[start]") {
   HourlyPayroll hourly;
   hourly.set_hours(54);
-  REQUIRE(fabs(hourly.hours() - 54) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "it is");
-  REQUIRE(hourly.last_name() == "unknown");
+  CHECK(fabs(hourly.hours() - 54) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "it is");
+  CHECK(hourly.last_name() == "unknown");
 }
 
 TEST_CASE("Hours setter sets hours to 22.3", "[start]") {
   HourlyPayroll hourly;
   hourly.set_hours(22.3);
-  REQUIRE(fabs(hourly.hours() - 22.3) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "it is");
-  REQUIRE(hourly.last_name() == "unknown");
+  CHECK(fabs(hourly.hours() - 22.3) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "it is");
+  CHECK(hourly.last_name() == "unknown");
 }
 
 TEST_CASE(
     "Hours setter throws out of bounds exception when set to negative number",
     "[start]") {
   HourlyPayroll hourly;
-  REQUIRE_THROWS_AS(hourly.set_hours(-1), out_of_range);
+  CHECK_THROWS_AS(hourly.set_hours(-1), out_of_range);
 }
 
 TEST_CASE(
@@ -140,13 +140,13 @@ TEST_CASE(
     "than 168",
     "[start]") {
   HourlyPayroll hourly;
-  REQUIRE_THROWS_AS(hourly.set_hours(169), out_of_range);
+  CHECK_THROWS_AS(hourly.set_hours(169), out_of_range);
 }
 
 TEST_CASE("Hours setter throws out of bounds exception when set to 168.1",
           "[start]") {
   HourlyPayroll hourly;
-  REQUIRE_THROWS_AS(hourly.set_hours(168.1), out_of_range);
+  CHECK_THROWS_AS(hourly.set_hours(168.1), out_of_range);
 }
 
 //***************************set pay rate*************************
@@ -154,22 +154,22 @@ TEST_CASE("Hours setter throws out of bounds exception when set to 168.1",
 TEST_CASE("Pay rate setter sets pay rate to 8.12", "[start]") {
   HourlyPayroll hourly(14.50, 18, "Walters, Kerry");
   hourly.set_pay_rate(8.12);
-  REQUIRE(fabs(hourly.hours() - 18) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - 8.12) < .0001);
-  REQUIRE(hourly.first_name() == "Kerry");
-  REQUIRE(hourly.last_name() == "Walters");
+  CHECK(fabs(hourly.hours() - 18) < .0001);
+  CHECK(fabs(hourly.pay_rate() - 8.12) < .0001);
+  CHECK(hourly.first_name() == "Kerry");
+  CHECK(hourly.last_name() == "Walters");
 }
 
 TEST_CASE("Pay rate setter throws out of bounds exception when set to 7.01",
           "[start]") {
   HourlyPayroll hourly;
-  REQUIRE_THROWS_AS(hourly.set_pay_rate(7.01), out_of_range);
+  CHECK_THROWS_AS(hourly.set_pay_rate(7.01), out_of_range);
 }
 
 TEST_CASE("Pay rate setter throws out of bounds exception when set to -7.01",
           "[start]") {
   HourlyPayroll hourly;
-  REQUIRE_THROWS_AS(hourly.set_pay_rate(-7.01), out_of_range);
+  CHECK_THROWS_AS(hourly.set_pay_rate(-7.01), out_of_range);
 }
 
 //***************************set name*************************
@@ -178,20 +178,20 @@ TEST_CASE("Name setter sets name to Kelly Walters when sent Kelly Walters",
           "[start]") {
   HourlyPayroll hourly;
   hourly.set_name("Kelly Walters");
-  REQUIRE(fabs(hourly.hours() - 0) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "Kelly");
-  REQUIRE(hourly.last_name() == "Walters");
+  CHECK(fabs(hourly.hours() - 0) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "Kelly");
+  CHECK(hourly.last_name() == "Walters");
 }
 
 TEST_CASE("Name setter sets name to Kelly Walters when sent Walters, Kelly ",
           "[start]") {
   HourlyPayroll hourly;
   hourly.set_name("Walters, Kelly");
-  REQUIRE(fabs(hourly.hours() - 0) < .0001);
-  REQUIRE(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
-  REQUIRE(hourly.first_name() == "Kelly");
-  REQUIRE(hourly.last_name() == "Walters");
+  CHECK(fabs(hourly.hours() - 0) < .0001);
+  CHECK(fabs(hourly.pay_rate() - HourlyPayroll::kMinWage) < .0001);
+  CHECK(hourly.first_name() == "Kelly");
+  CHECK(hourly.last_name() == "Walters");
 }
 
 //***************************ComputeGross*************************
@@ -202,7 +202,7 @@ TEST_CASE(
     "[gross]") {
   HourlyPayroll hourly(23.5, 32, "Kim Johnson");
 
-  REQUIRE(fabs(hourly.ComputeGross() - 752) < .0001);
+  CHECK(fabs(hourly.ComputeGross() - 752) < .0001);
 }
 
 TEST_CASE(
@@ -211,7 +211,7 @@ TEST_CASE(
     "[gross]") {
   HourlyPayroll hourly(23.5, 42, "Kim Johnson");
 
-  REQUIRE(fabs(hourly.ComputeGross() - 1010.5) < .0001);
+  CHECK(fabs(hourly.ComputeGross() - 1010.5) < .0001);
 }
 
 TEST_CASE(
@@ -220,7 +220,7 @@ TEST_CASE(
     "[gross]") {
   HourlyPayroll hourly(23.5, 0, "Kim Johnson");
 
-  REQUIRE(fabs(hourly.ComputeGross() - 0) < .0001);
+  CHECK(fabs(hourly.ComputeGross() - 0) < .0001);
 }
 
 TEST_CASE(
@@ -229,7 +229,7 @@ TEST_CASE(
     "[gross]") {
   HourlyPayroll hourly(31.2, 63, "Kim Johnson");
 
-  REQUIRE(fabs(hourly.ComputeGross() - 2324.4) < .0001);
+  CHECK(fabs(hourly.ComputeGross() - 2324.4) < .0001);
 }
 
 //***************************WriteData*************************
@@ -244,17 +244,17 @@ TEST_CASE(
   out.close();
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   string line;
   getline(in, line);
-  REQUIRE(line == "H 14.92 43");
+  CHECK(line == "H 14.92 43");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -270,21 +270,21 @@ TEST_CASE(
 
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   string line;
   getline(in, line);
-  REQUIRE(line == "H 12.79 22");
+  CHECK(line == "H 12.79 22");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "H 14.92 43");
+  CHECK(line == "H 14.92 43");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -302,22 +302,22 @@ TEST_CASE(
 
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   string line;
 
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: hourly");
+  CHECK(line == "Pay Type: hourly");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $17.50");
+  CHECK(line == "Pay Rate: $17.50");
   getline(in, line);
-  REQUIRE(line == "Hours Worked: 35.00");
+  CHECK(line == "Hours Worked: 35.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $612.50");
+  CHECK(line == "Gross Pay: $612.50");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -333,22 +333,22 @@ TEST_CASE(
 
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   string line;
 
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: hourly");
+  CHECK(line == "Pay Type: hourly");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $37.60");
+  CHECK(line == "Pay Rate: $37.60");
   getline(in, line);
-  REQUIRE(line == "Hours Worked: 72.30");
+  CHECK(line == "Hours Worked: 72.30");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $3325.72");
+  CHECK(line == "Gross Pay: $3325.72");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -365,31 +365,31 @@ TEST_CASE(
 
   ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   string line;
 
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: hourly");
+  CHECK(line == "Pay Type: hourly");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $37.60");
+  CHECK(line == "Pay Rate: $37.60");
   getline(in, line);
-  REQUIRE(line == "Hours Worked: 72.30");
+  CHECK(line == "Hours Worked: 72.30");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $3325.72");
+  CHECK(line == "Gross Pay: $3325.72");
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: hourly");
+  CHECK(line == "Pay Type: hourly");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $17.50");
+  CHECK(line == "Pay Rate: $17.50");
   getline(in, line);
-  REQUIRE(line == "Hours Worked: 35.00");
+  CHECK(line == "Hours Worked: 35.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $612.50");
+  CHECK(line == "Gross Pay: $612.50");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }

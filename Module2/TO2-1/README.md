@@ -288,7 +288,7 @@ $ ctest
 The results will look something like this:
 
 ```bash
-  PS C:\Users\Linda\cs1410\cs1410-module2\TO2-2\build> .\bin\ca_test.exe
+  PS C:\Users\Linda\C++ Fundamentals\C++ Fundamentals-module2\TO2-2\build> .\bin\ca_test.exe
   ===============================================================================
   All tests passed (345 assertions in 46 test cases)
 ```

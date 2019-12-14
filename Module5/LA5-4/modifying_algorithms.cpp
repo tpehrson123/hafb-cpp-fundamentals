@@ -7,7 +7,7 @@
 int main()
 {
     // copy_if()
-    std::vector<std::string> words = {"Hello", "C++", "CS1410", "Class", "Learning"};
+    std::vector<std::string> words = {"Hello", "C++", "C++ Fundamentals", "Class", "Learning"};
     std::vector<std::string> long_words;
     // Only copy those words with > 3 letters
     std::copy_if(words.begin(), words.end(), std::back_inserter(long_words), 

@@ -466,7 +466,7 @@ $ ctest
 The results will look something like this:
 
 ```bash
-  PS C:\Users\Linda\cs1410\cs1410-module2\CA2-1\build> .\bin\ca_test.exe
+  PS C:\Users\Linda\C++ Fundamentals\C++ Fundamentals-module2\CA2-1\build> .\bin\ca_test.exe
   ===============================================================================
   All tests passed (405 assertions in 75 test cases)
 ```

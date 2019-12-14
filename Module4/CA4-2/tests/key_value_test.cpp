@@ -19,7 +19,7 @@ TEST_CASE(
     "type int and values of type int",
     "[start]") {
   KeyValue<int, int, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -27,7 +27,7 @@ TEST_CASE(
     "type int and values of type double",
     "[start]") {
   KeyValue<int, double, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -35,7 +35,7 @@ TEST_CASE(
     "type int and values of type string",
     "[start]") {
   KeyValue<int, string, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -43,7 +43,7 @@ TEST_CASE(
     "type int and values of type Carton",
     "[start]") {
   KeyValue<int, Carton, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -51,7 +51,7 @@ TEST_CASE(
     "type string and values of type int",
     "[start]") {
   KeyValue<string, int, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -59,7 +59,7 @@ TEST_CASE(
     "type string and values of type double",
     "[start]") {
   KeyValue<string, double, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -67,7 +67,7 @@ TEST_CASE(
     "type string and values of type string",
     "[start]") {
   KeyValue<string, string, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -75,7 +75,7 @@ TEST_CASE(
     "type string and values of type Carton",
     "[start]") {
   KeyValue<string, Carton, kSize> key_value;
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 //******************************int, int, 5******************************
@@ -90,15 +90,15 @@ TEST_CASE(
     key_value.Add(i, i * 10);
   }
   // test size
-  REQUIRE(key_value.size() == kSize);
+  CHECK(key_value.size() == kSize);
 
   // test key and value are in the KeyValue container
   for (int i = 0; i < kSize; i++) {
-    REQUIRE(key_value.ValueAt(i) == i * 10);
+    CHECK(key_value.ValueAt(i) == i * 10);
   }
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add(101, 1010), out_of_range);
+  CHECK_THROWS_AS(key_value.Add(101, 1010), out_of_range);
 }
 
 TEST_CASE(
@@ -115,17 +115,17 @@ TEST_CASE(
   key_value.Add(17, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) == 22);
-  REQUIRE(key_value.ValueAt(3) == 12);
-  REQUIRE(key_value.ValueAt(9) == 18);
-  REQUIRE(key_value.ValueAt(5) == 91);
-  REQUIRE(key_value.ValueAt(17) == 35);
+  CHECK(key_value.ValueAt(7) == 22);
+  CHECK(key_value.ValueAt(3) == 12);
+  CHECK(key_value.ValueAt(9) == 18);
+  CHECK(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(17) == 35);
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add(101, 99), out_of_range);
+  CHECK_THROWS_AS(key_value.Add(101, 99), out_of_range);
 }
 
 TEST_CASE(
@@ -142,10 +142,10 @@ TEST_CASE(
   key_value.Add(17, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // call ValueAt with key not used, expect exception
-  REQUIRE_THROWS_AS(key_value.ValueAt(107), out_of_range);
+  CHECK_THROWS_AS(key_value.ValueAt(107), out_of_range);
 }
 
 TEST_CASE(
@@ -161,53 +161,53 @@ TEST_CASE(
   key_value.Add(7, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveOne(7));
-
-  // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) > 17);
-  REQUIRE(key_value.ValueAt(3) == 12);
-  REQUIRE(key_value.ValueAt(5) == 91);
-
-  // test size
-  REQUIRE(key_value.size() == 4);
-
-  REQUIRE(key_value.RemoveOne(3));
+  CHECK(key_value.RemoveOne(7));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) > 17);
-  REQUIRE(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(7) > 17);
+  CHECK(key_value.ValueAt(3) == 12);
+  CHECK(key_value.ValueAt(5) == 91);
 
   // test size
-  REQUIRE(key_value.size() == 3);
+  CHECK(key_value.size() == 4);
 
-  REQUIRE(key_value.RemoveOne(7));
+  CHECK(key_value.RemoveOne(3));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) > 17);
-  REQUIRE(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(7) > 17);
+  CHECK(key_value.ValueAt(5) == 91);
 
   // test size
-  REQUIRE(key_value.size() == 2);
+  CHECK(key_value.size() == 3);
 
-  REQUIRE(key_value.RemoveOne(7));
+  CHECK(key_value.RemoveOne(7));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(7) > 17);
+  CHECK(key_value.ValueAt(5) == 91);
 
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 2);
 
-  REQUIRE(key_value.RemoveOne(5));
+  CHECK(key_value.RemoveOne(7));
 
-  // test size
-  REQUIRE(key_value.size() == 0);
-
-  REQUIRE(!key_value.RemoveOne(5));
+  // test key and value are in the KeyValue container
+  CHECK(key_value.ValueAt(5) == 91);
 
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 1);
+
+  CHECK(key_value.RemoveOne(5));
+
+  // test size
+  CHECK(key_value.size() == 0);
+
+  CHECK(!key_value.RemoveOne(5));
+
+  // test size
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -223,17 +223,17 @@ TEST_CASE(
   key_value.Add(7, 35);
 
   // test size before remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.RemoveOne(17));
+  CHECK(!key_value.RemoveOne(17));
 
   // test size after remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) > 17);
-  REQUIRE(key_value.ValueAt(3) == 12);
-  REQUIRE(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(7) > 17);
+  CHECK(key_value.ValueAt(3) == 12);
+  CHECK(key_value.ValueAt(5) == 91);
 }
 
 TEST_CASE(
@@ -242,10 +242,10 @@ TEST_CASE(
     "[remove_one]") {
   KeyValue<int, int, kSize> key_value;
 
-  REQUIRE(!key_value.RemoveOne(7));
+  CHECK(!key_value.RemoveOne(7));
 
   // test size after remove
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -262,17 +262,17 @@ TEST_CASE(
   key_value.Add(7, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(7) == 3);
+  CHECK(key_value.RemoveAll(7) == 3);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(3) == 12);
-  REQUIRE(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(3) == 12);
+  CHECK(key_value.ValueAt(5) == 91);
 
   // test size
-  REQUIRE(key_value.size() == 2);
-  REQUIRE_THROWS_AS(key_value.ValueAt(7), out_of_range);
+  CHECK(key_value.size() == 2);
+  CHECK_THROWS_AS(key_value.ValueAt(7), out_of_range);
 }
 
 TEST_CASE(
@@ -289,16 +289,16 @@ TEST_CASE(
   key_value.Add(7, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(5) == 1);
+  CHECK(key_value.RemoveAll(5) == 1);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(3) == 12);
-  REQUIRE(key_value.ValueAt(7) > 17);
-  REQUIRE_THROWS_AS(key_value.ValueAt(5), out_of_range);
+  CHECK(key_value.ValueAt(3) == 12);
+  CHECK(key_value.ValueAt(7) > 17);
+  CHECK_THROWS_AS(key_value.ValueAt(5), out_of_range);
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -314,19 +314,19 @@ TEST_CASE(
   key_value.Add(17, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(22) == 0);
+  CHECK(key_value.RemoveAll(22) == 0);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) == 22);
-  REQUIRE(key_value.ValueAt(3) == 12);
-  REQUIRE(key_value.ValueAt(9) == 18);
-  REQUIRE(key_value.ValueAt(5) == 91);
-  REQUIRE(key_value.ValueAt(17) == 35);
+  CHECK(key_value.ValueAt(7) == 22);
+  CHECK(key_value.ValueAt(3) == 12);
+  CHECK(key_value.ValueAt(9) == 18);
+  CHECK(key_value.ValueAt(5) == 91);
+  CHECK(key_value.ValueAt(17) == 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -342,19 +342,19 @@ TEST_CASE(
   key_value.Add(17, 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.Found(22));
+  CHECK(!key_value.Found(22));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.Found(7));
-  REQUIRE(key_value.Found(3));
-  REQUIRE(key_value.Found(9));
-  REQUIRE(key_value.Found(5));
-  REQUIRE(key_value.Found(17));
+  CHECK(key_value.Found(7));
+  CHECK(key_value.Found(3));
+  CHECK(key_value.Found(9));
+  CHECK(key_value.Found(5));
+  CHECK(key_value.Found(17));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -364,17 +364,17 @@ TEST_CASE(
   KeyValue<int, int, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
   key_value.Add(7, 22);
-  REQUIRE(!key_value.Empty());
+  CHECK(!key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 1);
   key_value.RemoveOne(7);
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -385,27 +385,27 @@ TEST_CASE(
   KeyValue<int, int, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 0);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 0);
   key_value.Add(7, 22);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 1);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 1);
   key_value.Add(3, 12);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 2);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 2);
   key_value.Add(9, 18);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 3);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 3);
   key_value.Add(5, 91);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 4);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 4);
   key_value.Add(17, 35);
-  REQUIRE(key_value.Full());
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.Full());
+  CHECK(key_value.size() == 5);
   key_value.RemoveOne(7);
-  REQUIRE(!key_value.Full());
+  CHECK(!key_value.Full());
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -429,17 +429,17 @@ TEST_CASE(
   ifstream in("test_output.txt");
   string line;
   getline(in, line);
-  REQUIRE("7: 22" == line);
+  CHECK("7: 22" == line);
   getline(in, line);
-  REQUIRE("3: 12" == line);
+  CHECK("3: 12" == line);
   getline(in, line);
-  REQUIRE("9: 18");
+  CHECK("9: 18");
   getline(in, line);
-  REQUIRE("5: 91" == line);
+  CHECK("5: 91" == line);
   getline(in, line);
-  REQUIRE("17: 35" == line);
+  CHECK("17: 35" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 
   in.close();
 }
@@ -456,15 +456,15 @@ TEST_CASE(
     key_value.Add(i, "blue" + i);
   }
   // test size
-  REQUIRE(key_value.size() == kSize);
+  CHECK(key_value.size() == kSize);
 
   // test key and value are in the KeyValue container
   for (int i = 0; i < kSize; i++) {
-    REQUIRE(key_value.ValueAt(i) == "blue" + i);
+    CHECK(key_value.ValueAt(i) == "blue" + i);
   }
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add(101, "orange"), out_of_range);
+  CHECK_THROWS_AS(key_value.Add(101, "orange"), out_of_range);
 }
 
 TEST_CASE(
@@ -481,17 +481,17 @@ TEST_CASE(
   key_value.Add(17, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) == "blue");
-  REQUIRE(key_value.ValueAt(3) == "gray");
-  REQUIRE(key_value.ValueAt(9) == "purple");
-  REQUIRE(key_value.ValueAt(5) == "yellow");
-  REQUIRE(key_value.ValueAt(17) == "green");
+  CHECK(key_value.ValueAt(7) == "blue");
+  CHECK(key_value.ValueAt(3) == "gray");
+  CHECK(key_value.ValueAt(9) == "purple");
+  CHECK(key_value.ValueAt(5) == "yellow");
+  CHECK(key_value.ValueAt(17) == "green");
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add(101, "orange"), out_of_range);
+  CHECK_THROWS_AS(key_value.Add(101, "orange"), out_of_range);
 }
 
 TEST_CASE(
@@ -508,10 +508,10 @@ TEST_CASE(
   key_value.Add(17, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // call ValueAt with key not used, expect exception
-  REQUIRE_THROWS_AS(key_value.ValueAt(107), out_of_range);
+  CHECK_THROWS_AS(key_value.ValueAt(107), out_of_range);
 }
 
 TEST_CASE(
@@ -527,47 +527,47 @@ TEST_CASE(
   key_value.Add(7, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveOne(7));
-
-  // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(3) == "gray");
-  REQUIRE(key_value.ValueAt(5) == "yellow");
-
-  // test size
-  REQUIRE(key_value.size() == 4);
-
-  REQUIRE(key_value.RemoveOne(3));
+  CHECK(key_value.RemoveOne(7));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.size() == 3);
+  CHECK(key_value.ValueAt(3) == "gray");
+  CHECK(key_value.ValueAt(5) == "yellow");
 
-  REQUIRE(key_value.RemoveOne(7));
+  // test size
+  CHECK(key_value.size() == 4);
+
+  CHECK(key_value.RemoveOne(3));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(5) == "yellow");
+  CHECK(key_value.size() == 3);
 
-  // test size
-  REQUIRE(key_value.size() == 2);
-
-  REQUIRE(key_value.RemoveOne(7));
+  CHECK(key_value.RemoveOne(7));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(5) == "yellow");
+  CHECK(key_value.ValueAt(5) == "yellow");
 
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 2);
 
-  REQUIRE(key_value.RemoveOne(5));
+  CHECK(key_value.RemoveOne(7));
 
-  // test size
-  REQUIRE(key_value.size() == 0);
-
-  REQUIRE(!key_value.RemoveOne(5));
+  // test key and value are in the KeyValue container
+  CHECK(key_value.ValueAt(5) == "yellow");
 
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 1);
+
+  CHECK(key_value.RemoveOne(5));
+
+  // test size
+  CHECK(key_value.size() == 0);
+
+  CHECK(!key_value.RemoveOne(5));
+
+  // test size
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -583,16 +583,16 @@ TEST_CASE(
   key_value.Add(7, "green");
 
   // test size before remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.RemoveOne(17));
+  CHECK(!key_value.RemoveOne(17));
 
   // test size after remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(3) == "gray");
-  REQUIRE(key_value.ValueAt(5) == "yellow");
+  CHECK(key_value.ValueAt(3) == "gray");
+  CHECK(key_value.ValueAt(5) == "yellow");
 }
 
 TEST_CASE(
@@ -601,10 +601,10 @@ TEST_CASE(
     "[remove_one]") {
   KeyValue<int, string, kSize> key_value;
 
-  REQUIRE(!key_value.RemoveOne(7));
+  CHECK(!key_value.RemoveOne(7));
 
   // test size after remove
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -621,17 +621,17 @@ TEST_CASE(
   key_value.Add(7, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(7) == 3);
+  CHECK(key_value.RemoveAll(7) == 3);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(3) == "gray");
-  REQUIRE(key_value.ValueAt(5) == "yellow");
+  CHECK(key_value.ValueAt(3) == "gray");
+  CHECK(key_value.ValueAt(5) == "yellow");
 
   // test size
-  REQUIRE(key_value.size() == 2);
-  REQUIRE_THROWS_AS(key_value.ValueAt(7), out_of_range);
+  CHECK(key_value.size() == 2);
+  CHECK_THROWS_AS(key_value.ValueAt(7), out_of_range);
 }
 
 TEST_CASE(
@@ -648,15 +648,15 @@ TEST_CASE(
   key_value.Add(7, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(5) == 1);
+  CHECK(key_value.RemoveAll(5) == 1);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(3) == "gray");
-  REQUIRE_THROWS_AS(key_value.ValueAt(5), out_of_range);
+  CHECK(key_value.ValueAt(3) == "gray");
+  CHECK_THROWS_AS(key_value.ValueAt(5), out_of_range);
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -672,19 +672,19 @@ TEST_CASE(
   key_value.Add(17, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(22) == 0);
+  CHECK(key_value.RemoveAll(22) == 0);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt(7) == "blue");
-  REQUIRE(key_value.ValueAt(3) == "gray");
-  REQUIRE(key_value.ValueAt(9) == "purple");
-  REQUIRE(key_value.ValueAt(5) == "yellow");
-  REQUIRE(key_value.ValueAt(17) == "green");
+  CHECK(key_value.ValueAt(7) == "blue");
+  CHECK(key_value.ValueAt(3) == "gray");
+  CHECK(key_value.ValueAt(9) == "purple");
+  CHECK(key_value.ValueAt(5) == "yellow");
+  CHECK(key_value.ValueAt(17) == "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -700,19 +700,19 @@ TEST_CASE(
   key_value.Add(17, "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.Found(22));
+  CHECK(!key_value.Found(22));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.Found(7));
-  REQUIRE(key_value.Found(3));
-  REQUIRE(key_value.Found(9));
-  REQUIRE(key_value.Found(5));
-  REQUIRE(key_value.Found(17));
+  CHECK(key_value.Found(7));
+  CHECK(key_value.Found(3));
+  CHECK(key_value.Found(9));
+  CHECK(key_value.Found(5));
+  CHECK(key_value.Found(17));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -722,17 +722,17 @@ TEST_CASE(
   KeyValue<int, string, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
   key_value.Add(7, "green");
-  REQUIRE(!key_value.Empty());
+  CHECK(!key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 1);
   key_value.RemoveOne(7);
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -743,27 +743,27 @@ TEST_CASE(
   KeyValue<int, string, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 0);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 0);
   key_value.Add(7, "blue");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 1);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 1);
   key_value.Add(3, "gray");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 2);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 2);
   key_value.Add(9, "purple");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 3);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 3);
   key_value.Add(5, "yellow");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 4);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 4);
   key_value.Add(17, "green");
-  REQUIRE(key_value.Full());
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.Full());
+  CHECK(key_value.size() == 5);
   key_value.RemoveOne(7);
-  REQUIRE(!key_value.Full());
+  CHECK(!key_value.Full());
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -787,17 +787,17 @@ TEST_CASE(
   ifstream in("test_output.txt");
   string line;
   getline(in, line);
-  REQUIRE("7: blue" == line);
+  CHECK("7: blue" == line);
   getline(in, line);
-  REQUIRE("3: gray" == line);
+  CHECK("3: gray" == line);
   getline(in, line);
-  REQUIRE("9: purple");
+  CHECK("9: purple");
   getline(in, line);
-  REQUIRE("5: yellow" == line);
+  CHECK("5: yellow" == line);
   getline(in, line);
-  REQUIRE("17: green" == line);
+  CHECK("17: green" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 
   in.close();
 }
@@ -821,20 +821,20 @@ TEST_CASE(
   std::string line;
   getline(in, line);
   if (fabs(one.width() - 7.0) < .001) {
-    REQUIRE("Carton 22.0 x 7.0 x 19.4" == line);
+    CHECK("Carton 22.0 x 7.0 x 19.4" == line);
   } else {
-    REQUIRE("Carton 22.0 x 19.4 x 7.0" == line);
+    CHECK("Carton 22.0 x 19.4 x 7.0" == line);
   }
 
   getline(in, line);
 
   if (fabs(one.width() - 8.0) < .001) {
-    REQUIRE("Carton 20.0 x 8.0 x 9.5" == line);
+    CHECK("Carton 20.0 x 8.0 x 9.5" == line);
   } else {
-    REQUIRE("Carton 20.0 x 9.5 x 8.0" == line);
+    CHECK("Carton 20.0 x 9.5 x 8.0" == line);
   }
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 TEST_CASE(
@@ -851,17 +851,17 @@ TEST_CASE(
   key_value.Add(17, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(7).Volume() - 2972.2) < .1);
-  REQUIRE(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt(9).Volume() - 816) < .1);
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
-  REQUIRE(fabs(key_value.ValueAt(17).Volume() - 3544.32) < .1);
+  CHECK(fabs(key_value.ValueAt(7).Volume() - 2972.2) < .1);
+  CHECK(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt(9).Volume() - 816) < .1);
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt(17).Volume() - 3544.32) < .1);
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add(101, Carton(22, 7, 19.3)), out_of_range);
+  CHECK_THROWS_AS(key_value.Add(101, Carton(22, 7, 19.3)), out_of_range);
 }
 
 TEST_CASE(
@@ -878,10 +878,10 @@ TEST_CASE(
   key_value.Add(17, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // call ValueAt with key not used, expect exception
-  REQUIRE_THROWS_AS(key_value.ValueAt(107), out_of_range);
+  CHECK_THROWS_AS(key_value.ValueAt(107), out_of_range);
 }
 
 TEST_CASE(
@@ -897,47 +897,47 @@ TEST_CASE(
   key_value.Add(7, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveOne(7));
-
-  // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
-
-  // test size
-  REQUIRE(key_value.size() == 4);
-
-  REQUIRE(key_value.RemoveOne(3));
+  CHECK(key_value.RemoveOne(7));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.size() == 3);
+  CHECK(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
 
-  REQUIRE(key_value.RemoveOne(7));
+  // test size
+  CHECK(key_value.size() == 4);
+
+  CHECK(key_value.RemoveOne(3));
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
+  CHECK(key_value.size() == 3);
 
-  // test size
-  REQUIRE(key_value.size() == 2);
-
-  REQUIRE(key_value.RemoveOne(7));
+  CHECK(key_value.RemoveOne(7));
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 2);
 
-  REQUIRE(key_value.RemoveOne(5));
+  CHECK(key_value.RemoveOne(7));
 
-  // test size
-  REQUIRE(key_value.size() == 0);
-
-  REQUIRE(!key_value.RemoveOne(5));
+  // test key and value are in the KeyValue container
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 1);
+
+  CHECK(key_value.RemoveOne(5));
+
+  // test size
+  CHECK(key_value.size() == 0);
+
+  CHECK(!key_value.RemoveOne(5));
+
+  // test size
+  CHECK(key_value.size() == 0);
 }
 //*******************************
 TEST_CASE(
@@ -953,16 +953,16 @@ TEST_CASE(
   key_value.Add(17, Carton(20.8, 12, 14.2));
 
   // test size before remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.RemoveOne(28));
+  CHECK(!key_value.RemoveOne(28));
 
   // test size after remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
 }
 
 TEST_CASE(
@@ -971,10 +971,10 @@ TEST_CASE(
     "[remove_one]") {
   KeyValue<int, string, kSize> key_value;
 
-  REQUIRE(!key_value.RemoveOne(7));
+  CHECK(!key_value.RemoveOne(7));
 
   // test size after remove
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -991,17 +991,17 @@ TEST_CASE(
   key_value.Add(7, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(7) == 3);
+  CHECK(key_value.RemoveAll(7) == 3);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 2);
-  REQUIRE_THROWS_AS(key_value.ValueAt(7), out_of_range);
+  CHECK(key_value.size() == 2);
+  CHECK_THROWS_AS(key_value.ValueAt(7), out_of_range);
 }
 
 TEST_CASE(
@@ -1018,15 +1018,15 @@ TEST_CASE(
   key_value.Add(7, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(5) == 1);
+  CHECK(key_value.RemoveAll(5) == 1);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
-  REQUIRE_THROWS_AS(key_value.ValueAt(5), out_of_range);
+  CHECK(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
+  CHECK_THROWS_AS(key_value.ValueAt(5), out_of_range);
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -1042,19 +1042,19 @@ TEST_CASE(
   key_value.Add(17, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll(22) == 0);
+  CHECK(key_value.RemoveAll(22) == 0);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt(7).Volume() - 2972.2) < .1);
-  REQUIRE(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt(9).Volume() - 816) < .1);
-  REQUIRE(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
-  REQUIRE(fabs(key_value.ValueAt(17).Volume() - 3544.32) < .1);
+  CHECK(fabs(key_value.ValueAt(7).Volume() - 2972.2) < .1);
+  CHECK(fabs(key_value.ValueAt(3).Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt(9).Volume() - 816) < .1);
+  CHECK(fabs(key_value.ValueAt(5).Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt(17).Volume() - 3544.32) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -1070,19 +1070,19 @@ TEST_CASE(
   key_value.Add(17, Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.Found(22));
+  CHECK(!key_value.Found(22));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.Found(7));
-  REQUIRE(key_value.Found(3));
-  REQUIRE(key_value.Found(9));
-  REQUIRE(key_value.Found(5));
-  REQUIRE(key_value.Found(17));
+  CHECK(key_value.Found(7));
+  CHECK(key_value.Found(3));
+  CHECK(key_value.Found(9));
+  CHECK(key_value.Found(5));
+  CHECK(key_value.Found(17));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -1092,17 +1092,17 @@ TEST_CASE(
   KeyValue<int, Carton, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
   key_value.Add(7, Carton(6, 8.5, 16));
-  REQUIRE(!key_value.Empty());
+  CHECK(!key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 1);
   key_value.RemoveOne(7);
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1112,27 +1112,27 @@ TEST_CASE(
     "[full]") {
   KeyValue<int, Carton, kSize> key_value;
 
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 0);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 0);
   key_value.Add(7, Carton(22, 7, 19.3));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 1);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 1);
   key_value.Add(3, Carton(16, 8, 20));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 2);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 2);
   key_value.Add(9, Carton(6, 8.5, 16));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 3);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 3);
   key_value.Add(5, Carton(14, 9.6, 12));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 4);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 4);
   key_value.Add(17, Carton(20.8, 12, 14.2));
-  REQUIRE(key_value.Full());
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.Full());
+  CHECK(key_value.size() == 5);
   key_value.RemoveOne(7);
-  REQUIRE(!key_value.Full());
+  CHECK(!key_value.Full());
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -1148,7 +1148,7 @@ TEST_CASE(
   key_value.Add(5, Carton(14, 9.6, 12));
   key_value.Add(17, Carton(20.8, 12, 14.2));
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test <<
   ofstream out("test_output.txt");
@@ -1159,41 +1159,41 @@ TEST_CASE(
   string line;
   getline(in, line);
   if (key_value.ValueAt(7).width() == 7) {
-    REQUIRE("7: Carton 22.0 x 7.0 x 19.3" == line);
+    CHECK("7: Carton 22.0 x 7.0 x 19.3" == line);
   } else {
-    REQUIRE("7: Carton 22.0 x 19.3 x 7.0" == line);
+    CHECK("7: Carton 22.0 x 19.3 x 7.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt(3).width() == 16) {
-    REQUIRE("3: Carton 20.0 x 16.0 x 8.0" == line);
+    CHECK("3: Carton 20.0 x 16.0 x 8.0" == line);
   } else {
-    REQUIRE("3: Carton 20.0 x 8.0 x 16.0" == line);
+    CHECK("3: Carton 20.0 x 8.0 x 16.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt(9).width() == 6) {
-    REQUIRE("9: Carton 16.0 x 6.0 x 8.5" == line);
+    CHECK("9: Carton 16.0 x 6.0 x 8.5" == line);
   } else {
-    REQUIRE("9: Carton 16.0 x 8.5 x 6.0" == line);
+    CHECK("9: Carton 16.0 x 8.5 x 6.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt(5).width() == 12) {
-    REQUIRE("5: Carton 14.0 x 12.0 x 9.6" == line);
+    CHECK("5: Carton 14.0 x 12.0 x 9.6" == line);
   } else {
-    REQUIRE("5: Carton 14.0 x 9.6 x 12.0" == line);
+    CHECK("5: Carton 14.0 x 9.6 x 12.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt(17).width() == 12) {
-    REQUIRE("17: Carton 20.8 x 12.0 x 14.2" == line);
+    CHECK("17: Carton 20.8 x 12.0 x 14.2" == line);
   } else {
-    REQUIRE("17: Carton 20.8 x 14.2 x 12.0" == line);
+    CHECK("17: Carton 20.8 x 14.2 x 12.0" == line);
   }
 
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 
   in.close();
 }
@@ -1214,17 +1214,17 @@ TEST_CASE(
   key_value.Add("Kelly", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("John") == 22);
-  REQUIRE(key_value.ValueAt("Carol") == 12);
-  REQUIRE(key_value.ValueAt("Walter") == 18);
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
-  REQUIRE(key_value.ValueAt("Kelly") == 35);
+  CHECK(key_value.ValueAt("John") == 22);
+  CHECK(key_value.ValueAt("Carol") == 12);
+  CHECK(key_value.ValueAt("Walter") == 18);
+  CHECK(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Kelly") == 35);
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add("Pat", 99), out_of_range);
+  CHECK_THROWS_AS(key_value.Add("Pat", 99), out_of_range);
 }
 
 TEST_CASE(
@@ -1241,10 +1241,10 @@ TEST_CASE(
   key_value.Add("Kelly", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // call ValueAt with key not used, expect exception
-  REQUIRE_THROWS_AS(key_value.ValueAt("Pat"), out_of_range);
+  CHECK_THROWS_AS(key_value.ValueAt("Pat"), out_of_range);
 }
 
 TEST_CASE(
@@ -1260,50 +1260,50 @@ TEST_CASE(
   key_value.Add("John", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveOne("John"));
-
-  // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == 12);
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
-
-  // test size
-  REQUIRE(key_value.size() == 4);
-
-  REQUIRE(key_value.RemoveOne("Carol"));
+  CHECK(key_value.RemoveOne("John"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Carol") == 12);
+  CHECK(key_value.ValueAt("Samantha") == 91);
 
   // test size
-  REQUIRE(key_value.size() == 3);
+  CHECK(key_value.size() == 4);
 
-  REQUIRE(key_value.RemoveOne("John"));
+  CHECK(key_value.RemoveOne("Carol"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Samantha") == 91);
 
   // test size
-  REQUIRE(key_value.size() == 2);
+  CHECK(key_value.size() == 3);
 
-  REQUIRE(key_value.RemoveOne("John"));
+  CHECK(key_value.RemoveOne("John"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Samantha") == 91);
 
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 2);
 
-  REQUIRE(key_value.RemoveOne("Samantha"));
+  CHECK(key_value.RemoveOne("John"));
 
-  // test size
-  REQUIRE(key_value.size() == 0);
-
-  REQUIRE(!key_value.RemoveOne("Samantha"));
+  // test key and value are in the KeyValue container
+  CHECK(key_value.ValueAt("Samantha") == 91);
 
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 1);
+
+  CHECK(key_value.RemoveOne("Samantha"));
+
+  // test size
+  CHECK(key_value.size() == 0);
+
+  CHECK(!key_value.RemoveOne("Samantha"));
+
+  // test size
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1319,16 +1319,16 @@ TEST_CASE(
   key_value.Add("John", 35);
 
   // test size before remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.RemoveOne("Pat"));
+  CHECK(!key_value.RemoveOne("Pat"));
 
   // test size after remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == 12);
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Carol") == 12);
+  CHECK(key_value.ValueAt("Samantha") == 91);
 }
 
 TEST_CASE(
@@ -1337,10 +1337,10 @@ TEST_CASE(
     "[remove_one]") {
   KeyValue<string, int, kSize> key_value;
 
-  REQUIRE(!key_value.RemoveOne("John"));
+  CHECK(!key_value.RemoveOne("John"));
 
   // test size after remove
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1357,17 +1357,17 @@ TEST_CASE(
   key_value.Add("John", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("John") == 3);
+  CHECK(key_value.RemoveAll("John") == 3);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == 12);
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Carol") == 12);
+  CHECK(key_value.ValueAt("Samantha") == 91);
 
   // test size
-  REQUIRE(key_value.size() == 2);
-  REQUIRE_THROWS_AS(key_value.ValueAt("John"), out_of_range);
+  CHECK(key_value.size() == 2);
+  CHECK_THROWS_AS(key_value.ValueAt("John"), out_of_range);
 }
 
 TEST_CASE(
@@ -1384,15 +1384,15 @@ TEST_CASE(
   key_value.Add("John", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("Samantha") == 1);
+  CHECK(key_value.RemoveAll("Samantha") == 1);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == 12);
-  REQUIRE_THROWS_AS(key_value.ValueAt("Samantha"), out_of_range);
+  CHECK(key_value.ValueAt("Carol") == 12);
+  CHECK_THROWS_AS(key_value.ValueAt("Samantha"), out_of_range);
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -1408,19 +1408,19 @@ TEST_CASE(
   key_value.Add("Kelly", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("Kim") == 0);
+  CHECK(key_value.RemoveAll("Kim") == 0);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("John") == 22);
-  REQUIRE(key_value.ValueAt("Carol") == 12);
-  REQUIRE(key_value.ValueAt("Walter") == 18);
-  REQUIRE(key_value.ValueAt("Samantha") == 91);
-  REQUIRE(key_value.ValueAt("Kelly") == 35);
+  CHECK(key_value.ValueAt("John") == 22);
+  CHECK(key_value.ValueAt("Carol") == 12);
+  CHECK(key_value.ValueAt("Walter") == 18);
+  CHECK(key_value.ValueAt("Samantha") == 91);
+  CHECK(key_value.ValueAt("Kelly") == 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -1436,19 +1436,19 @@ TEST_CASE(
   key_value.Add("Kelly", 35);
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.Found("Kim"));
+  CHECK(!key_value.Found("Kim"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.Found("John"));
-  REQUIRE(key_value.Found("Carol"));
-  REQUIRE(key_value.Found("Walter"));
-  REQUIRE(key_value.Found("Samantha"));
-  REQUIRE(key_value.Found("Kelly"));
+  CHECK(key_value.Found("John"));
+  CHECK(key_value.Found("Carol"));
+  CHECK(key_value.Found("Walter"));
+  CHECK(key_value.Found("Samantha"));
+  CHECK(key_value.Found("Kelly"));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -1458,17 +1458,17 @@ TEST_CASE(
   KeyValue<string, int, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
   key_value.Add("John", 22);
-  REQUIRE(!key_value.Empty());
+  CHECK(!key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 1);
   key_value.RemoveOne("John");
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1479,27 +1479,27 @@ TEST_CASE(
   KeyValue<string, int, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 0);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 0);
   key_value.Add("John", 22);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 1);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 1);
   key_value.Add("Carol", 12);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 2);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 2);
   key_value.Add("Walter", 18);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 3);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 3);
   key_value.Add("Samantha", 91);
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 4);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 4);
   key_value.Add("Kelly", 35);
-  REQUIRE(key_value.Full());
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.Full());
+  CHECK(key_value.size() == 5);
   key_value.RemoveOne("John");
-  REQUIRE(!key_value.Full());
+  CHECK(!key_value.Full());
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -1523,17 +1523,17 @@ TEST_CASE(
   ifstream in("test_output.txt");
   string line;
   getline(in, line);
-  REQUIRE("John: 22" == line);
+  CHECK("John: 22" == line);
   getline(in, line);
-  REQUIRE("Carol: 12" == line);
+  CHECK("Carol: 12" == line);
   getline(in, line);
-  REQUIRE("Walter: 18");
+  CHECK("Walter: 18");
   getline(in, line);
-  REQUIRE("Samantha: 91" == line);
+  CHECK("Samantha: 91" == line);
   getline(in, line);
-  REQUIRE("Kelly: 35" == line);
+  CHECK("Kelly: 35" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 
   in.close();
 }
@@ -1554,17 +1554,17 @@ TEST_CASE(
   key_value.Add("Kelly", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("John") == "blue");
-  REQUIRE(key_value.ValueAt("Carol") == "gray");
-  REQUIRE(key_value.ValueAt("Walter") == "purple");
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
-  REQUIRE(key_value.ValueAt("Kelly") == "green");
+  CHECK(key_value.ValueAt("John") == "blue");
+  CHECK(key_value.ValueAt("Carol") == "gray");
+  CHECK(key_value.ValueAt("Walter") == "purple");
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
+  CHECK(key_value.ValueAt("Kelly") == "green");
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add("Pat", "orange"), out_of_range);
+  CHECK_THROWS_AS(key_value.Add("Pat", "orange"), out_of_range);
 }
 
 TEST_CASE(
@@ -1581,10 +1581,10 @@ TEST_CASE(
   key_value.Add("Kelly", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // call ValueAt with key not used, expect exception
-  REQUIRE_THROWS_AS(key_value.ValueAt("Pat"), out_of_range);
+  CHECK_THROWS_AS(key_value.ValueAt("Pat"), out_of_range);
 }
 
 TEST_CASE(
@@ -1600,47 +1600,47 @@ TEST_CASE(
   key_value.Add("John", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveOne("John"));
-
-  // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == "gray");
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
-
-  // test size
-  REQUIRE(key_value.size() == 4);
-
-  REQUIRE(key_value.RemoveOne("Carol"));
+  CHECK(key_value.RemoveOne("John"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.size() == 3);
+  CHECK(key_value.ValueAt("Carol") == "gray");
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
 
-  REQUIRE(key_value.RemoveOne("John"));
+  // test size
+  CHECK(key_value.size() == 4);
+
+  CHECK(key_value.RemoveOne("Carol"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
+  CHECK(key_value.size() == 3);
 
-  // test size
-  REQUIRE(key_value.size() == 2);
-
-  REQUIRE(key_value.RemoveOne("John"));
+  CHECK(key_value.RemoveOne("John"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
 
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 2);
 
-  REQUIRE(key_value.RemoveOne("Samantha"));
+  CHECK(key_value.RemoveOne("John"));
 
-  // test size
-  REQUIRE(key_value.size() == 0);
-
-  REQUIRE(!key_value.RemoveOne("Samantha"));
+  // test key and value are in the KeyValue container
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
 
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 1);
+
+  CHECK(key_value.RemoveOne("Samantha"));
+
+  // test size
+  CHECK(key_value.size() == 0);
+
+  CHECK(!key_value.RemoveOne("Samantha"));
+
+  // test size
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1656,19 +1656,19 @@ TEST_CASE(
   key_value.Add("Kelly", "green");
 
   // test size before remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.RemoveOne("Pat"));
+  CHECK(!key_value.RemoveOne("Pat"));
 
   // test size after remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("John") == "blue");
-  REQUIRE(key_value.ValueAt("Carol") == "gray");
-  REQUIRE(key_value.ValueAt("Walter") == "purple");
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
-  REQUIRE(key_value.ValueAt("Kelly") == "green");
+  CHECK(key_value.ValueAt("John") == "blue");
+  CHECK(key_value.ValueAt("Carol") == "gray");
+  CHECK(key_value.ValueAt("Walter") == "purple");
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
+  CHECK(key_value.ValueAt("Kelly") == "green");
 }
 
 TEST_CASE(
@@ -1677,10 +1677,10 @@ TEST_CASE(
     "[remove_one]") {
   KeyValue<string, string, kSize> key_value;
 
-  REQUIRE(!key_value.RemoveOne("John"));
+  CHECK(!key_value.RemoveOne("John"));
 
   // test size after remove
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1697,17 +1697,17 @@ TEST_CASE(
   key_value.Add("John", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("John") == 3);
+  CHECK(key_value.RemoveAll("John") == 3);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == "gray");
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
+  CHECK(key_value.ValueAt("Carol") == "gray");
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
 
   // test size
-  REQUIRE(key_value.size() == 2);
-  REQUIRE_THROWS_AS(key_value.ValueAt("John"), out_of_range);
+  CHECK(key_value.size() == 2);
+  CHECK_THROWS_AS(key_value.ValueAt("John"), out_of_range);
 }
 
 TEST_CASE(
@@ -1724,15 +1724,15 @@ TEST_CASE(
   key_value.Add("John", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("Samantha") == 1);
+  CHECK(key_value.RemoveAll("Samantha") == 1);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("Carol") == "gray");
-  REQUIRE_THROWS_AS(key_value.ValueAt("Samantha"), out_of_range);
+  CHECK(key_value.ValueAt("Carol") == "gray");
+  CHECK_THROWS_AS(key_value.ValueAt("Samantha"), out_of_range);
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -1748,19 +1748,19 @@ TEST_CASE(
   key_value.Add("Kelly", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("Pat") == 0);
+  CHECK(key_value.RemoveAll("Pat") == 0);
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.ValueAt("John") == "blue");
-  REQUIRE(key_value.ValueAt("Carol") == "gray");
-  REQUIRE(key_value.ValueAt("Walter") == "purple");
-  REQUIRE(key_value.ValueAt("Samantha") == "yellow");
-  REQUIRE(key_value.ValueAt("Kelly") == "green");
+  CHECK(key_value.ValueAt("John") == "blue");
+  CHECK(key_value.ValueAt("Carol") == "gray");
+  CHECK(key_value.ValueAt("Walter") == "purple");
+  CHECK(key_value.ValueAt("Samantha") == "yellow");
+  CHECK(key_value.ValueAt("Kelly") == "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -1776,19 +1776,19 @@ TEST_CASE(
   key_value.Add("Kelly", "green");
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.Found("Pat"));
+  CHECK(!key_value.Found("Pat"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.Found("John"));
-  REQUIRE(key_value.Found("Carol"));
-  REQUIRE(key_value.Found("Walter"));
-  REQUIRE(key_value.Found("Samantha"));
-  REQUIRE(key_value.Found("Kelly"));
+  CHECK(key_value.Found("John"));
+  CHECK(key_value.Found("Carol"));
+  CHECK(key_value.Found("Walter"));
+  CHECK(key_value.Found("Samantha"));
+  CHECK(key_value.Found("Kelly"));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -1798,17 +1798,17 @@ TEST_CASE(
   KeyValue<string, string, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
   key_value.Add("John", "green");
-  REQUIRE(!key_value.Empty());
+  CHECK(!key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 1);
   key_value.RemoveOne("John");
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -1819,27 +1819,27 @@ TEST_CASE(
   KeyValue<string, string, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 0);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 0);
   key_value.Add("John", "blue");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 1);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 1);
   key_value.Add("Carol", "gray");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 2);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 2);
   key_value.Add("Walter", "purple");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 3);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 3);
   key_value.Add("Samantha", "yellow");
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 4);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 4);
   key_value.Add("Kelly", "green");
-  REQUIRE(key_value.Full());
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.Full());
+  CHECK(key_value.size() == 5);
   key_value.RemoveOne("John");
-  REQUIRE(!key_value.Full());
+  CHECK(!key_value.Full());
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -1863,17 +1863,17 @@ TEST_CASE(
   ifstream in("test_output.txt");
   string line;
   getline(in, line);
-  REQUIRE("John: blue" == line);
+  CHECK("John: blue" == line);
   getline(in, line);
-  REQUIRE("Carol: gray" == line);
+  CHECK("Carol: gray" == line);
   getline(in, line);
-  REQUIRE("Walter: purple");
+  CHECK("Walter: purple");
   getline(in, line);
-  REQUIRE("Samantha: yellow" == line);
+  CHECK("Samantha: yellow" == line);
   getline(in, line);
-  REQUIRE("Kelly: green" == line);
+  CHECK("Kelly: green" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 
   in.close();
 }
@@ -1894,17 +1894,17 @@ TEST_CASE(
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("SLC").Volume() - 2972.2) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Layton").Volume() - 816) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Taylor").Volume() - 3544.32) < .1);
+  CHECK(fabs(key_value.ValueAt("SLC").Volume() - 2972.2) < .1);
+  CHECK(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt("Layton").Volume() - 816) < .1);
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt("Taylor").Volume() - 3544.32) < .1);
 
   // add one after full, expect exception
-  REQUIRE_THROWS_AS(key_value.Add("Willard", Carton(22, 7, 19.3)),
+  CHECK_THROWS_AS(key_value.Add("Willard", Carton(22, 7, 19.3)),
                     out_of_range);
 }
 
@@ -1922,10 +1922,10 @@ TEST_CASE(
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // call ValueAt with key not used, expect exception
-  REQUIRE_THROWS_AS(key_value.ValueAt("Willard"), out_of_range);
+  CHECK_THROWS_AS(key_value.ValueAt("Willard"), out_of_range);
 }
 
 TEST_CASE(
@@ -1941,47 +1941,47 @@ TEST_CASE(
   key_value.Add("SLC", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveOne("SLC"));
-
-  // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
-
-  // test size
-  REQUIRE(key_value.size() == 4);
-
-  REQUIRE(key_value.RemoveOne("Ogden"));
+  CHECK(key_value.RemoveOne("SLC"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.size() == 3);
+  CHECK(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
 
-  REQUIRE(key_value.RemoveOne("SLC"));
+  // test size
+  CHECK(key_value.size() == 4);
+
+  CHECK(key_value.RemoveOne("Ogden"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
+  CHECK(key_value.size() == 3);
 
-  // test size
-  REQUIRE(key_value.size() == 2);
-
-  REQUIRE(key_value.RemoveOne("SLC"));
+  CHECK(key_value.RemoveOne("SLC"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 2);
 
-  REQUIRE(key_value.RemoveOne("Roy"));
+  CHECK(key_value.RemoveOne("SLC"));
 
-  // test size
-  REQUIRE(key_value.size() == 0);
-
-  REQUIRE(!key_value.RemoveOne("Roy"));
+  // test key and value are in the KeyValue container
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 1);
+
+  CHECK(key_value.RemoveOne("Roy"));
+
+  // test size
+  CHECK(key_value.size() == 0);
+
+  CHECK(!key_value.RemoveOne("Roy"));
+
+  // test size
+  CHECK(key_value.size() == 0);
 }
 //*******************************
 TEST_CASE(
@@ -1997,16 +1997,16 @@ TEST_CASE(
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
 
   // test size before remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.RemoveOne("Willard"));
+  CHECK(!key_value.RemoveOne("Willard"));
 
   // test size after remove
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
 }
 
 TEST_CASE(
@@ -2015,10 +2015,10 @@ TEST_CASE(
     "[remove_one]") {
   KeyValue<string, string, kSize> key_value;
 
-  REQUIRE(!key_value.RemoveOne("SLC"));
+  CHECK(!key_value.RemoveOne("SLC"));
 
   // test size after remove
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -2035,17 +2035,17 @@ TEST_CASE(
   key_value.Add("SLC", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("SLC") == 3);
+  CHECK(key_value.RemoveAll("SLC") == 3);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
 
   // test size
-  REQUIRE(key_value.size() == 2);
-  REQUIRE_THROWS_AS(key_value.ValueAt("SLC"), out_of_range);
+  CHECK(key_value.size() == 2);
+  CHECK_THROWS_AS(key_value.ValueAt("SLC"), out_of_range);
 }
 
 TEST_CASE(
@@ -2062,15 +2062,15 @@ TEST_CASE(
   key_value.Add("SLC", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("Roy") == 1);
+  CHECK(key_value.RemoveAll("Roy") == 1);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
-  REQUIRE_THROWS_AS(key_value.ValueAt("Roy"), out_of_range);
+  CHECK(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
+  CHECK_THROWS_AS(key_value.ValueAt("Roy"), out_of_range);
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -2086,24 +2086,24 @@ TEST_CASE(
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(key_value.RemoveAll("Willard") == 0);
+  CHECK(key_value.RemoveAll("Willard") == 0);
 
   // test key and value are in the KeyValue container
-  REQUIRE(fabs(key_value.ValueAt("SLC").Volume() - 2972.2) < .1);
+  CHECK(fabs(key_value.ValueAt("SLC").Volume() - 2972.2) < .1);
   // Carton(22, 7, 19.3));  2972.2
-  REQUIRE(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
+  CHECK(fabs(key_value.ValueAt("Ogden").Volume() - 2560) < .1);
   // Carton(16, 8, 20));  2560
-  REQUIRE(fabs(key_value.ValueAt("Layton").Volume() - 816) < .1);
+  CHECK(fabs(key_value.ValueAt("Layton").Volume() - 816) < .1);
   // Carton(6, 8.5, 16)); 816
-  REQUIRE(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
+  CHECK(fabs(key_value.ValueAt("Roy").Volume() - 1612.8) < .1);
   // Carton(14, 9.6, 12));  1612.8
-  REQUIRE(fabs(key_value.ValueAt("Taylor").Volume() - 3544.32) < .1);
+  CHECK(fabs(key_value.ValueAt("Taylor").Volume() - 3544.32) < .1);
   // Carton(20.8, 12, 14.2));  3544.32
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -2119,19 +2119,19 @@ TEST_CASE(
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
-  REQUIRE(!key_value.Found("Willard"));
+  CHECK(!key_value.Found("Willard"));
 
   // test key and value are in the KeyValue container
-  REQUIRE(key_value.Found("SLC"));
-  REQUIRE(key_value.Found("Ogden"));
-  REQUIRE(key_value.Found("Layton"));
-  REQUIRE(key_value.Found("Roy"));
-  REQUIRE(key_value.Found("Taylor"));
+  CHECK(key_value.Found("SLC"));
+  CHECK(key_value.Found("Ogden"));
+  CHECK(key_value.Found("Layton"));
+  CHECK(key_value.Found("Roy"));
+  CHECK(key_value.Found("Taylor"));
 
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 }
 
 TEST_CASE(
@@ -2141,17 +2141,17 @@ TEST_CASE(
   KeyValue<string, Carton, kSize> key_value;
   // add key value pairs to container
 
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
   key_value.Add("SLC", Carton(6, 8.5, 16));
-  REQUIRE(!key_value.Empty());
+  CHECK(!key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 1);
+  CHECK(key_value.size() == 1);
   key_value.RemoveOne("SLC");
-  REQUIRE(key_value.Empty());
+  CHECK(key_value.Empty());
   // test size
-  REQUIRE(key_value.size() == 0);
+  CHECK(key_value.size() == 0);
 }
 
 TEST_CASE(
@@ -2161,27 +2161,27 @@ TEST_CASE(
     "[full]") {
   KeyValue<string, Carton, kSize> key_value;
 
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 0);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 0);
   key_value.Add("SLC", Carton(22, 7, 19.3));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 1);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 1);
   key_value.Add("Ogden", Carton(16, 8, 20));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 2);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 2);
   key_value.Add("Layton", Carton(6, 8.5, 16));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 3);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 3);
   key_value.Add("Roy", Carton(14, 9.6, 12));
-  REQUIRE(!key_value.Full());
-  REQUIRE(key_value.size() == 4);
+  CHECK(!key_value.Full());
+  CHECK(key_value.size() == 4);
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
-  REQUIRE(key_value.Full());
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.Full());
+  CHECK(key_value.size() == 5);
   key_value.RemoveOne("SLC");
-  REQUIRE(!key_value.Full());
+  CHECK(!key_value.Full());
   // test size
-  REQUIRE(key_value.size() == 4);
+  CHECK(key_value.size() == 4);
 }
 
 TEST_CASE(
@@ -2197,7 +2197,7 @@ TEST_CASE(
   key_value.Add("Roy", Carton(14, 9.6, 12));
   key_value.Add("Taylor", Carton(20.8, 12, 14.2));
   // test size
-  REQUIRE(key_value.size() == 5);
+  CHECK(key_value.size() == 5);
 
   // test <<
   ofstream out("test_output.txt");
@@ -2208,41 +2208,41 @@ TEST_CASE(
   string line;
   getline(in, line);
   if (key_value.ValueAt("SLC").width() == 7) {
-    REQUIRE("SLC: Carton 22.0 x 7.0 x 19.3" == line);
+    CHECK("SLC: Carton 22.0 x 7.0 x 19.3" == line);
   } else {
-    REQUIRE("SLC: Carton 22.0 x 19.3 x 7.0" == line);
+    CHECK("SLC: Carton 22.0 x 19.3 x 7.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt("Ogden").width() == 16) {
-    REQUIRE("Ogden: Carton 20.0 x 16.0 x 8.0" == line);
+    CHECK("Ogden: Carton 20.0 x 16.0 x 8.0" == line);
   } else {
-    REQUIRE("Ogden: Carton 20.0 x 8.0 x 16.0" == line);
+    CHECK("Ogden: Carton 20.0 x 8.0 x 16.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt("Layton").width() == 6) {
-    REQUIRE("Layton: Carton 16.0 x 6.0 x 8.5" == line);
+    CHECK("Layton: Carton 16.0 x 6.0 x 8.5" == line);
   } else {
-    REQUIRE("Layton: Carton 16.0 x 8.5 x 6.0" == line);
+    CHECK("Layton: Carton 16.0 x 8.5 x 6.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt("Roy").width() == 12) {
-    REQUIRE("Roy: Carton 14.0 x 12.0 x 9.6" == line);
+    CHECK("Roy: Carton 14.0 x 12.0 x 9.6" == line);
   } else {
-    REQUIRE("Roy: Carton 14.0 x 9.6 x 12.0" == line);
+    CHECK("Roy: Carton 14.0 x 9.6 x 12.0" == line);
   }
 
   getline(in, line);
   if (key_value.ValueAt("Taylor").width() == 12) {
-    REQUIRE("Taylor: Carton 20.8 x 12.0 x 14.2" == line);
+    CHECK("Taylor: Carton 20.8 x 12.0 x 14.2" == line);
   } else {
-    REQUIRE("Taylor: Carton 20.8 x 14.2 x 12.0" == line);
+    CHECK("Taylor: Carton 20.8 x 14.2 x 12.0" == line);
   }
 
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 
   in.close();
 }

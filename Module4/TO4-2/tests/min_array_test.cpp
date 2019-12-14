@@ -19,7 +19,7 @@ TEST_CASE(
   array<int, kMaxSize> integers = {45, 63, 17, 22, 99, 71, 54, 87,
                                    23, 51, 3,  19, 13, 5,  7};
 
-  REQUIRE(MinInArray(integers, 15) == 3);
+  CHECK(MinInArray(integers, 15) == 3);
 }
 
 TEST_CASE(
@@ -30,7 +30,7 @@ TEST_CASE(
   array<int, kMaxSize> integers = {3,  63, 17, 22, 99, 71, 54, 87,
                                    23, 51, 45, 19, 13, 5,  7};
 
-  REQUIRE(MinInArray(integers, 15) == 3);
+  CHECK(MinInArray(integers, 15) == 3);
 }
 
 TEST_CASE(
@@ -41,7 +41,7 @@ TEST_CASE(
   array<int, kMaxSize> integers = {83, 63, 17, 22, 99, 71, 54, 87,
                                    23, 51, 45, 19, 13, 5,  3};
 
-  REQUIRE(MinInArray(integers, 15) == 3);
+  CHECK(MinInArray(integers, 15) == 3);
 }
 
 //******************************doubles******************************
@@ -54,7 +54,7 @@ TEST_CASE(
                                      91.93,  66.724, 88.382, 42.89,
                                      276.54, 301.47, 218.56, 274.87};
 
-  REQUIRE(fabs(MinInArray(doubles, 12) - 42.89) < .001);
+  CHECK(fabs(MinInArray(doubles, 12) - 42.89) < .001);
 }
 
 TEST_CASE(
@@ -65,7 +65,7 @@ TEST_CASE(
                                      91.93,  66.724, 88.382, 71.3,
                                      276.54, 301.47, 218.56, 274.87};
 
-  REQUIRE(fabs(MinInArray(doubles, 12) - 42.89) < .001);
+  CHECK(fabs(MinInArray(doubles, 12) - 42.89) < .001);
 }
 
 TEST_CASE(
@@ -76,7 +76,7 @@ TEST_CASE(
                                      91.93,  66.724, 88.382, 274.87,
                                      276.54, 301.47, 218.56, 42.89};
 
-  REQUIRE(fabs(MinInArray(doubles, 12) - 42.89) < .001);
+  CHECK(fabs(MinInArray(doubles, 12) - 42.89) < .001);
 }
 
 //******************************Cartons******************************
@@ -88,8 +88,8 @@ TEST_CASE(
     "[less_than]") {
   Carton carton1(5.6, 12.4, 3.7);
   Carton carton2(7.8, 13.2, 5.9);
-  REQUIRE(carton1 < carton2);
-  REQUIRE(!(carton2 < carton1));
+  CHECK(carton1 < carton2);
+  CHECK(!(carton2 < carton1));
 }
 
 TEST_CASE(
@@ -101,7 +101,7 @@ TEST_CASE(
                                      Carton(12, 14, 22), Carton(16, 12.8, 13),
                                      Carton(15, 8, 12),  Carton(9, 13, 21)};
 
-  REQUIRE(fabs(MinInArray(cartons, 6).Volume() - 672) < .001);
+  CHECK(fabs(MinInArray(cartons, 6).Volume() - 672) < .001);
 }
 
 TEST_CASE(
@@ -113,7 +113,7 @@ TEST_CASE(
                                      Carton(16, 12.8, 13), Carton(6, 8, 14),
                                      Carton(15, 8, 12),    Carton(9, 13, 21)};
 
-  REQUIRE(fabs(MinInArray(cartons, 6).Volume() - 672) < .001);
+  CHECK(fabs(MinInArray(cartons, 6).Volume() - 672) < .001);
 }
 
 TEST_CASE(
@@ -125,5 +125,5 @@ TEST_CASE(
                                      Carton(16, 12.8, 13), Carton(15, 8, 12),
                                      Carton(9, 13, 21),    Carton(6, 8, 14)};
 
-  REQUIRE(fabs(MinInArray(cartons, 6).Volume() - 672) < .001);
+  CHECK(fabs(MinInArray(cartons, 6).Volume() - 672) < .001);
 }

@@ -15,9 +15,9 @@ TEST_CASE(
     "[load],[start]") {
   Load load;
 
-  REQUIRE(load.count() == 0);
-  REQUIRE(load.total_volume() == 0);
-  REQUIRE(load.total_weight() == 0);
+  CHECK(load.count() == 0);
+  CHECK(load.total_volume() == 0);
+  CHECK(load.total_weight() == 0);
 }
 
 //*********** other methods **************************
@@ -32,37 +32,37 @@ TEST_CASE(
   Load load;
   load.FillLoad("../tests/load_test.txt");
 
-  REQUIRE(fabs(load.count() - 6) < .001);
-  REQUIRE(fabs(load.total_volume() - 16601.372442) < .1);
-  REQUIRE(fabs(load.total_weight() - 103.58) < .001);
+  CHECK(fabs(load.count() - 6) < .001);
+  CHECK(fabs(load.total_volume() - 16601.372442) < .1);
+  CHECK(fabs(load.total_weight() - 103.58) < .001);
 
   std::ofstream out("../tests/output.txt");
   load.DisplayNextDelivery(out);
-  REQUIRE(load.HowManyDelivered() == 0);
-  REQUIRE(load.HowManyNotDelivered() == 6);
+  CHECK(load.HowManyDelivered() == 0);
+  CHECK(load.HowManyNotDelivered() == 6);
   load.ItemDelivered();
-  REQUIRE(load.HowManyDelivered() == 1);
-  REQUIRE(load.HowManyNotDelivered() == 5);
+  CHECK(load.HowManyDelivered() == 1);
+  CHECK(load.HowManyNotDelivered() == 5);
   load.DisplayNextDelivery(out);
   load.NotDeliverable();
-  REQUIRE(load.HowManyDelivered() == 1);
-  REQUIRE(load.HowManyNotDelivered() == 5);
+  CHECK(load.HowManyDelivered() == 1);
+  CHECK(load.HowManyNotDelivered() == 5);
   load.DisplayNextDelivery(out);
   load.ItemDelivered();
-  REQUIRE(load.HowManyDelivered() == 2);
-  REQUIRE(load.HowManyNotDelivered() == 4);
+  CHECK(load.HowManyDelivered() == 2);
+  CHECK(load.HowManyNotDelivered() == 4);
   load.DisplayNextDelivery(out);
   load.ItemDelivered();
-  REQUIRE(load.HowManyDelivered() == 3);
-  REQUIRE(load.HowManyNotDelivered() == 3);
+  CHECK(load.HowManyDelivered() == 3);
+  CHECK(load.HowManyNotDelivered() == 3);
   load.DisplayNextDelivery(out);
   load.ItemDelivered();
-  REQUIRE(load.HowManyDelivered() == 4);
-  REQUIRE(load.HowManyNotDelivered() == 2);
+  CHECK(load.HowManyDelivered() == 4);
+  CHECK(load.HowManyNotDelivered() == 2);
   load.DisplayNextDelivery(out);
   load.ItemDelivered();
-  REQUIRE(load.HowManyDelivered() == 5);
-  REQUIRE(load.HowManyNotDelivered() == 1);
+  CHECK(load.HowManyDelivered() == 5);
+  CHECK(load.HowManyNotDelivered() == 1);
 
   out.close();
 
@@ -70,51 +70,51 @@ TEST_CASE(
   std::string line;
 
   std::getline(in, line);
-  REQUIRE(line == "Renee Javens");
+  CHECK(line == "Renee Javens");
   std::getline(in, line);
-  REQUIRE(line == "281 South Main");
+  CHECK(line == "281 South Main");
   std::getline(in, line);
-  REQUIRE(line == "Ogden, UT 84408");
+  CHECK(line == "Ogden, UT 84408");
   std::getline(in, line);
-  REQUIRE(line == "Carton: 42.0 lbs. 24.0 x 18.0 x 18.0");
+  CHECK(line == "Carton: 42.0 lbs. 24.0 x 18.0 x 18.0");
   std::getline(in, line);
-  REQUIRE(line == "Rose Harrison");
+  CHECK(line == "Rose Harrison");
   std::getline(in, line);
-  REQUIRE(line == "302 South Main");
+  CHECK(line == "302 South Main");
   std::getline(in, line);
-  REQUIRE(line == "Ogden, UT 84408");
+  CHECK(line == "Ogden, UT 84408");
   std::getline(in, line);
-  REQUIRE(line == "Flat: 0.7 lbs. 12.0 x 9.0 x 0.3");
+  CHECK(line == "Flat: 0.7 lbs. 12.0 x 9.0 x 0.3");
   std::getline(in, line);
-  REQUIRE(line == "Jeff Allen");
+  CHECK(line == "Jeff Allen");
   std::getline(in, line);
-  REQUIRE(line == "162 South Main");
+  CHECK(line == "162 South Main");
   std::getline(in, line);
-  REQUIRE(line == "Ogden, UT 84408");
+  CHECK(line == "Ogden, UT 84408");
   std::getline(in, line);
-  REQUIRE(line == "Tube: 4.7 lbs. 19.0 x 6.3");
+  CHECK(line == "Tube: 4.7 lbs. 19.0 x 6.3");
   std::getline(in, line);
-  REQUIRE(line == "Cathy Setzer");
+  CHECK(line == "Cathy Setzer");
   std::getline(in, line);
-  REQUIRE(line == "320 South Main");
+  CHECK(line == "320 South Main");
   std::getline(in, line);
-  REQUIRE(line == "Ogden, UT 84408");
+  CHECK(line == "Ogden, UT 84408");
   std::getline(in, line);
-  REQUIRE(line == "Flat: 2.4 lbs. 14.0 x 8.0 x 0.5");
+  CHECK(line == "Flat: 2.4 lbs. 14.0 x 8.0 x 0.5");
   std::getline(in, line);
-  REQUIRE(line == "Gordon Pike");
+  CHECK(line == "Gordon Pike");
   std::getline(in, line);
-  REQUIRE(line == "328 South Main");
+  CHECK(line == "328 South Main");
   std::getline(in, line);
-  REQUIRE(line == "Ogden, UT 84408");
+  CHECK(line == "Ogden, UT 84408");
   std::getline(in, line);
-  REQUIRE(line == "Carton: 51.0 lbs. 32.5 x 16.2 x 16.2");
+  CHECK(line == "Carton: 51.0 lbs. 32.5 x 16.2 x 16.2");
   std::getline(in, line);
-  REQUIRE(line == "Jeff Allison");
+  CHECK(line == "Jeff Allison");
   std::getline(in, line);
-  REQUIRE(line == "172 South Main");
+  CHECK(line == "172 South Main");
   std::getline(in, line);
-  REQUIRE(line == "Ogden, UT 84408");
+  CHECK(line == "Ogden, UT 84408");
   std::getline(in, line);
-  REQUIRE(line == "Tube: 2.8 lbs. 28.0 x 8.2");
+  CHECK(line == "Tube: 2.8 lbs. 28.0 x 8.2");
 }

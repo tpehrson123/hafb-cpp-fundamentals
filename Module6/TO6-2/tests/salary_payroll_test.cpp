@@ -11,9 +11,9 @@ TEST_CASE(
     "'it is', and last name to 'unknown'",
     "[start]") {
   SalaryPayroll salary;
-  REQUIRE(fabs(salary.pay_rate() - 0) < .0001);
-  REQUIRE(salary.first_name() == "it is");
-  REQUIRE(salary.last_name() == "unknown");
+  CHECK(fabs(salary.pay_rate() - 0) < .0001);
+  CHECK(salary.first_name() == "it is");
+  CHECK(salary.last_name() == "unknown");
 }
 
 //***************************Other constructor*************************
@@ -22,26 +22,26 @@ TEST_CASE(
     "'1254.8, 'Peters, Walter' ",
     "[start]") {
   SalaryPayroll salary(1254.8, "Peters, Walter");
-  REQUIRE(fabs(salary.pay_rate() - 1254.8) < .0001);
-  REQUIRE(salary.first_name() == "Walter");
-  REQUIRE(salary.last_name() == "Peters");
+  CHECK(fabs(salary.pay_rate() - 1254.8) < .0001);
+  CHECK(salary.first_name() == "Walter");
+  CHECK(salary.last_name() == "Peters");
 }
 
 TEST_CASE(
     "Other constructor throws out of range exception when called with pay rate "
     "less than 0",
     "[start]") {
-  REQUIRE_THROWS_AS(SalaryPayroll(-34.2, "Peters, Walter"), std::out_of_range);
+  CHECK_THROWS_AS(SalaryPayroll(-34.2, "Peters, Walter"), std::out_of_range);
 }
 
 //***************************getters*************************
 TEST_CASE("Getters return expected values for the SalaryPayroll", "[start]") {
   SalaryPayroll salary(2571, "Johnson, Terry");
-  REQUIRE(fabs(salary.pay_rate() - 2571) < .0001);
-  REQUIRE(salary.first_name() == "Terry");
-  REQUIRE(salary.last_name() == "Johnson");
-  REQUIRE(salary.name() == "Terry Johnson");
-  REQUIRE(salary.name_last_first() == "Johnson, Terry");
+  CHECK(fabs(salary.pay_rate() - 2571) < .0001);
+  CHECK(salary.first_name() == "Terry");
+  CHECK(salary.last_name() == "Johnson");
+  CHECK(salary.name() == "Terry Johnson");
+  CHECK(salary.name_last_first() == "Johnson, Terry");
 }
 
 //***************************set pay rate*************************
@@ -49,23 +49,23 @@ TEST_CASE("Getters return expected values for the SalaryPayroll", "[start]") {
 TEST_CASE("Pay rate setter sets pay rate to 8125", "[start]") {
   SalaryPayroll salary(1450, "Walters, Kerry");
   salary.set_pay_rate(8125);
-  REQUIRE(fabs(salary.pay_rate() - 8125) < .0001);
-  REQUIRE(salary.first_name() == "Kerry");
-  REQUIRE(salary.last_name() == "Walters");
+  CHECK(fabs(salary.pay_rate() - 8125) < .0001);
+  CHECK(salary.first_name() == "Kerry");
+  CHECK(salary.last_name() == "Walters");
 }
 
 TEST_CASE("Pay rate setter sets pay rate to 7.23", "[start]") {
   SalaryPayroll salary(1450, "Walters, Kerry");
   salary.set_pay_rate(7.23);
-  REQUIRE(fabs(salary.pay_rate() - 7.23) < .0001);
-  REQUIRE(salary.first_name() == "Kerry");
-  REQUIRE(salary.last_name() == "Walters");
+  CHECK(fabs(salary.pay_rate() - 7.23) < .0001);
+  CHECK(salary.first_name() == "Kerry");
+  CHECK(salary.last_name() == "Walters");
 }
 
 TEST_CASE("Pay rate setter throws out of bounds exception when set to -1.02",
           "[start]") {
   SalaryPayroll salary;
-  REQUIRE_THROWS_AS(salary.set_pay_rate(-1.02), std::out_of_range);
+  CHECK_THROWS_AS(salary.set_pay_rate(-1.02), std::out_of_range);
 }
 
 //***************************set name*************************
@@ -74,18 +74,18 @@ TEST_CASE("Name setter sets name to Kelly Walter when sent Kelly Walter",
           "[start]") {
   SalaryPayroll salary;
   salary.set_name("Kelly Walter");
-  REQUIRE(fabs(salary.pay_rate() - 0) < .0001);
-  REQUIRE(salary.first_name() == "Kelly");
-  REQUIRE(salary.last_name() == "Walter");
+  CHECK(fabs(salary.pay_rate() - 0) < .0001);
+  CHECK(salary.first_name() == "Kelly");
+  CHECK(salary.last_name() == "Walter");
 }
 
 TEST_CASE("Name setter sets name to Kelly Walter when sent Walter, Kelly ",
           "[start]") {
   SalaryPayroll salary;
   salary.set_name("Walter, Kelly");
-  REQUIRE(fabs(salary.pay_rate() - 0) < .0001);
-  REQUIRE(salary.first_name() == "Kelly");
-  REQUIRE(salary.last_name() == "Walter");
+  CHECK(fabs(salary.pay_rate() - 0) < .0001);
+  CHECK(salary.first_name() == "Kelly");
+  CHECK(salary.last_name() == "Walter");
 }
 
 //***************************ComputeGross*************************
@@ -94,19 +94,19 @@ TEST_CASE("ComputeGross returns 752 when hours is 32 and pay rate is 752",
           "[gross]") {
   SalaryPayroll salary(752, "Kim Johnson");
 
-  REQUIRE(fabs(salary.ComputeGross() - 752) < .0001);
+  CHECK(fabs(salary.ComputeGross() - 752) < .0001);
 }
 
 TEST_CASE("ComputeGross returns 2356.4 when pay rate is 2356.4", "[gross]") {
   SalaryPayroll salary(2356.4, "Kim Johnson");
 
-  REQUIRE(fabs(salary.ComputeGross() - 2356.4) < .0001);
+  CHECK(fabs(salary.ComputeGross() - 2356.4) < .0001);
 }
 
 TEST_CASE("ComputeGross returns 0 when pay rate is 0", "[gross]") {
   SalaryPayroll salary(0, "Kim Johnson");
 
-  REQUIRE(fabs(salary.ComputeGross() - 0) < .0001);
+  CHECK(fabs(salary.ComputeGross() - 0) < .0001);
 }
 
 //***************************WriteData*************************
@@ -121,17 +121,17 @@ TEST_CASE(
   out.close();
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
   getline(in, line);
-  REQUIRE(line == "S 1492");
+  CHECK(line == "S 1492");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -147,21 +147,21 @@ TEST_CASE(
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
   getline(in, line);
-  REQUIRE(line == "S 1279.2");
+  CHECK(line == "S 1279.2");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "S 1492");
+  CHECK(line == "S 1492");
   getline(in, line);
-  REQUIRE(line == "Johnson, Kim");
+  CHECK(line == "Johnson, Kim");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -177,20 +177,20 @@ TEST_CASE("PayrollReport prints expected report when pay rate is 3175.3",
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: salary");
+  CHECK(line == "Pay Type: salary");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $3175.30");
+  CHECK(line == "Pay Rate: $3175.30");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $3175.30");
+  CHECK(line == "Gross Pay: $3175.30");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -204,20 +204,20 @@ TEST_CASE("PayrollReport prints expected report when pay rate is 1370.6",
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: salary");
+  CHECK(line == "Pay Type: salary");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $1370.60");
+  CHECK(line == "Pay Rate: $1370.60");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1370.60");
+  CHECK(line == "Gross Pay: $1370.60");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }
 
@@ -235,27 +235,27 @@ TEST_CASE(
 
   std::ifstream in("test.out");
   if (in.fail()) {
-    REQUIRE("File Opened" == "Unable to open file");
+    CHECK("File Opened" == "Unable to open file");
   }
   std::string line;
 
   getline(in, line);
-  REQUIRE(line == "Kim Johnson");
+  CHECK(line == "Kim Johnson");
   getline(in, line);
-  REQUIRE(line == "Pay Type: salary");
+  CHECK(line == "Pay Type: salary");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $1279.20");
+  CHECK(line == "Pay Rate: $1279.20");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1279.20");
+  CHECK(line == "Gross Pay: $1279.20");
   getline(in, line);
-  REQUIRE(line == "John Jones");
+  CHECK(line == "John Jones");
   getline(in, line);
-  REQUIRE(line == "Pay Type: salary");
+  CHECK(line == "Pay Type: salary");
   getline(in, line);
-  REQUIRE(line == "Pay Rate: $1492.00");
+  CHECK(line == "Pay Rate: $1492.00");
   getline(in, line);
-  REQUIRE(line == "Gross Pay: $1492.00");
+  CHECK(line == "Gross Pay: $1492.00");
   getline(in, line);
-  REQUIRE(line == "");
+  CHECK(line == "");
   in.close();
 }

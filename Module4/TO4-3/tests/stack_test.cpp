@@ -18,7 +18,7 @@ TEST_CASE(
     "when stack is of type int.",
     "[constructor][size][int]") {
   Stack<int, kMaxSize> stack;
-  REQUIRE(stack.Size() == 0);
+  CHECK(stack.Size() == 0);
 }
 
 TEST_CASE(
@@ -27,8 +27,8 @@ TEST_CASE(
     "size 1, and top equal to item when stack is of type int.",
     "[constructor][top][size][int]") {
   Stack<int, kMaxSize> stack(23);
-  REQUIRE(stack.Size() == 1);
-  REQUIRE(stack.Top() == 23);
+  CHECK(stack.Size() == 1);
+  CHECK(stack.Top() == 23);
 }
 
 TEST_CASE(
@@ -37,13 +37,13 @@ TEST_CASE(
     "item when stack is of type int.",
     "[push][top][size][int]") {
   Stack<int, kMaxSize> stack;
-  REQUIRE(stack.Size() == 0);
+  CHECK(stack.Size() == 0);
   stack.Push(95);
-  REQUIRE(stack.Size() == 1);
-  REQUIRE(stack.Top() == 95);
+  CHECK(stack.Size() == 1);
+  CHECK(stack.Top() == 95);
   stack.Push(78);
-  REQUIRE(stack.Size() == 2);
-  REQUIRE(stack.Top() == 78);
+  CHECK(stack.Size() == 2);
+  CHECK(stack.Top() == 78);
 }
 
 TEST_CASE(
@@ -55,10 +55,10 @@ TEST_CASE(
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(i);
 
-    REQUIRE(stack.Size() == i + 1);
-    REQUIRE(stack.Top() == i);
+    CHECK(stack.Size() == i + 1);
+    CHECK(stack.Top() == i);
   }
-  REQUIRE_THROWS_AS(stack.Push(23), std::out_of_range);
+  CHECK_THROWS_AS(stack.Push(23), std::out_of_range);
 }
 
 TEST_CASE(
@@ -70,13 +70,13 @@ TEST_CASE(
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(i);
 
-    REQUIRE(stack.Size() == i + 1);
-    REQUIRE(stack.Top() == i);
+    CHECK(stack.Size() == i + 1);
+    CHECK(stack.Top() == i);
   }
   for (int i = kMaxSize - 1; i > -1; i--) {
-    REQUIRE(stack.Top() == i);
-    REQUIRE(stack.Pop() == i);
-    REQUIRE(stack.Size() == i);
+    CHECK(stack.Top() == i);
+    CHECK(stack.Pop() == i);
+    CHECK(stack.Size() == i);
   }
 }
 
@@ -85,7 +85,7 @@ TEST_CASE(
     "empty (just created) when stack is of type int.",
     "[pop][int]") {
   Stack<int, kMaxSize> stack;
-  REQUIRE_THROWS_AS(stack.Pop(), std::out_of_range);
+  CHECK_THROWS_AS(stack.Pop(), std::out_of_range);
 }
 
 TEST_CASE(
@@ -99,7 +99,7 @@ TEST_CASE(
   for (int i = 0; i < 5; i++) {
     stack.Pop();
   }
-  REQUIRE_THROWS_AS(stack.Pop(), std::out_of_range);
+  CHECK_THROWS_AS(stack.Pop(), std::out_of_range);
 }
 
 TEST_CASE(
@@ -108,10 +108,10 @@ TEST_CASE(
     "[full][int]") {
   Stack<int, kMaxSize> stack;
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(!stack.Full());
+    CHECK(!stack.Full());
     stack.Push(i);
   }
-  REQUIRE(stack.Full());
+  CHECK(stack.Full());
 }
 
 TEST_CASE(
@@ -119,16 +119,16 @@ TEST_CASE(
     "empty when stack is of type int.",
     "[empty][int]") {
   Stack<int, kMaxSize> stack;
-  REQUIRE(stack.Empty());
+  CHECK(stack.Empty());
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(i);
-    REQUIRE(!stack.Empty());
+    CHECK(!stack.Empty());
   }
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(!stack.Empty());
+    CHECK(!stack.Empty());
     stack.Pop();
   }
-  REQUIRE(stack.Empty());
+  CHECK(stack.Empty());
 }
 
 TEST_CASE(
@@ -144,11 +144,11 @@ TEST_CASE(
   std::ifstream in("test.out");
   std::string line;
   getline(in, line);
-  REQUIRE("Stack maximum size: " + std::to_string(kMaxSize) == line);
+  CHECK("Stack maximum size: " + std::to_string(kMaxSize) == line);
   getline(in, line);
-  REQUIRE("The stack is empty" == line);
+  CHECK("The stack is empty" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 TEST_CASE(
@@ -168,13 +168,13 @@ TEST_CASE(
   std::ifstream in("test.out");
   std::string line;
   getline(in, line);
-  REQUIRE("Stack maximum size: " + std::to_string(kMaxSize) == line);
+  CHECK("Stack maximum size: " + std::to_string(kMaxSize) == line);
   getline(in, line);
-  REQUIRE("Stack current size: 3" == line);
+  CHECK("Stack current size: 3" == line);
   getline(in, line);
-  REQUIRE("Value at top of stack: 2" == line);
+  CHECK("Value at top of stack: 2" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 //******************* string Stack ************************
@@ -184,7 +184,7 @@ TEST_CASE(
     "when stack is of type string.",
     "[constructor][size][string]") {
   Stack<std::string, kMaxSize> stack;
-  REQUIRE(stack.Size() == 0);
+  CHECK(stack.Size() == 0);
 }
 
 TEST_CASE(
@@ -193,8 +193,8 @@ TEST_CASE(
     "size 1, and top equal to item when stack is of type string.",
     "[constructor][top][size][string]") {
   Stack<std::string, kMaxSize> stack("green");
-  REQUIRE(stack.Size() == 1);
-  REQUIRE(stack.Top() == "green");
+  CHECK(stack.Size() == 1);
+  CHECK(stack.Top() == "green");
 }
 
 TEST_CASE(
@@ -203,13 +203,13 @@ TEST_CASE(
     "item when stack is of type std::string.",
     "[push][top][size][string]") {
   Stack<std::string, kMaxSize> stack;
-  REQUIRE(stack.Size() == 0);
+  CHECK(stack.Size() == 0);
   stack.Push("green");
-  REQUIRE(stack.Size() == 1);
-  REQUIRE(stack.Top() == "green");
+  CHECK(stack.Size() == 1);
+  CHECK(stack.Top() == "green");
   stack.Push("blue");
-  REQUIRE(stack.Size() == 2);
-  REQUIRE(stack.Top() == "blue");
+  CHECK(stack.Size() == 2);
+  CHECK(stack.Top() == "blue");
 }
 
 TEST_CASE(
@@ -221,10 +221,10 @@ TEST_CASE(
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(std::to_string(i));
 
-    REQUIRE(stack.Size() == i + 1);
-    REQUIRE(stack.Top() == std::to_string(i));
+    CHECK(stack.Size() == i + 1);
+    CHECK(stack.Top() == std::to_string(i));
   }
-  REQUIRE_THROWS_AS(stack.Push("yellow"), std::out_of_range);
+  CHECK_THROWS_AS(stack.Push("yellow"), std::out_of_range);
 }
 
 TEST_CASE(
@@ -236,13 +236,13 @@ TEST_CASE(
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(std::to_string(i));
 
-    REQUIRE(stack.Size() == i + 1);
-    REQUIRE(stack.Top() == std::to_string(i));
+    CHECK(stack.Size() == i + 1);
+    CHECK(stack.Top() == std::to_string(i));
   }
   for (int i = kMaxSize - 1; i > -1; i--) {
-    REQUIRE(stack.Top() == std::to_string(i));
-    REQUIRE(stack.Pop() == std::to_string(i));
-    REQUIRE(stack.Size() == i);
+    CHECK(stack.Top() == std::to_string(i));
+    CHECK(stack.Pop() == std::to_string(i));
+    CHECK(stack.Size() == i);
   }
 }
 
@@ -251,7 +251,7 @@ TEST_CASE(
     "empty (just created) when stack is of type std::string.",
     "[pop][string]") {
   Stack<std::string, kMaxSize> stack;
-  REQUIRE_THROWS_AS(stack.Pop(), std::out_of_range);
+  CHECK_THROWS_AS(stack.Pop(), std::out_of_range);
 }
 
 TEST_CASE(
@@ -265,7 +265,7 @@ TEST_CASE(
   for (int i = 0; i < 5; i++) {
     stack.Pop();
   }
-  REQUIRE_THROWS_AS(stack.Pop(), std::out_of_range);
+  CHECK_THROWS_AS(stack.Pop(), std::out_of_range);
 }
 
 TEST_CASE(
@@ -274,10 +274,10 @@ TEST_CASE(
     "[full][string]") {
   Stack<std::string, kMaxSize> stack;
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(!stack.Full());
+    CHECK(!stack.Full());
     stack.Push(std::to_string(i));
   }
-  REQUIRE(stack.Full());
+  CHECK(stack.Full());
 }
 
 TEST_CASE(
@@ -285,16 +285,16 @@ TEST_CASE(
     "empty when stack is of type std::string.",
     "[empty][string]") {
   Stack<std::string, kMaxSize> stack;
-  REQUIRE(stack.Empty());
+  CHECK(stack.Empty());
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(std::to_string(i));
-    REQUIRE(!stack.Empty());
+    CHECK(!stack.Empty());
   }
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(!stack.Empty());
+    CHECK(!stack.Empty());
     stack.Pop();
   }
-  REQUIRE(stack.Empty());
+  CHECK(stack.Empty());
 }
 
 TEST_CASE(
@@ -309,11 +309,11 @@ TEST_CASE(
   std::ifstream in("test.out");
   std::string line;
   getline(in, line);
-  REQUIRE("Stack maximum size: " + std::to_string(kMaxSize) == line);
+  CHECK("Stack maximum size: " + std::to_string(kMaxSize) == line);
   getline(in, line);
-  REQUIRE("The stack is empty" == line);
+  CHECK("The stack is empty" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 TEST_CASE(
@@ -333,13 +333,13 @@ TEST_CASE(
   std::ifstream in("test.out");
   std::string line;
   getline(in, line);
-  REQUIRE("Stack maximum size: " + std::to_string(kMaxSize) == line);
+  CHECK("Stack maximum size: " + std::to_string(kMaxSize) == line);
   getline(in, line);
-  REQUIRE("Stack current size: 3" == line);
+  CHECK("Stack current size: 3" == line);
   getline(in, line);
-  REQUIRE("Value at top of stack: 2" == line);
+  CHECK("Value at top of stack: 2" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 //************************ Carton Stack *****************************
@@ -361,20 +361,20 @@ TEST_CASE(
   std::string line;
   getline(in, line);
   if (fabs(one.width() - 7.0) < .001) {
-    REQUIRE("Carton 22.0 x 7.0 x 19.4" == line);
+    CHECK("Carton 22.0 x 7.0 x 19.4" == line);
   } else {
-    REQUIRE("Carton 22.0 x 19.4 x 7.0" == line);
+    CHECK("Carton 22.0 x 19.4 x 7.0" == line);
   }
 
   getline(in, line);
 
   if (fabs(one.width() - 8.0) < .001) {
-    REQUIRE("Carton 20.0 x 8.0 x 9.5" == line);
+    CHECK("Carton 20.0 x 8.0 x 9.5" == line);
   } else {
-    REQUIRE("Carton 20.0 x 9.5 x 8.0" == line);
+    CHECK("Carton 20.0 x 9.5 x 8.0" == line);
   }
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 TEST_CASE(
@@ -382,7 +382,7 @@ TEST_CASE(
     "when stack is of type Carton.",
     "[constructor][size][carton]") {
   Stack<Carton, kMaxSize> stack;
-  REQUIRE(stack.Size() == 0);
+  CHECK(stack.Size() == 0);
 }
 
 TEST_CASE(
@@ -391,9 +391,9 @@ TEST_CASE(
     "size 1, and top equal to item when stack is of type Carton.",
     "[constructor][top][size][carton]") {
   Stack<Carton, kMaxSize> stack(Carton(22, 7, 19.38));
-  REQUIRE(stack.Size() == 1);
+  CHECK(stack.Size() == 1);
   Carton one(22, 7, 19.38);
-  REQUIRE(fabs(stack.Top().Volume() - one.Volume()) < .1);
+  CHECK(fabs(stack.Top().Volume() - one.Volume()) < .1);
 }
 
 TEST_CASE(
@@ -402,17 +402,17 @@ TEST_CASE(
     "item when stack is of type Carton.",
     "[push][top][size][carton]") {
   Stack<Carton, kMaxSize> stack;
-  REQUIRE(stack.Size() == 0);
+  CHECK(stack.Size() == 0);
   stack.Push(Carton(16, 8, 20));
-  REQUIRE(stack.Size() == 1);
+  CHECK(stack.Size() == 1);
 
   Carton one(16, 8, 20);
-  REQUIRE(fabs(stack.Top().Volume() - one.Volume()) < .1);
+  CHECK(fabs(stack.Top().Volume() - one.Volume()) < .1);
   stack.Push(Carton(8, 20, 9.54));
-  REQUIRE(stack.Size() == 2);
+  CHECK(stack.Size() == 2);
 
   Carton two(8, 20, 9.54);
-  REQUIRE(fabs(stack.Top().Volume() - two.Volume()) < .1);
+  CHECK(fabs(stack.Top().Volume() - two.Volume()) < .1);
 }
 
 TEST_CASE(
@@ -424,11 +424,11 @@ TEST_CASE(
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(Carton(14, i + 7, 12));
     Carton two;
-    REQUIRE(stack.Size() == i + 1);
+    CHECK(stack.Size() == i + 1);
     two = Carton(14, i + 7, 12);
-    REQUIRE(fabs(stack.Top().Volume() - two.Volume()) < .1);
+    CHECK(fabs(stack.Top().Volume() - two.Volume()) < .1);
   }
-  REQUIRE_THROWS_AS(stack.Push(Carton(14, 9.6, 12)), std::out_of_range);
+  CHECK_THROWS_AS(stack.Push(Carton(14, 9.6, 12)), std::out_of_range);
 }
 
 TEST_CASE(
@@ -441,15 +441,15 @@ TEST_CASE(
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(Carton(20.8, i + 7, 14.2));
 
-    REQUIRE(stack.Size() == i + 1);
+    CHECK(stack.Size() == i + 1);
     two = Carton(20.8, i + 7, 14.2);
-    REQUIRE(fabs(stack.Top().Volume() - two.Volume()) < .1);
+    CHECK(fabs(stack.Top().Volume() - two.Volume()) < .1);
   }
   for (int i = kMaxSize - 1; i > -1; i--) {
     two = Carton(20.8, i + 7, 14.2);
-    REQUIRE(fabs(stack.Top().Volume() - two.Volume()) < .1);
-    REQUIRE(fabs(stack.Pop().Volume() - two.Volume()) < .1);
-    REQUIRE(stack.Size() == i);
+    CHECK(fabs(stack.Top().Volume() - two.Volume()) < .1);
+    CHECK(fabs(stack.Pop().Volume() - two.Volume()) < .1);
+    CHECK(stack.Size() == i);
   }
 }
 
@@ -458,7 +458,7 @@ TEST_CASE(
     "empty (just created) when stack is of type Carton.",
     "[pop][carton]") {
   Stack<Carton, kMaxSize> stack;
-  REQUIRE_THROWS_AS(stack.Pop(), std::out_of_range);
+  CHECK_THROWS_AS(stack.Pop(), std::out_of_range);
 }
 
 TEST_CASE(
@@ -472,7 +472,7 @@ TEST_CASE(
   for (int i = 0; i < 5; i++) {
     stack.Pop();
   }
-  REQUIRE_THROWS_AS(stack.Pop(), std::out_of_range);
+  CHECK_THROWS_AS(stack.Pop(), std::out_of_range);
 }
 
 TEST_CASE(
@@ -481,10 +481,10 @@ TEST_CASE(
     "[full][carton]") {
   Stack<Carton, kMaxSize> stack;
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(!stack.Full());
+    CHECK(!stack.Full());
     stack.Push(Carton(i + 7, 7.8, 19.3));
   }
-  REQUIRE(stack.Full());
+  CHECK(stack.Full());
 }
 
 TEST_CASE(
@@ -492,16 +492,16 @@ TEST_CASE(
     "empty when stack is of type Carton.",
     "[empty][carton]") {
   Stack<Carton, kMaxSize> stack;
-  REQUIRE(stack.Empty());
+  CHECK(stack.Empty());
   for (int i = 0; i < kMaxSize; i++) {
     stack.Push(Carton(i + 7, 7.8, 19.3));
-    REQUIRE(!stack.Empty());
+    CHECK(!stack.Empty());
   }
   for (int i = 0; i < kMaxSize; i++) {
-    REQUIRE(!stack.Empty());
+    CHECK(!stack.Empty());
     stack.Pop();
   }
-  REQUIRE(stack.Empty());
+  CHECK(stack.Empty());
 }
 
 TEST_CASE(
@@ -516,11 +516,11 @@ TEST_CASE(
   std::ifstream in("test.out");
   std::string line;
   getline(in, line);
-  REQUIRE("Stack maximum size: " + std::to_string(kMaxSize) == line);
+  CHECK("Stack maximum size: " + std::to_string(kMaxSize) == line);
   getline(in, line);
-  REQUIRE("The stack is empty" == line);
+  CHECK("The stack is empty" == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }
 
 TEST_CASE(
@@ -548,11 +548,11 @@ TEST_CASE(
   std::ifstream in("test.out");
   std::string line;
   getline(in, line);
-  REQUIRE("Stack maximum size: " + std::to_string(kMaxSize) == line);
+  CHECK("Stack maximum size: " + std::to_string(kMaxSize) == line);
   getline(in, line);
-  REQUIRE("Stack current size: 3" == line);
+  CHECK("Stack current size: 3" == line);
   getline(in, line);
-  REQUIRE(expected_top == line);
+  CHECK(expected_top == line);
   getline(in, line);
-  REQUIRE("" == line);
+  CHECK("" == line);
 }

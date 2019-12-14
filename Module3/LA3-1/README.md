@@ -1,5 +1,5 @@
 # Try-It-Out Activity 1-1
-Template Repository for CS1410 class
+Template Repository for C++ Fundamentals class
 
 Compile and run the code. See that it prints out
 
@@ -21,4 +21,4 @@ If you get no errors, run your code:
 ```bash
 $ .\pa1.exe
 ```
-If you get your **Hello, CS1410** message. Your program is running. 
+If you get your **Hello, C++ Fundamentals** message. Your program is running. 

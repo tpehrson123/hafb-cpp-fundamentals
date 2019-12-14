@@ -11,7 +11,7 @@
  */
 TEST_CASE("Testing your system for the Factor library", "[M1]") 
 {
-  REQUIRE( FactorMod7() == 14);
+  CHECK( FactorMod7() == 14);
 }
 
 
@@ -31,5 +31,5 @@ TEST_CASE("Testing cout from void function", "[M1]")
   Hello();                                // Run Void function with output
   std::string s_out = buffer.getString(); // get capture output to string
   // Assert
-  REQUIRE(s_out == test_string);    // compare two strings
+  CHECK(s_out == test_string);    // compare two strings
 }
