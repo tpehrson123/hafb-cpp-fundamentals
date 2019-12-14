@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/hugo-valle/C++ Fundamentals-template.svg?branch=master)](https://travis-ci.com/hugo-valle/C++ Fundamentals-template)
-
 # C++ Fundamentals Module2
 This module, you will learn about the using and creating classes. We will 
 use the standard string class to store and manipulate strings. We will also 

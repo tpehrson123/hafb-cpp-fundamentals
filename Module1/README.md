@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/cs-1410-fall-2019/C++ Fundamentals-module1.svg?token=BHvuFKF2ZxDYaprsdh97&branch=master)](https://travis-ci.com/cs-1410-fall-2019/C++ Fundamentals-module1)[![Build Status](https://travis-ci.com/cs-1410-fall-19/C++ Fundamentals-module0.svg?branch=master)](https://travis-ci.com/hugo-valle/C++ Fundamentals-template)
-
 # C++ Fundamentals Module1
 This module, you will learn about the usage of variables 
 and control flow statements to create more robust 
