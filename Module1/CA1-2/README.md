@@ -278,12 +278,12 @@ Test your code with tag `[distance_point]`:
 $ .\bin\ca_test.exe [distance_point] -s
 ```
 
-3. When an enemy moves, it visits several points. Johnny needs to compute the `total_distance()` that it would take to walk along those points.
+3. When an enemy moves, it visits several points. Johnny needs to compute the total distance travel by the enemy. Define a new function `total_distance()` that it would take to walk along those points.
 
-   * For simplicity, we will limit the number of points to 10, but Johnny might need up to 100. The function would take `array<std::array<float, 3>, 10> `, which is an array of points, and compute the distance between consecutive points. 
+   * For simplicity, we will limit the number of points to 10, but Johnny might need up to 100. The function would take `array<std::array<float, 3>, 10> ` as input parameter, which is an array of "3D" points, and compute the distance between consecutive points. 
    * For example (with a list of 5 points): for the array `{{0,0,0}, {1,0,0}, {1,1,0}, {0,1,0}, {0,1,1}}`, the total distance is 5, because going from `{0,0,0} to {1,0,0}` is a distance of 1, then going from `{1,0,0} to {1,1,0}` is a distance of 1 again, and so on for the remaining 3 points.
     
-  Use may use the following code in `main()` to test your code:
+  You may use the following code in `main()` to test your program:
   ```c++
     std::array<float, 3> enemy1_location = {2, 2 ,0};
     std::array<float, 3> enemy2_location = {2, 4 ,0};
@@ -292,6 +292,7 @@ $ .\bin\ca_test.exe [distance_point] -s
     float distance_from_center = video::Distance(enemy1_location);
 
     float view_circumference_for_enemy = video::Circumference(34.5);
+    // Function that takes an array of 10 3D points. 
     float total_distance = video::TotalWalkingDistance(
         { enemy1_location,
         {2, 3, 0}, // y += 1
@@ -340,18 +341,6 @@ $ ctest
 
 ---
 ### Publish your code
-Before you push your code, you need to edit the `.travis.yml` file. This file is located in the [root](../.travis.yml)
-directory of your project. Uncomment `line 23`. 
-
-```CMake
-18: env: 
-19:  - TEST_DIR=TO1-3
-20:  - TEST_DIR=TO1-4
-21:  - TEST_DIR=TO1-5
-22:  - TEST_DIR=CA1-1
-23:  - TEST_DIR=CA1-2
-```
-
 Make sure you [commit and push](https://code.visualstudio.com/docs/editor/versioncontrol) your code to your online repository.
 
 ---

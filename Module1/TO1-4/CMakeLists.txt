@@ -17,6 +17,15 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_BINDIR})
 
 # Add source directory
 add_subdirectory(src)
-# Enable Testing
-enable_testing()
-add_subdirectory(tests)
+
+option(USE_TEST "Compile activity with unit test" OFF)
+
+# To Enable Testing, go to your build directory and clear all files, then 
+# use the -D option to enable the USE_TEST option
+# cd build 
+# rm *
+#  cmake -G "MinGW Makefiles"  -DUSE_TEST=ON ..
+if(USE_TEST)
+    enable_testing()
+    add_subdirectory(tests)
+endif()

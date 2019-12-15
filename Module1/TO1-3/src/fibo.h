@@ -5,6 +5,5 @@
 #ifndef FIBO_H_
 #define FIBO_H_
 
-int GetTenthFibonacci(int nth);
 
 #endif /* !FIBO_H_ */

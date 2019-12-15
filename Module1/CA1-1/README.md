@@ -5,7 +5,7 @@
 ### Github account:
 ---
 In the following activity, we will use a `while` loop and implement 
-the previous concept from [PA1.1](../PA1.1/README.md) to print the 
+the previous concept from [TO1-2](../TO1-2/README.md) to print the 
 numbers between `1 and 100 that are divisible by 7`.
 
 ---
@@ -14,6 +14,7 @@ You are required to work/modify the following files:
 - `README.md`: Update the student name an github account.
 - All the functions you write, will be part of the library `factor`. The library consist of these two files: 
   - `src/factor.cpp`
+  - `src/factor.hp`
 - Our "driver" will be `src/main.cpp`.
 
 Please **DO NOT MODIFY** any other files. Modifying any other file will result in penalty to your grade.
@@ -23,7 +24,7 @@ Please **DO NOT MODIFY** any other files. Modifying any other file will result i
 Create a library with a function `int FactorMod7()`. Use the provided template files for your 
 library: `factor.cpp` and `factor.h`  
 
-Now, let's rewrite the previous code [PA1.1](../PA1.1/README.md) using a `while` loop in the following way:
+Now, let's rewrite the previous code using a `while` loop in the following way:
 
 1. Inside your function, create a variable of the `unsigned` type. 
 
@@ -58,25 +59,10 @@ $ ./bin/ca_test.exe -s
 
 ```
 ### Publish your code
-Before you push your code, you need to edit the `.travis.yml` file. This file is located in the [root](../.travis.yml)
-directory of your project. Uncomment `line 22`. 
-
-```CMake
-18: env: 
-19:  - TEST_DIR=TO1-3
-20:  - TEST_DIR=TO1-4
-21:  - TEST_DIR=TO1-5
-22:  - TEST_DIR=CA1-1
-23:  # - TEST_DIR=CA1-2
-```
-
 Make sure you [commit and push](https://code.visualstudio.com/docs/editor/versioncontrol) your code to your online repository.
 
 ---
----
-
 #### Notes to compile and run the code.
-
 For Windows:
 ```bash
 $ mkdir -p build
