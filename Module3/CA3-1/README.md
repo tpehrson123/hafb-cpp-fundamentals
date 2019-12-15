@@ -314,12 +314,12 @@ $ cd build
 # Clean all files
 $ rm *
 # Compile and build the code with USE_TEST=ON
-$ cmake .. -G "MinGW Makefiles" -D USE_TEST=ON
+$ cmake .. -G "MinGW Makefiles" -DUSE_TEST=ON
 $ cmake --build .
 ```
 For Linux/Mac:
 ```bash
-$ cmake ..  -D USE_TEST=ON
+$ cmake ..  -DUSE_TEST=ON
 $ cmake --build .
 ```
 

@@ -24,7 +24,7 @@ option(USE_TEST "Compile activity with unit test" OFF)
 # use the -D option to enable the USE_TEST option
 # cd build 
 # rm *
-#  cmake -G "MinGW Makefiles"  -D USE_TEST=ON ..
+#  cmake -G "MinGW Makefiles"  -DUSE_TEST=ON ..
 if(USE_TEST)
     enable_testing()
     add_subdirectory(tests)
