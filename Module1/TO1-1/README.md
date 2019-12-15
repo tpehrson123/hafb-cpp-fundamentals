@@ -47,31 +47,31 @@ if (x % 3 == 0)
 we can increment the counter.
 
 
-6. Next, we can print `count`:
+6. Next, we can print using `cout` the variable `count`:
 ```c++
-cout << count << endl;
+cout << "Result is: " << result << endl;
 ```
 
-7. Finally, create a function `int FactorMod3()` and move the code from steps 1-5 to it. Your function should return  an `integer` with the count of
-our magic number. 
+7. Finally, create a function `void FactorMod3()` and move the code from steps 1-5 to it. Your function should print an `integer` with the count of
+our magic number and it will return nothing (`void`) back to the user. 
   ```c++
   // Function Prototype
-  int FactorMod3();
+  void FactorMod3();
 
+  // Main function
   int main()
   {
-    int result = 0;
-    result = FactorMod3();
-    cout << "Result is: " << result << endl;
+    FactorMod3();     // call function
     return 0;
   }
   // Function Definition
-  int FactorMod3()
+  void FactorMod3()
   {
     int result;
     // algorithm
 
-    return result;
+    cout << "Result is: " << result << endl;
+    return;   // optional return on void functions
   }
   ```
 

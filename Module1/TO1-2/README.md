@@ -12,7 +12,7 @@ Note: Do not forget to add your header guards:
 #ifndef FACTOR_H_
 #define FACTOR_H_
 
-int FactorMod3();
+void FactorMod3();
 
 #endif /* !FACTOR_H_ */
 ```
@@ -22,7 +22,7 @@ int FactorMod3();
 // factor.cpp
 #include "log.h"  // local header file
 
-int FactorMod3();
+void FactorMod3();
 {
     // Algorithm here
 }
@@ -35,9 +35,7 @@ using namespace std;
 
 int main() 
 {
-    int result = 0;
-    result = FactorMod3();
-    cout << "Result is: " << result << endl;
+    FactorMod3();
     return 0;
 }
 ```

@@ -5,6 +5,8 @@ using namespace std;
 // Main Function
 int main()
 {
-  cout << "Computing the 10th Fibonacci number: " << GetTenthFibonacci() << endl;
+  int number = 10;
+  cout << "Computing the " << number << " Fibonacci number: " 
+    << GetTenthFibonacci(number) << endl;
   return 0;
 }
