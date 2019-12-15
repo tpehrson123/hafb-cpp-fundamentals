@@ -1,46 +1,47 @@
 # TO1-2: CALLING FUNCTION FROM MAIN()
-In our application, we want to log errors. To do so, we have to specify a function called `log()`, which prints `Error!` to the standard output when called.
 
-Let's create a function that can be called from several files, and put it in a different header file that can be included:
+- Create a `library` and move the function `int FactorMod3()` to it. 
+A library in C++ typically consist of two or more files. 
+- A `header` file (`factor.h`). This file contains the function prototypes (the signature or rules of your functions).
+- A `source` file (`factor.cpp`). This is the file where the function definitions are coded. 
 
-- Create a file named `log.h` and declare a function called `log()` with no parameters and that returns nothing:
-
+Let's begin in our header file defining our function prototype.  
+Note: Do not forget to add your header guards:
 ```c++
-void log();
+// factor.h
+#ifndef FACTOR_H_
+#define FACTOR_H_
+
+int FactorMod3();
+
+#endif /* !FACTOR_H_ */
 ```
-Do not forget to add your header guards:
+
+- Now, in our source file, `factor.cpp`, lets define the function. 
 ```c++
-#ifndef LOG_H_
-#define LOG_H_
+// factor.cpp
+#include "log.h"  // local header file
 
-void log();
-
-#endif /* !LOG_H_ */
-```
-
-- Now, let's create a new file, `log.cpp`, where we define the `log()` function to print to the standard output:
-```c++
-#include <iostream>
-using namespace std;
-// This is where cout and endl are defined
-
-void log() 
+int FactorMod3();
 {
-    cout << "Error!" << endl;
+    // Algorithm here
 }
 ```
-- Change the `main.cpp` file to include `log.h` and call `log()` in the `main()` function:
+- Change the `main.cpp` file to include `factor.h` and call `log()` in the `main()` function:
 ```c++
+#include <iostream>
 #include "log.h"  // local header file
+using namespace std;
 
 int main() 
 {
-    log();
-
+    int result = 0;
+    result = FactorMod3();
+    cout << "Result is: " << result << endl;
     return 0;
 }
 ```
-- Using the terminal, compile the two files and run the executable (see below). You will see that the message **Error!** is printed when we execute it.
+
 
 ---
 

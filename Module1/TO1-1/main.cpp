@@ -1,4 +1,5 @@
 #include <iostream>
+#include "factor.h"
 using namespace std;
 
 // Function Prototype

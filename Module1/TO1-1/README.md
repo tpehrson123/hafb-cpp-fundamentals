@@ -8,10 +8,15 @@ _To find out if a number is divisible by another, use the `modulo (%) operator`.
 ## Part 1:
 Now, let's perform the following steps:
 
-1. Import all the required header files:
+1. Import all the required header files and create `main function` body. For most of our purposes, this is going to be our c++ file template. 
   ```c++
   #include <iostream>
   using namespace std;
+  
+  int main()
+  {
+    return 0;
+  }
   ```
 
 2. We need to store the number of times a number is divisible by 3 in a counter. For this reason, 
@@ -25,10 +30,11 @@ they are divisible by 3 or not:
 ```c++
 for(unsigned int x = 1; x <= 30; ++x)
 {
+   
 }
 ```
 
-4. Finally, we will check in the body of the for loop by using an if statement and the expression 
+4. Finally, we will check in the `body` of the for loop by using an if statement and the expression 
 `x % 3 == 0`, which evaluates to `true` if the division has a remainder equal to `0`:
 ```c++
 if (x % 3 == 0)
@@ -46,19 +52,29 @@ we can increment the counter.
 cout << count << endl;
 ```
 
-7. Finally, create a function **int FactorMod3()** and move your code from steps 1-5 to it. Your function should return the count of
+7. Finally, create a function `int FactorMod3()` and move the code from steps 1-5 to it. Your function should return  an `integer` with the count of
 our magic number. 
+  ```c++
+  // Function Prototype
+  int FactorMod3();
 
----
+  int main()
+  {
+    int result = 0;
+    result = FactorMod3();
+    cout << "Result is: " << result << endl;
+    return 0;
+  }
+  // Function Definition
+  int FactorMod3()
+  {
+    int result;
+    // algorithm
 
-## Part 2:
+    return result;
+  }
+  ```
 
-- Create a `library` and move the function `int FactorMod3()` to it. Use the following names for your 
-library files: `factor.cpp` and `factor.h`  
-
-### Bonus exercises:
-- Find how many numbers are divisible by 11 within the range of 1 to 100
-- Print all the numbers that are not divisible by 3 within the range of 1 to 30 
 
 ---
 #### Notes to compile and run the code.
