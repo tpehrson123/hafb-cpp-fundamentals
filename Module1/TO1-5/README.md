@@ -8,7 +8,6 @@ Write a function to read the name of a car for a lottery in a namespace based on
     .
     ├── CMakeLists.txt
     ├── .gitignore
-    ├── .travis.yml
     ├── externals
     │   └── catch2
     │       └── catch.hpp
@@ -54,7 +53,7 @@ int HorsePower();
 - Now, test your functions in `main()`. This time around, DO NOT use `using namespace std;` in your program.  
 ```c++
   std::cout << "The lamborghini's horse power: " << lamborghini::HorsePower() << std::endl;
-  std::cout << "The porshe's horse power: " << porshe::HorsePower() << std::endl;
+  std::cout << "The porsche's horse power: " << porsche::HorsePower() << std::endl;
   std::cout << "A regular car's horse power: " << HorsePower() << std::endl;
 ```
 ---
@@ -65,12 +64,26 @@ Sample Output:
 ```bash
 $.\bin\ca.exe
 The lamborghini's horse power: 759
-The porshe's horse power: 700
+The porsche's horse power: 700
 A regular car's horse power: 120
 ```
 
 ### Validate your code
-Once you are satisfied with your work, run our unit test file with the `TO1-5` tag to validate your code:
+Once you are satisfied with your work, run our unit test file:
+```bash
+# Go to your build directory
+$ cd build
+# Clean all files
+$ rm *
+# Compile and build the code with USE_TEST=ON
+$ cmake .. -G "MinGW Makefiles" -DUSE_TEST=ON
+$ cmake --build .
+```
+For Linux/Mac:
+```bash
+$ cmake ..  -DUSE_TEST=ON
+$ cmake --build .
+```
 ```bash
   # For a detail information on the unit tests 
   $ .\bin\ca_test.exe [TO1-5] -s
@@ -80,18 +93,6 @@ All tests passed (3 assertions in 3 test cases)
 ```
 ---
 ### Publish your code
-Before you push your code, you need to edit the `.travis.yml` file. This file is located in the [root](../.travis.yml)
-directory of your project. Make sure you uncomment `line 21` for TO1-5 activity. 
-
-```CMake
-18: env: 
-19:  - TEST_DIR=TO1-3
-20:  - TEST_DIR=TO1-4
-21:  - TEST_DIR=TO1-5
-22:  # - TEST_DIR=CA1-1
-23:  # - TEST_DIR=CA1-2
-```
-
 Make sure you [commit and push](https://code.visualstudio.com/docs/editor/versioncontrol) your code to your online repository.
 
 ---

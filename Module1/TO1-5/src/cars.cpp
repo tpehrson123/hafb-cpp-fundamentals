@@ -1,7 +1,7 @@
 #include <iostream>
 #include "cars.h"
 // using namespace lamborghini;
-// using namespace porshe;
+// using namespace porsche;
 
 // Define a function named 'output' inside the namespace LamborghiniCar
 int lamborghini::HorsePower() 
@@ -9,8 +9,8 @@ int lamborghini::HorsePower()
     return 759;
 }
 
-// Define a function named 'output' inside the namespace porshe
-int porshe::HorsePower() 
+// Define a function named 'output' inside the namespace porsche
+int porsche::HorsePower() 
 { 
     return 700;
 }

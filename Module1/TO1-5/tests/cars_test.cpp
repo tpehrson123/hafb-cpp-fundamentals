@@ -15,13 +15,13 @@ TEST_CASE("Getting Lamborghini's horse power", "[TO1-5]")
   CHECK(hp == 759);
 }
 
-TEST_CASE("Getting Porshe's horse power", "[TO1-5]") 
+TEST_CASE("Getting porsche's horse power", "[TO1-5]") 
 {
   INFO("TO Activity 3 Points");
   // Arrange
   int hp = 0;
   // Act
-  hp = porshe::HorsePower();
+  hp = porsche::HorsePower();
   // Assert
   CHECK(hp == 700);
 }

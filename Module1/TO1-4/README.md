@@ -9,7 +9,6 @@ To implement such a program, he is going to write a function that takes a person
     .
     ├── CMakeLists.txt
     ├── .gitignore
-    ├── .travis.yml
     ├── externals
     │   └── catch2
     │       └── catch.hpp
@@ -28,7 +27,6 @@ To implement such a program, he is going to write a function that takes a person
     - `externals` folder (DO NOT MODIFY): contains our unit test library
     - `test` folder (DO NOT MODIFY): contains our unit code
     - The `.gitignore` hidden file instructs git to ignore our build folder and anything else we do not want to track.
-    - The `.travis.yml` file controls which test `travis` is validating for us. As you complete the different TO and CA activities, you will modify this file (see below). This is what I will use to verify your code.  
 
 - In our `src` folder, define these functions `ByValueAgeIn5Years` and `CurrentAge` , as illustrated here. Make sure that the value in the calling code does not change:
     ```c++
@@ -98,6 +96,7 @@ Now, in `main()`, call the function we created in the previous step by passing t
       cout << "Congratulations, you can vote! " << endl;
   }
 ```
+---
 ### Compile and run your code
 Compile your code (see below) and run it.  
 Sample Output:
@@ -110,7 +109,23 @@ Congratulations, you can vote!
 Is this the output you expected?  
 Yes!
 
+---
 ### Validate your code
+Once you are satisfied with your work, run our unit test file:
+```bash
+# Go to your build directory
+$ cd build
+# Clean all files
+$ rm *
+# Compile and build the code with USE_TEST=ON
+$ cmake .. -G "MinGW Makefiles" -DUSE_TEST=ON
+$ cmake --build .
+```
+For Linux/Mac:
+```bash
+$ cmake ..  -DUSE_TEST=ON
+$ cmake --build .
+```
 Once you are satisfied with your work, run our unit test file with the `TO1-4` tag to validate your code:
 ```bash
   # For a detail information on the unit tests 
@@ -130,19 +145,6 @@ All tests passed (2 assertions in 2 test cases)
 ```
 ---
 ### Publish your code
-Before you push your code, you need to edit the `.travis.yml` file. This file is located in the [root](../.travis.yml)
-directory of your project. Make sure you uncomment `line 20` for TO1-4 activity. 
-
-```CMake
-18: env: 
-19:  - TEST_DIR=TO1-3
-20:  - TEST_DIR=TO1-4
-21:  # - TEST_DIR=TO1-5
-22:  # - TEST_DIR=TO1-6
-23:  # - TEST_DIR=CA1-1
-24:  # - TEST_DIR=CA1-2
-```
-
 Make sure you [commit and push](https://code.visualstudio.com/docs/editor/versioncontrol) your code to your online repository.
 
 ---

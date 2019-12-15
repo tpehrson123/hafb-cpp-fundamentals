@@ -139,19 +139,6 @@ $ cmake --build .
 ```
 ---
 ### Publish your code
-Before you push your code, you need to edit the `.travis.yml` file. This file is located in the [root](../.travis.yml)
-directory of your project. Make sure you uncomment `line 19` for TO1-3 activity. 
-
-```CMake
-18: env: 
-19:  - TEST_DIR=TO1-3
-20:  # - TEST_DIR=TO1-4
-21:  # - TEST_DIR=TO1-5
-22:  # - TEST_DIR=TO1-6
-23:  # - TEST_DIR=CA1-1
-24:  # - TEST_DIR=CA1-2
-```
-
 Make sure you [commit and push](https://code.visualstudio.com/docs/editor/versioncontrol) your code to your online repository.
 
 ---

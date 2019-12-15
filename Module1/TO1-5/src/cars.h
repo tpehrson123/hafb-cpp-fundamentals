@@ -18,10 +18,10 @@ namespace lamborghini
     int HorsePower();
 }  // The namespace 'Lamborghini' is closed here
 
-// Open a namespace called porshe
-namespace porshe 
+// Open a namespace called porsche
+namespace porsche 
 {
-   // Define a function named 'HorsePower' inside the namespace porshe
+   // Define a function named 'HorsePower' inside the namespace porsche
     int HorsePower();
 } // The namespace 'Lamborghini' is closed here
 
