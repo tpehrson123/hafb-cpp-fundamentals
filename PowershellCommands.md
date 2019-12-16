@@ -29,6 +29,14 @@ $ rm <name>     # remove/delete file/directory
 $ g++ main.cpp -o main
 # To run
 $ ./main.exe
+
+- g++ (mingw) http:\\www.ming.org\
+compiler for windows.
+- Add c:\MingGW\bin\ to path env
+variable
+ - mingw32.make // use by cmake
+ - mingw32-gcc-g++  // c+
+
 ```
 
 ### C++ File Template
@@ -42,11 +50,18 @@ int main()
 }
 ```
 ## Plugins and Doxygen documentation
-```cpp
+
 // Add C/C++ Intellisense
 // Add Code Spell Extension 
 // Add Doxygen Documentation Generator
-```
+
+  - C/C++ Intellisense
+  - Code Spell Extension
+  - Doxygen Documenation Generator
+  - Markdown All in One
+  - CMake
+  - CMake Tools
+
 
 ```cpp
 To generate Doxygen documentation: 
