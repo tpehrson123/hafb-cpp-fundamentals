@@ -53,7 +53,7 @@ $ ./bin/ca
 
 ## Part 1: READ DATA FROM A FILE
 
-The first function we will write is the ReadDataFromFile function. This function has six parameters.
+The first function we will write is the `ReadDataFromFile` function. This function has six parameters.
 - a string, the name of the file to read, including the path, filename, and extension
 - four arrays
    - an array of type double for hours worked during the pay period
@@ -64,13 +64,13 @@ The first function we will write is the ReadDataFromFile function. This function
 
 The arrays and the index parameter will be changed as the function executes. These are to be passed by reference.
 
-It returns a string.
+It returns a `string`.
 
-In the functions.h file use #ifndef, #define, and #endif to add an include guard to the header file.
+In the `functions.h` file use `#ifndef, #define, and #endif` to add an include guard to the header file.
 
-In the functions.h file add the function declaration. Since the declaration will include arrays, we will need to specify how big they are. Add a constant integer named kMaxSize and set it to 32. Use this for the size of the arrays.
+In the `functions.h` file add the function declaration. Since the declaration will include arrays, we will need to specify how big they are. Add a constant integer named `kMaxSize` and set it to `32`. Use this for the size of the arrays.
 
-In the functions.cpp file write the implementation of this function.
+In the `functions.cpp` file write the implementation of this function.
 
 The function is to open the file to read the data. If the file does not open, return the string "Unable to open file". 
 
@@ -87,16 +87,16 @@ Add the data to the arrays. Validate the following. Notice there is a space at t
  - pay rate is greater than minimum wage (7.25). If the rate is smaller than this,  add the string "Pay is less than minimum wage, set to 7.25 " to the error message and set the pay to 7.25. 
  - name contains a comma. If there is no comma, add the string "Name is not in last, first format " to the error message and set the name to "unknown". 
 
-After the data is read, close the file.
+After the data is read, `close` the file.
 
-Finally, return the error message or the empty string if there are no error messages.
+Finally, `return` the error message or the empty string if there are no error messages.
 
 ---
 ---
 
 ## Part 2: ADD A SET OF PAYROLL DATA
 
-The next function is the AddPayrollData function. This function has nine parameters.
+The next function is the `AddPayrollData` function. This function has nine parameters.
 
 - four arrays
    - an array of type double for hours worked during the pay period
@@ -112,11 +112,11 @@ The next function is the AddPayrollData function. This function has nine paramet
 
 The arrays and the index parameter will be changed as the function executes. These are to be passed by reference.
 
-It returns a string.
+It `returns` a `string`.
 
-In the functions.h file add the function declaration. 
+In the `functions.h` file add the function declaration. 
 
-In the functions.cpp file write the implementation of this function.
+In the `functions.cpp` file write the implementation of this function.
 
 The function validates the data values, adds them to the parameter arrays, and increases the index parameter. The code is to protect the arrays from going out of bounds. 
 
@@ -135,18 +135,18 @@ Finally, return the error message or the empty string if there are no error mess
 
 ## Part 3: COMPUTE GROSS PAY
 
-The next function is the ComputeGross function. This function has three parameters.
+The next function is the `ComputeGross` function. This function has three parameters.
 
    - a double for hours worked during the pay period
    - a char for pay type
    - a double for pay rate
 
 
-It returns a double.
+It `returns a double`.
 
-In the functions.h file add the function declaration. 
+In the `functions.h` file add the function declaration. 
 
-In the functions.cpp file write the implementation of this function.
+In the `functions.cpp` file write the implementation of this function.
 
 The function computes and returns the gross pay. The computation for gross pay depends on the pay type.
 
@@ -163,7 +163,7 @@ Return the gross pay.
 
 ## Part 4: PRINT A PAYROLL REPORT TO A FILE
 
-The next function we will write is the WritePayrollReportToFile function. This function has six parameters.
+The next function we will write is the `WritePayrollReportToFile` function. This function has six parameters.
 - a string, the name of the file to write to, including the path, filename, and extension
 - four arrays
    - an array of type double for hours worked during the pay period
@@ -174,11 +174,11 @@ The next function we will write is the WritePayrollReportToFile function. This f
 
 None of these values will change. Pass the arrays by reference and use the const specifier.
 
-This function does not return anything.
+This function does `not` return anything.
 
-In the functions.h file add the function declaration. 
+In the `functions.h` file add the function declaration. 
 
-In the functions.cpp file write the implementation of this function.
+In the `functions.cpp` file write the implementation of this function.
 
 The function is to open the file to write the reports to.  
 
@@ -191,16 +191,18 @@ The function uses the data in the arrays to produce a report for each valid set 
   - pay rate
   - gross pay
 
-The hours worked, pay rate, and gross pay values are to be printed with two digits after the decimal place. The name is to be printed in first last form.
+The hours worked, pay rate, and gross pay values are to be printed with `two digits` after the decimal place. The name is to be printed in first last form.  
+Hint: Use `setprecision` and `fixed` from the `<iomanip>` [library](http://www.cplusplus.com/reference/iomanip/setprecision/)
 
-Close the output file.
+`Close` the output file.
+
 
 ---
 ---
 
 ## Part 5: PRINT PAYROLL DATA TO A FILE
 
-Now add the WritePayrollDataToFile function. This function has six parameters.
+Now add the `WritePayrollDataToFile` function. This function has `six` parameters.
 - a string, the name of the file to write to, including the path, filename, and extension
 - four arrays
    - an array of type double for hours worked during the pay period
@@ -211,13 +213,13 @@ Now add the WritePayrollDataToFile function. This function has six parameters.
 
 None of these values will change. Pass the arrays by reference and use the const specifier.
 
-This function does not return anything.
+This function `does not return` anything.
 
-In the functions.h file add the function declaration. 
+In the `functions.h` file add the function declaration. 
 
-In the functions.cpp file write the implementation of this function.
+In the `functions.cpp` file write the implementation of this function.
 
-The function is to open the file to write the reports to.  
+The function is to `open` the file to write the reports to.  
 
 The function uses the data in the arrays to produce a report for each valid set of payroll data. Each report will take two lines.
 
@@ -227,7 +229,7 @@ The function uses the data in the arrays to produce a report for each valid set 
   - pay rate
 - The second line contains a name in last, first format 
 
-Close the output file.
+`Close` the output file.
 
 ---
 ---
@@ -288,7 +290,7 @@ $ ctest
 The results will look something like this:
 
 ```bash
-  PS C:\Users\Linda\C++ Fundamentals\C++ Fundamentals-module2\TO2-2\build> .\bin\ca_test.exe
+  PS C:\Users\Linda\cs1410\cs1410-module2\TO2-2\build> .\bin\ca_test.exe
   ===============================================================================
   All tests passed (345 assertions in 46 test cases)
 ```

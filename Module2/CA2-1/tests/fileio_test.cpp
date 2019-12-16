@@ -13,7 +13,7 @@ using namespace std;
 // valid case
 TEST_CASE("main_functions.h has a constant kMaxSize that is greater than 6.",
           "[read_file]") {
-  CHECK(kMaxSize > 6);
+  REQUIRE(kMaxSize > 6);
 }
 
 TEST_CASE(
@@ -23,7 +23,7 @@ TEST_CASE(
   array<Project, kMaxSize> projects = {};
   int size = 0;
   string message = "Unable to open file.";
-  CHECK(ReadProjectsFromFile("no_file.tst", projects, size) == message);
+  REQUIRE(ReadProjectsFromFile("no_file.tst", projects, size) == message);
 }
 
 TEST_CASE(
@@ -33,7 +33,7 @@ TEST_CASE(
   array<Project, kMaxSize> projects = {};
   int size = 0;
   string message = "";
-  CHECK(ReadProjectsFromFile("../project_data.txt", projects, size) ==
+  REQUIRE(ReadProjectsFromFile("../project_data.txt", projects, size) ==
           message);
 }
 
@@ -47,7 +47,7 @@ TEST_CASE(
   string message = "Unable to add project named Post final grades";
   string function_message =
       ReadProjectsFromFile("../project2_data.txt", projects, size);
-  CHECK(function_message.substr(0, 45) == message);
+  REQUIRE(function_message.substr(0, 45) == message);
 }
 
 TEST_CASE(
@@ -58,10 +58,10 @@ TEST_CASE(
   int size = 0;
   ReadProjectsFromFile("../project2_data.txt", projects, size);
 
-  CHECK(projects[0].estimated_time_minutes() == 212);
-  CHECK(projects[0].actual_time_minutes() == 180);
-  CHECK(projects[0].reported_percent_complete() == 97);
-  CHECK(projects[0].name() == "Prep Meeting Agenda");
+  REQUIRE(projects[0].estimated_time_minutes() == 212);
+  REQUIRE(projects[0].actual_time_minutes() == 180);
+  REQUIRE(projects[0].reported_percent_complete() == 97);
+  REQUIRE(projects[0].name() == "Prep Meeting Agenda");
 }
 
 TEST_CASE(
@@ -72,26 +72,26 @@ TEST_CASE(
   int size = 0;
   string message = ReadProjectsFromFile("../project_data.txt", projects, size);
 
-  CHECK(message == "");
-  CHECK(projects[0].estimated_time_minutes() == 415);
-  CHECK(projects[0].actual_time_minutes() == 382);
-  CHECK(projects[0].reported_percent_complete() == 85);
-  CHECK(projects[0].name() == "Complete data flow project");
+  REQUIRE(message == "");
+  REQUIRE(projects[0].estimated_time_minutes() == 415);
+  REQUIRE(projects[0].actual_time_minutes() == 382);
+  REQUIRE(projects[0].reported_percent_complete() == 85);
+  REQUIRE(projects[0].name() == "Complete data flow project");
 
-  CHECK(projects[1].estimated_time_minutes() == 2172);
-  CHECK(projects[1].actual_time_minutes() == 1415);
-  CHECK(projects[1].reported_percent_complete() == 57);
-  CHECK(projects[1].name() == "Do water meter project");
+  REQUIRE(projects[1].estimated_time_minutes() == 2172);
+  REQUIRE(projects[1].actual_time_minutes() == 1415);
+  REQUIRE(projects[1].reported_percent_complete() == 57);
+  REQUIRE(projects[1].name() == "Do water meter project");
 
-  CHECK(projects[2].estimated_time_minutes() == 351);
-  CHECK(projects[2].actual_time_minutes() == 281);
-  CHECK(projects[2].reported_percent_complete() == 72);
-  CHECK(projects[2].name() == "Get feedback from stake holders");
+  REQUIRE(projects[2].estimated_time_minutes() == 351);
+  REQUIRE(projects[2].actual_time_minutes() == 281);
+  REQUIRE(projects[2].reported_percent_complete() == 72);
+  REQUIRE(projects[2].name() == "Get feedback from stake holders");
 
-  CHECK(projects[3].estimated_time_minutes() == 60);
-  CHECK(projects[3].actual_time_minutes() == 0);
-  CHECK(projects[3].reported_percent_complete() == 0);
-  CHECK(projects[3].name() == "unnamed");
+  REQUIRE(projects[3].estimated_time_minutes() == 60);
+  REQUIRE(projects[3].actual_time_minutes() == 0);
+  REQUIRE(projects[3].reported_percent_complete() == 0);
+  REQUIRE(projects[3].name() == "unnamed");
 }
 
 TEST_CASE(
@@ -140,15 +140,15 @@ TEST_CASE(
   INFO(
       "Possible security breach. Data has been written outside the bounds of "
       "the array!");
-  CHECK(size == 20);
-  CHECK(message == "");
+  REQUIRE(size == 20);
+  REQUIRE(message == "");
 
   // loop through arrays and compare
   for (int i = 0; i < size; i++) {
-    CHECK(estimated_time[i] == projects[i].estimated_time_minutes());
-    CHECK(actual_time[i] == projects[i].actual_time_minutes());
-    CHECK(percent[i] == projects[i].reported_percent_complete());
-    CHECK(titles[i] == projects[i].name());
+    REQUIRE(estimated_time[i] == projects[i].estimated_time_minutes());
+    REQUIRE(actual_time[i] == projects[i].actual_time_minutes());
+    REQUIRE(percent[i] == projects[i].reported_percent_complete());
+    REQUIRE(titles[i] == projects[i].name());
   }
 }
 
@@ -167,24 +167,24 @@ TEST_CASE(
   string message =
       ReadProjectsFromFile("../out2_data.txt", projects, valid_size);
 
-  CHECK(message == "");
-  CHECK(projects[0].estimated_time_minutes() == 2160);
-  CHECK(projects[0].actual_time_minutes() == 1440);
-  CHECK(projects[0].reported_percent_complete() == 8);
-  CHECK(projects[0].name() == "one");
+  REQUIRE(message == "");
+  REQUIRE(projects[0].estimated_time_minutes() == 2160);
+  REQUIRE(projects[0].actual_time_minutes() == 1440);
+  REQUIRE(projects[0].reported_percent_complete() == 8);
+  REQUIRE(projects[0].name() == "one");
 
-  CHECK(projects[1].estimated_time_minutes() == 4920);
-  CHECK(projects[1].actual_time_minutes() == 720);
-  CHECK(projects[1].reported_percent_complete() == 25);
-  CHECK(projects[1].name() == "two");
+  REQUIRE(projects[1].estimated_time_minutes() == 4920);
+  REQUIRE(projects[1].actual_time_minutes() == 720);
+  REQUIRE(projects[1].reported_percent_complete() == 25);
+  REQUIRE(projects[1].name() == "two");
 
-  CHECK(projects[2].estimated_time_minutes() == 720);
-  CHECK(projects[2].actual_time_minutes() == 792);
-  CHECK(projects[2].reported_percent_complete() == 98);
-  CHECK(projects[2].name() == "three");
+  REQUIRE(projects[2].estimated_time_minutes() == 720);
+  REQUIRE(projects[2].actual_time_minutes() == 792);
+  REQUIRE(projects[2].reported_percent_complete() == 98);
+  REQUIRE(projects[2].name() == "three");
 
-  CHECK(projects[3].estimated_time_minutes() == 60);
-  CHECK(projects[3].actual_time_minutes() == 0);
-  CHECK(projects[3].reported_percent_complete() == 0);
-  CHECK(projects[3].name() == "unnamed");
+  REQUIRE(projects[3].estimated_time_minutes() == 60);
+  REQUIRE(projects[3].actual_time_minutes() == 0);
+  REQUIRE(projects[3].reported_percent_complete() == 0);
+  REQUIRE(projects[3].name() == "unnamed");
 }

@@ -3,7 +3,7 @@
 # this is for bi_array_test.cpp file 
 set(UNIT_TEST_LIST 
   project
-  fileio) # this is for    src/fileio.cpp[.h] files 
+  fileio) # this is for src/fileio.cpp[.h] files 
 
 #
 ######## No need to modify anything below this point
@@ -18,7 +18,7 @@ endforeach()
 set(TARGET_NAME ca_test)
 set(LIB_NAME mylib)      # lib name, this should match the $LIB_NAME from src/CMakeList.txt file
 # This will create your testing file. In this case I used the
-# ca_test as the name for the unit test executable file.
+# ca1_test as the name for the unit test executable file.
 add_executable(${TARGET_NAME} ${UNIT_TEST_SOURCE_LIST})
 # The name of the lib, must match given to it in the  src/ folder 
 target_link_libraries(${TARGET_NAME}

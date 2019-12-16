@@ -1,5 +1,4 @@
 #include <array>
-#include <fstream>
 #include <iostream>
 #include <string>
 
@@ -36,53 +35,24 @@ int main() {
       "Susan",  "Hal",   "Olivia", "Polly", "Roy",    "Scott"};
 
   // create a variable of type ofstream
-  ofstream out;
+
   // open the file commute.txt
-  out.open("../commute.txt");
 
   // write commute_minutes and commute_miles to the file commute.txt
-  for (int i = 0; i < kMaxSize; i++) {
-    out << commute_minutes[i] << " " << commute_miles[i] << endl;
-  }
-
-  out.close();
 
   // create a variable of type ofstream and open the file town.txt
-  ofstream outfile("../town.txt");
 
   // write the towns to the file town.txt
-  for (int i = 0; i < kMaxSize; i++) {
-    outfile << towns[i] << endl;
-  }
-
-  outfile.close();
 
   // create a variable of type ofstream and open the file commute_data.txt
-  ofstream output("../commute_data.txt");
 
   // write commute_minutes, commute_miles, and towns to the file commute.txt
-  for (int i = 0; i < kMaxSize; i++) {
-    output << commute_minutes[i] << " " << commute_miles[i] << endl
-           << towns[i] << endl;
-  }
-
-  output.close();
 
   // do computations and add labeling to data before writing to file
-  ofstream out_report("../commute_report.txt");
 
   // write a report to the commute_report.txt file. Include name, town,
   // commute_minutes, commute_miles, and average minutes per mile to the file
   // commute.txt
-  for (int i = 0; i < kMaxSize; i++) {
-    out_report << names[i] << " commutes to " << towns[i] << ". The commute is "
-               << commute_miles[i] << " miles and takes about "
-               << commute_minutes[i] << " minutes.That is an average of "
-               << commute_minutes[i] / static_cast<float>(commute_miles[i])
-               << " minutes per mile." << endl;
-  }
-
-  out_report.close();
 
   return 0;
 }
