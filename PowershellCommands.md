@@ -23,7 +23,7 @@ $ rm <name>     # remove/delete file/directory
 - File extension: `.cpp`
 - https://en.cppreference.com/w/  C++ reference
 
-## g++ Compiler
+## g++ Compiler for 1 file
 ```bash
 # To compile
 # -o for output file name
@@ -37,6 +37,19 @@ compiler for windows.
 variable
  - mingw32.make // use by cmake
  - mingw32-gcc-g++  // c+
+
+```
+
+## g++ Compiler for 1 file
+   For example, if you have a library under the 'functions.cpp' and
+   'functions.h' files, and you have a driver under 'run_funtions.cpp' you
+   need to compile as follows:
+   ```bash
+   # To compile, list ALL source (cpp) files
+   # - o for output file name
+   $ g++ functions.cpp run_functions.cpp -o run_functions
+   # To run
+   $ .\run_functions.exe
 
 ```
 

@@ -1,6 +1,16 @@
 #include <iostream>
 using namespace std;
-#include "factor.h"
+
+// Function Prototype
+void FactorMod3();
+
+int main()
+{
+
+    FactorMod3(); // call function
+
+    return 0;
+}
 
 // Function Definition
 void FactorMod3()
