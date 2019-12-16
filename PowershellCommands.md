@@ -21,6 +21,7 @@ $ rm <name>     # remove/delete file/directory
 ```
 ## C++ Basics
 - File extension: `.cpp`
+- https://en.cppreference.com/w/  C++ reference
 
 ## g++ Compiler
 ```bash
