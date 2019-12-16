@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <array>    // array container
 using namespace std;
@@ -16,6 +17,12 @@ int main()
     {
 
         cout << grades[index] << endl;
+    }
+
+    // For each loop
+    cout << "For each: " << endl;
+    for(auto grade : grades){
+        cout << grade << endl;
     }
     
     return 0;
