@@ -65,3 +65,25 @@ void FactorModXRange(int mod_number, int max_range)
 
     cout << "Result is: " << count << endl;
 }
+
+/**
+ * @brief Document your code you idiot!
+ * 
+ * @param mod_number 
+ * @param max_range 
+ * @return unsigned int 
+ */
+unsigned int GetFactorModXRange(int mod_number, int max_range)
+{
+    unsigned int count = 0;
+    for (unsigned int x = 1; x <= max_range; ++x)
+    {
+        int result;
+        if (x % mod_number == 0)
+        {
+            count++;
+        }
+    }
+    // Return the result of what is how many numbers are divisible
+    return count;
+}

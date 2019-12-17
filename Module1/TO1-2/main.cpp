@@ -10,5 +10,8 @@ int main()
 
     FactorModXRange(5, 100); // call function
 
+    auto count2 = GetFactorModXRange(5, 500); // call function  
+    cout << "GetFactorModXRange: " << count2 << endl;
+
     return 0;
 }
