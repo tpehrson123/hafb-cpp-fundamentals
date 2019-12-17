@@ -1,0 +1,19 @@
+cmake .. -G "MinGW Makefiles"
+cmake --build .
+
+https://github.com/hugo-valle/hafb-cpp-fundamentals
+
+
+env
+
+Add     - Add c:\MinGW\bin\ to PATH env. variable
+
+## Plugins and Doxygen documentation
+
+- C/C++ Intellisense
+- Code Spell Extension 
+- Doxygen Documentation Generator
+- Markdown All in One
+- CMake
+- CMake Tools
+- Epitech C/C++ Headers

@@ -2,7 +2,11 @@
 using namespace std;
 #include "factor.h"
 
-// Function Definition
+/**
+ * @brief Calculate the number of instances divisible
+ * by 3 in the range 1 through 30
+ * 
+ */
 void FactorMod3()
 {
     unsigned int count = 0;
