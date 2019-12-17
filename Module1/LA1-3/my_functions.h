@@ -11,4 +11,6 @@
 // prototype
 int Sum(int num1, int num2);
 
+void UpdateStep(int& step);
+
 #endif /* !MY_FUNCTIONS_H_ */
