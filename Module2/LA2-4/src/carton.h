@@ -10,23 +10,27 @@
 // Create your first class
 class Carton
 {
-    private:
-        double length_;  // "_" at end of variable convention for private variables
-        double width_;
-        double height_;
-    public:
-         // Constructor: build/create your object
-         Carton();
-         // Getters  - new naming convention fo getters to use name wo the "_"
-         double length();
-         double width();
-         double height(); 
-         // Setters - new naming convention
-         void set_length(double length);
-         void set_width(double width);
-         void set_height(double height);
+private:
+    double length_; // "_" at end of variable convention for private variables
+    double width_;
+    double height_;
 
-         // Other methods
-         void ShowInfo();
+public:
+    // Constructor: build/create your object
+    Carton();
+    Carton(double length, double width, double height);
 
-};  // must have a ";"
+    // Getters  - new naming convention fo getters to use name wo the "_"
+    double length();
+    double width();
+    double height();
+
+    // Setters - new naming convention
+    void set_length(double length);
+    void set_width(double width);
+    void set_height(double height);
+
+    // Other methods
+    void ShowInfo();
+
+}; // must have a ";"

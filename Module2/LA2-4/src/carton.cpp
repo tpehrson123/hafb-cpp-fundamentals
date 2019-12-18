@@ -9,6 +9,13 @@ Carton::Carton()
     height_ = 0;
 }
 
+Carton::Carton(double length, double width, double height)
+{
+    height_ = height;
+    width_ = width;
+    length_ = length;
+}
+
 // Getters
 double Carton::length()
 {
@@ -36,6 +43,8 @@ void Carton::set_height(double height)
 {
     height_ = height;
 }
+
+
 
 void Carton::ShowInfo()
 {

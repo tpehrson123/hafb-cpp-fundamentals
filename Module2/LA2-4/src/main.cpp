@@ -14,6 +14,9 @@ int main()
 
   box.ShowInfo();
 
+  Carton box2(13.2, 111.2, 345.3);
+  box2.ShowInfo();
+
   // create a Carton object using the other constructor
 
   // create an array of Cartons
