@@ -16,9 +16,18 @@ private:
     double height_;
 
 public:
+
+    // Static constants (shared between all objects)
+    // static const double kMaxsize;
+    static const double kMinLength;
+    static const double kMinWidth;
+    static const double kMinHeight;
+
     // Constructor: build/create your object
     Carton();
     Carton(double length, double width, double height);
+
+    ~Carton();
 
     // Getters  - new naming convention fo getters to use name wo the "_"
     double length();
@@ -31,6 +40,8 @@ public:
     void set_height(double height);
 
     // Other methods
+    void SetMeasurements(double length, double width, double height);
     void ShowInfo();
+    double Volume() const;
 
 }; // must have a ";"

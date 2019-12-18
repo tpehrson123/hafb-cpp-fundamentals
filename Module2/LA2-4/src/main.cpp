@@ -1,29 +1,42 @@
 #include <iostream>
 #include "carton.h"
+#include <array>
 
 using namespace std;
 
+const int kMaxSize = 10;
 int main()
 {
   // create a Carton object using the default constructor
-  Carton box;
+  // Carton box;
 
-  box.set_height(2.3);
-  box.set_width(1.023);
-  box.set_length(3.12);
+  // box.set_height(6.2);
+  // box.set_width(1.023);
+  // box.set_length(6.12);
 
-  box.ShowInfo();
+  // box.ShowInfo();
 
-  Carton box2(13.2, 111.2, 345.3);
-  box2.ShowInfo();
+  // // create a Carton object using the other constructor
+  // Carton box2(13.2, 111.2, 345.3);
+  // box2.ShowInfo();
 
-  // create a Carton object using the other constructor
+
+  // Carton box3(6.4, 111.2, 345.3);
+  // box3.ShowInfo();
 
   // create an array of Cartons
+  std::array<Carton, kMaxSize> boxes;
 
   // add some valid elements to the array
+  boxes[0] = Carton(12,21,52);
+
 
   // loop through the array
+  for (Carton box : boxes)
+  {
+    box.ShowInfo();
+  }
+  
 
   // print out the volume of packages
 
