@@ -43,5 +43,6 @@ public:
     void SetMeasurements(double length, double width, double height);
     void ShowInfo();
     double Volume() const;
+    void WriteData(std::ostream &out) const;
 
 }; // must have a ";"
