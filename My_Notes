@@ -1,6 +1,8 @@
 cmake .. -G "MinGW Makefiles"
 cmake --build .
 
+cmake .. -G "MinGW Makefiles" -D USE_TEST=ON
+
 https://github.com/hugo-valle/hafb-cpp-fundamentals
 
 

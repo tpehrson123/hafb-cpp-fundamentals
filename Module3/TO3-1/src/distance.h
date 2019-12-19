@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 class Distance
 {
 private:
@@ -25,5 +27,5 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const Distance &distance);
 
     void update_distance(int ft, float in);
-    
+
 };
