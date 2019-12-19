@@ -20,5 +20,8 @@ int main()
   d4 = d1 + d2 + d3;
   d4.ShowDist();
 
+  // Now make the << work on distance objects
+  std::cout << d4 << std::endl;
+
   return 0;
 }

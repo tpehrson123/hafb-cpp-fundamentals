@@ -1,5 +1,7 @@
 #pragma once
 
+
+
 class Distance
 {
 private:
@@ -19,5 +21,7 @@ public:
     // Other Methods
     void ShowDist() const;
 
-    Distance operator + (Distance rhs) const;
+    Distance operator + (Distance rhs) const;  // rhs Right hand side of + operator
+
+    friend std::ostream& operator << (std::ostream& os, const Distance& distance);
 };

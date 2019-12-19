@@ -9,7 +9,7 @@ void Distance::ShowDist() const
 /**
  * @brief Plus + Operator for distance objects
  * d3 = d1 + d2
- * @param d2 Second Distance object
+ * @param rhs Second Distance object (rhs Right hand side of + operator)
  * @return Distance Sum of self + d2 objects
  */
 Distance Distance::operator+(Distance rhs) const
@@ -26,4 +26,11 @@ Distance Distance::operator+(Distance rhs) const
     }
 
     return Distance(temp_feet, temp_inches);
+}
+
+std::ostream& operator<<(std::ostream& os, const Distance &distance)
+{
+    // Recommended NOT to include a '\n' or endl character (so user has control)
+    os << "feet: " << distance.feet_ << " inches: " << distance.inches_;
+    return os;
 }
